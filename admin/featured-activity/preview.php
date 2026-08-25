@@ -1,0 +1,5 @@
+<?php
+require_once __DIR__ . '/../includes/auth.php';
+admin_require_auth();
+$activity = ssvdp_public_featured_activity($siteConfig['featuredActivity']);
+?><!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Featured Activity Preview</title><link rel="stylesheet" href="<?php echo site_url('assets/css/style.css'); ?>"><link rel="stylesheet" href="<?php echo site_url('assets/css/admin.css'); ?>"></head><body><div class="admin-alert" style="margin:18px">Preview of the current active Featured Activity content.</div><section class="content-section featured-activity section-reveal"><div class="container featured-activity-card featured-grid"><div class="activity-media activity-photo"><img src="<?php echo site_url($activity['image'] ?? 'assets/images/work/women training.jpg'); ?>" alt="<?php echo e($activity['title']); ?>"></div><div class="activity-report"><p class="activity-label"><?php echo e($activity['label']); ?></p><h2><?php echo e($activity['title']); ?></h2><p><?php echo e($activity['excerpt']); ?></p></div></div></section></body></html>

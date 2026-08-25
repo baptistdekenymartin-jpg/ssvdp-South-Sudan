@@ -1,0 +1,45 @@
+
+# Local/runtime files
+.env
+.env.*
+!.env.example
+config/database.php
+.runtime/
+*.log
+*.tmp
+*.bak
+*.backup
+*.zip
+
+# Private exports and dumps
+*.sql.gz
+*.sql.bak
+*.sql.backup
+*.dump
+backups/
+
+# Uploaded private/user-generated files
+uploads/documents/*
+!uploads/documents/.gitkeep
+
+# OS/IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# Local QA/generated artifacts
+.codex-*.png
+*-check.png
+*contact-sheet.png
+*.hero-backup
+*.coming-soon-backup
+
+# Local sessions and unsafe local executables/shortcuts
+sessions/
+*.sess
+sess_*
+*.lnk
+*.vbs
+*.cmd
+*.exe
+*.bat

@@ -1,0 +1,8 @@
+Options -Indexes
+<FilesMatch "\.(php|php3|php4|php5|phtml|phar|cgi|pl|asp|aspx|jsp|sh|cmd|bat|exe|com|vbs|ps1)$">
+    Require all denied
+</FilesMatch>
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+AddType text/plain .php .php3 .php4 .php5 .phtml .phar .cgi .pl .asp .aspx .jsp .sh .cmd .bat .exe .com .vbs .ps1

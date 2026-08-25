@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-label="Subtle youth group silhouettes">
+  <defs>
+    <linearGradient id="body" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#9fd0ff" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#2b79c8" stop-opacity="0.38"/>
+    </linearGradient>
+    <radialGradient id="face" cx="50%" cy="38%" r="64%">
+      <stop offset="0" stop-color="#d7ecff" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#5aa4ec" stop-opacity="0.4"/>
+    </radialGradient>
+    <filter id="soften" x="-10%" y="-14%" width="120%" height="128%">
+      <feGaussianBlur stdDeviation="0.55"/>
+    </filter>
+  </defs>
+  <g filter="url(#soften)" fill="url(#body)" opacity="0.78">
+    <g transform="translate(62 92)">
+      <ellipse cx="60" cy="54" rx="38" ry="44" fill="url(#face)"/>
+      <path d="M16 178c4-54 23-88 44-88s40 34 44 88l10 118H6z"/>
+      <path d="M19 54c9-38 75-39 82 1-20-18-54-18-82-1z" opacity="0.72"/>
+    </g>
+    <g transform="translate(172 52)">
+      <ellipse cx="72" cy="62" rx="41" ry="48" fill="url(#face)"/>
+      <path d="M18 199c5-58 27-94 54-94s49 36 54 94l12 138H6z"/>
+      <path d="M25 62c3-29 23-50 50-50 26 0 45 21 47 51-28-15-68-14-97-1z" opacity="0.74"/>
+    </g>
+    <g transform="translate(308 86)">
+      <ellipse cx="68" cy="56" rx="39" ry="44" fill="url(#face)"/>
+      <path d="M20 185c5-55 24-91 48-91s43 36 48 91l12 126H8z"/>
+      <path d="M24 57c18-34 70-33 88 0-29-11-58-11-88 0z" opacity="0.68"/>
+    </g>
+    <g transform="translate(436 42)">
+      <ellipse cx="74" cy="66" rx="44" ry="51" fill="url(#face)"/>
+      <path d="M16 214c6-64 29-103 58-103s52 39 58 103l14 150H2z"/>
+      <path d="M28 64c9-34 32-53 58-47 22 5 35 24 36 52-27-18-61-20-94-5z" opacity="0.72"/>
+    </g>
+    <g transform="translate(590 78)">
+      <ellipse cx="66" cy="58" rx="39" ry="46" fill="url(#face)"/>
+      <path d="M18 193c5-57 25-94 48-94s43 37 48 94l12 132H6z"/>
+      <path d="M22 58c8-34 75-35 88 0-28-13-59-13-88 0z" opacity="0.7"/>
+    </g>
+    <g transform="translate(706 104)">
+      <ellipse cx="62" cy="51" rx="36" ry="42" fill="url(#face)"/>
+      <path d="M15 174c5-50 24-83 47-83s42 33 47 83l10 111H5z"/>
+      <path d="M20 52c15-29 64-29 82 0-26-9-52-9-82 0z" opacity="0.68"/>
+    </g>
+    <g transform="translate(812 130)">
+      <ellipse cx="54" cy="46" rx="32" ry="38" fill="url(#face)"/>
+      <path d="M12 156c5-46 21-75 42-75s37 29 42 75l9 94H3z"/>
+      <path d="M17 47c9-26 57-26 74 0-23-8-47-8-74 0z" opacity="0.66"/>
+    </g>
+  </g>
+  <path d="M8 354c166-35 306-35 430-17 177 25 292 34 520-18v101H8z" fill="#08306a" opacity="0.28"/>
+</svg>
