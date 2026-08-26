@@ -63,10 +63,10 @@ $responsiveVersion = (string) (@filemtime(__DIR__ . '/../assets/css/responsive.c
 <body>
     <header class="site-header" data-site-header>
         <div class="container header-inner">
-            <a class="brand" href="<?php echo site_url('index.php'); ?>" aria-label="SSVDP South Sudan home">
+            <a class="brand" href="<?php echo site_url('index.php'); ?>" aria-label="SSVP South Sudan home">
                 <img src="<?php echo site_url($siteConfig['logo']); ?>" alt="Society of St. Vincent de Paul South Sudan logo" class="site-logo" width="104" height="104">
                 <span class="brand-text">
-                    <strong>SSVDP South Sudan</strong>
+                    <strong>SSVP South Sudan</strong>
                     <small>Serviens in Spe</small>
                 </span>
             </a>
@@ -80,5 +80,3 @@ $responsiveVersion = (string) (@filemtime(__DIR__ . '/../assets/css/responsive.c
     </header>
 
     <main id="main-content">
-
-

@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'News & Updates';
-$pageDescription = 'Latest news and updates from SSVDP South Sudan.';
+$pageDescription = 'Latest news and updates from SSVP South Sudan.';
 $assetVersion = 'news-page-redesign-v1';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/public-submissions.php';
@@ -13,7 +13,7 @@ $primaryStory = array(
     'description' => 'Thirty women participated in training on nutrition, hygiene and family planning in Nyarjwa Village as part of an empowerment programme for mothers and caregivers.',
     'date' => '13 July 2026',
     'image' => 'assets/images/news/featured-women-nutrition.jpg',
-    'image_alt' => 'SSVDP women participating in a nutrition, hygiene and family planning training activity',
+    'image_alt' => 'SSVP women participating in a nutrition, hygiene and family planning training activity',
     'link' => 'news.php'
 );
 
@@ -23,20 +23,20 @@ $newsStories = array(
         'category' => 'Livelihoods and Practical Skills',
         'filter' => 'programmes',
         'title' => 'Strengthening Livelihoods Through Practical Skills',
-        'description' => 'SSVDP South Sudan continues to support vulnerable families and young people through practical livelihood and income-generating skills designed to strengthen self-reliance and economic resilience.',
+        'description' => 'SSVP South Sudan continues to support vulnerable families and young people through practical livelihood and income-generating skills designed to strengthen self-reliance and economic resilience.',
         'date' => 'To be updated',
         'image' => 'assets/images/news/jam-production-01.jpg',
-        'image_alt' => 'SSVDP income-generating activity and practical livelihood work',
+        'image_alt' => 'SSVP income-generating activity and practical livelihood work',
         'link' => 'news-livelihood-skills.php'
     ),
     array(
         'category' => 'Community Empowerment',
         'filter' => 'community-activities',
         'title' => 'Empowering Communities Through Skills and Participation',
-        'description' => 'Through community-based programmes, SSVDP South Sudan is helping women, youth and vulnerable groups gain skills, confidence and opportunities to participate more actively in their communities.',
+        'description' => 'Through community-based programmes, SSVP South Sudan is helping women, youth and vulnerable groups gain skills, confidence and opportunities to participate more actively in their communities.',
         'date' => 'To be updated',
         'image' => 'assets/images/news/vocational-training-01.jpg',
-        'image_alt' => 'SSVDP vocational training and community skills development activity',
+        'image_alt' => 'SSVP vocational training and community skills development activity',
         'link' => 'news-community-empowerment.php'
     ),
     array(
@@ -46,7 +46,7 @@ $newsStories = array(
         'description' => 'Income generating groups continue to use practical livelihood activities to support household resilience and community participation.',
         'date' => 'To be updated',
         'image' => 'assets/images/news/poultry-project-01.jpg',
-        'image_alt' => 'SSVDP poultry livelihood project activity',
+        'image_alt' => 'SSVP poultry livelihood project activity',
         'link' => 'gallery.php'
     ),
     array(
@@ -56,17 +56,17 @@ $newsStories = array(
         'description' => 'Emergency and humanitarian support activities continue to respond to the needs of vulnerable households and displaced communities.',
         'date' => 'To be updated',
         'image' => 'assets/images/news/idp-support-01.jpg',
-        'image_alt' => 'SSVDP emergency and humanitarian support activity',
+        'image_alt' => 'SSVP emergency and humanitarian support activity',
         'link' => 'programmes.php'
     ),
     array(
         'category' => 'Partnerships',
         'filter' => 'partnerships',
         'title' => 'Partnerships Supporting Community Programmes',
-        'description' => 'SSVDP continues working with partners and local communities to strengthen programmes rooted in service, dignity and practical support.',
+        'description' => 'SSVP continues working with partners and local communities to strengthen programmes rooted in service, dignity and practical support.',
         'date' => 'To be updated',
         'image' => 'assets/images/news/community-partnership-01.jpg',
-        'image_alt' => 'SSVDP community and partnership activity',
+        'image_alt' => 'SSVP community and partnership activity',
         'link' => 'programmes.php'
     )
 );
@@ -108,7 +108,7 @@ $filters = array(
     <section class="newsroom-hero section-reveal" aria-labelledby="news-page-title">
         <div class="container newsroom-hero__inner">
             <div class="newsroom-hero__copy">
-                <p class="newsroom-kicker">Latest from SSVDP</p>
+                <p class="newsroom-kicker">Latest from SSVP</p>
                 <h1 id="news-page-title">Stories of Service,<br>Hope &amp; Community</h1>
                 <span class="newsroom-hero__rule" aria-hidden="true"></span>
                 <p>Stay updated with our latest activities, programmes and stories from across South Sudan.</p>
@@ -281,7 +281,7 @@ $filters = array(
                 <span class="newsletter-icon"><i class="bi bi-envelope-paper" aria-hidden="true"></i></span>
                 <div class="newsletter-copy">
                     <h2 id="newsletter-heading">Stay Connected</h2>
-                    <p>Subscribe to our newsletter and receive the latest updates and stories from SSVDP South Sudan.</p>
+                    <p>Subscribe to our newsletter and receive the latest updates and stories from SSVP South Sudan.</p>
                 </div>
                 <form class="newsletter-form" action="<?php echo site_url('news.php'); ?>#newsletter-heading" method="post" aria-label="Newsletter signup form">
                     <input type="hidden" name="form_type" value="newsletter">
@@ -340,10 +340,3 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
-
-
-
-
-
-
-

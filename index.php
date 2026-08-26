@@ -24,8 +24,8 @@ $partners = array(
     array(
         'name' => 'BBM',
         'logo' => 'assets/images/partners/bbm.jpeg',
-        'summary' => 'Donation of cars and mobility support, solar power supply, SSVDP School and Health Centre in Nyarjwa.',
-        'details' => 'Supported projects: Donation of cars / mobility; Solar power supply; SSVDP School; Health Centre in Nyarjwa.'
+        'summary' => 'Donation of cars and mobility support, solar power supply, SSVP School and Health Centre in Nyarjwa.',
+        'details' => 'Supported projects: Donation of cars / mobility; Solar power supply; SSVP School; Health Centre in Nyarjwa.'
     ),
     array(
         'name' => 'missio',
@@ -37,7 +37,7 @@ $partners = array(
         'name' => 'St Vincent de Paul Society &ndash; England and Wales',
         'logo' => 'assets/images/partners/svp-england-wales.png',
         'summary' => 'Charitable projects, IDP projects, partial contribution for Baby Feeding and annual renovation cost for Nyarjwa Clinic.',
-        'details' => 'Supported projects: Charitable projects; IDP projects implemented by the SSVDP National Council; partial contribution for Baby Feeding; annual renovation cost for Nyarjwa Clinic.'
+        'details' => 'Supported projects: Charitable projects; IDP projects implemented by the SSVP National Council; partial contribution for Baby Feeding; annual renovation cost for Nyarjwa Clinic.'
     ),
     array(
         'name' => 'PROSUDAN',
@@ -69,7 +69,7 @@ $partners = ssvdp_public_partners($partners);
                 </div>
             </div>
             <img class="hero-curve-logo" src="<?php echo site_url('assets/images/logo/ssvdp-logo-transparent.png'); 
-?>" alt="SSVDP South Sudan" width="320" height="320">
+?>" alt="SSVP South Sudan" width="320" height="320">
         </article>
         <article class="hero-slide hero-slide-caption-left" data-hero-slide aria-hidden="true">
             <div class="hero-photo" aria-hidden="true">
@@ -93,7 +93,7 @@ $partners = ssvdp_public_partners($partners);
                 <div class="hero-copy hero-slide-caption">
                     <p class="hero-kicker">COMMUNITY ENGAGEMENT</p>
                     <h2 class="hero-title">Working With Communities</h2>
-                    <p class="hero-description">SSVDP walks with local communities to strengthen participation and shared action.</p>
+                    <p class="hero-description">SSVP walks with local communities to strengthen participation and shared action.</p>
                 </div>
             </div>
         </article>
@@ -139,7 +139,7 @@ $partners = ssvdp_public_partners($partners);
     </div>
 </section>
 
-<section class="home-motto-strip section-reveal" aria-label="SSVDP motto">
+<section class="home-motto-strip section-reveal" aria-label="SSVP motto">
     <div class="container home-motto-strip-inner">
         <i class="bi bi-heart" aria-hidden="true"></i>
         <p>Development Through Community<br>Empowerment &amp; Participation.</p>
@@ -170,7 +170,7 @@ $partners = ssvdp_public_partners($partners);
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div class="about-pillars" aria-label="SSVDP approach pillars">
+            <div class="about-pillars" aria-label="SSVP approach pillars">
                 <article class="about-pillar">
                     <span class="about-pillar-icon"><i class="bi bi-people-fill" aria-hidden="true"></i></span>
                     <h3>Community Empowerment</h3>
@@ -388,7 +388,7 @@ $partners = ssvdp_public_partners($partners);
         <div class="get-involved-copy">
             <p class="section-label">GET INVOLVED</p>
             <h2><?php echo e($getInvolved['heading']); ?></h2>
-            <p>Work with SSVDP South Sudan to support vulnerable communities through volunteering, partnership and community action.</p>
+            <p>Work with SSVP South Sudan to support vulnerable communities through volunteering, partnership and community action.</p>
         </div>
         <div class="cta-grid" aria-label="Get involved actions">
             <article class="get-involved-action get-involved-action--blue">
@@ -464,7 +464,7 @@ $partners = ssvdp_public_partners($partners);
         <div class="container home-prefooter-cta-inner">
             <p class="section-label">TOGETHER FOR STRONGER COMMUNITIES</p>
             <h2 id="home-prefooter-cta-heading">Empowering communities.<br>Restoring dignity.<br>Building hope.</h2>
-            <p>Through community participation and collective action, SSVDP South Sudan works alongside people to create opportunities for a stronger and more sustainable future.</p>
+            <p>Through community participation and collective action, SSVP South Sudan works alongside people to create opportunities for a stronger and more sustainable future.</p>
             <a class="btn home-prefooter-button" href="<?php echo site_url('programmes.php'); 
 ?>">Discover Our Work <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
         </div>
@@ -497,5 +497,3 @@ $partners = ssvdp_public_partners($partners);
 
 <?php require_once __DIR__ . '/includes/footer.php'; 
 ?>
-
-

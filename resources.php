@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Get Involved';
-$pageDescription = 'Volunteer, partner with, or support the mission of SSVDP South Sudan.';
+$pageDescription = 'Volunteer, partner with, or support the mission of SSVP South Sudan.';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/public-submissions.php';
 $getInvolvedResult = ssvdp_handle_get_involved_submission();
@@ -27,7 +27,7 @@ $getInvolvedResult = ssvdp_handle_get_involved_submission();
     <section class="get-involved-intro section-reveal" aria-labelledby="get-involved-intro-heading">
         <div class="container get-involved-intro-inner">
             <h2 id="get-involved-intro-heading">Together, We Can Make a Difference</h2>
-            <p>SSVDP South Sudan believes meaningful change happens through participation, solidarity and partnership. There are many ways individuals, organizations and communities can contribute to our mission.</p>
+            <p>SSVP South Sudan believes meaningful change happens through participation, solidarity and partnership. There are many ways individuals, organizations and communities can contribute to our mission.</p>
         </div>
     </section>
 
@@ -44,14 +44,14 @@ $getInvolvedResult = ssvdp_handle_get_involved_submission();
                 <span class="involvement-card-icon involvement-card-icon-gold"><i class="bi bi-handshake" aria-hidden="true"></i></span>
                 <h2>Partner With Us</h2>
                 <span class="involvement-card-rule" aria-hidden="true"></span>
-                <p>Work with SSVDP South Sudan to strengthen community-led initiatives and create sustainable impact together.</p>
+                <p>Work with SSVP South Sudan to strengthen community-led initiatives and create sustainable impact together.</p>
                 <a class="btn btn-secondary-dark" href="<?php echo site_url('contact.php'); ?>">Explore Partnership</a>
             </article>
             <article class="involvement-card" id="support">
                 <span class="involvement-card-icon involvement-card-icon-blue"><i class="bi bi-heart" aria-hidden="true"></i></span>
                 <h2>Support Our Mission</h2>
                 <span class="involvement-card-rule" aria-hidden="true"></span>
-                <p>Help strengthen the work of SSVDP South Sudan by supporting initiatives that promote dignity, resilience and opportunity.</p>
+                <p>Help strengthen the work of SSVP South Sudan by supporting initiatives that promote dignity, resilience and opportunity.</p>
                 <a class="btn btn-secondary-dark" href="#why-involved">Learn More</a>
             </article>
         </div>
@@ -95,7 +95,7 @@ $getInvolvedResult = ssvdp_handle_get_involved_submission();
         <div class="container">
             <div class="get-involved-form-card">
                 <p class="section-label">SUBMIT YOUR INTEREST</p>
-                <h2 id="get-involved-form-heading">Get Involved With SSVDP South Sudan</h2>
+                <h2 id="get-involved-form-heading">Get Involved With SSVP South Sudan</h2>
                 <p>Share your interest with our team and we will follow up on the next steps.</p>
                 <form id="get-involved-submission-form" class="contact-form" action="<?php echo site_url('resources.php'); ?>#get-involved-submission-form" method="post">
                     <input type="hidden" name="form_type" value="get_involved">
@@ -120,7 +120,7 @@ $getInvolvedResult = ssvdp_handle_get_involved_submission();
         <div class="container get-involved-final-cta-inner">
             <p class="section-label">READY TO GET INVOLVED?</p>
             <h2 id="get-involved-final-heading">Your contribution can help build stronger communities.</h2>
-            <p>Connect with SSVDP South Sudan and discover how you can contribute your time, experience or partnership.</p>
+            <p>Connect with SSVP South Sudan and discover how you can contribute your time, experience or partnership.</p>
             <div class="hero-actions">
                 <a class="btn btn-primary" href="<?php echo site_url('contact.php'); ?>">Contact Us <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>

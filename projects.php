@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Projects';
-$pageDescription = 'Featured SSVDP South Sudan projects.';
+$pageDescription = 'Featured SSVP South Sudan projects.';
 $assetVersion = 'projects-intro-v1';
 require_once __DIR__ . '/includes/header.php';
 
@@ -34,6 +34,3 @@ $workPage = $siteConfig['ourWorkPage'];
 </div>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
-
-
-

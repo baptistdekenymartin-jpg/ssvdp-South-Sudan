@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-labelledby="title desc">
   <title id="title">Official activity photograph placeholder</title>
-  <desc id="desc">A blue graphic placeholder where an approved SSVDP activity photograph can later be added.</desc>
+  <desc id="desc">A blue graphic placeholder where an approved SSVP activity photograph can later be added.</desc>
   <rect width="720" height="480" fill="#0f2f5a"/>
   <path d="M0 342c128-91 256-108 384-51 130 58 242 39 336-57v246H0z" fill="#1f5fbf" opacity=".55"/>
   <path d="M143 111l80 20 72-35 64 41 89-14 52 63-18 75 71 61-67 50 6 74-93 21-45 61-86-25-72 35-54-64-99-4-19-83-75-41 44-79-19-76 91-30 44-50z" fill="none" stroke="#ffffff" stroke-width="9" stroke-linejoin="round" opacity=".34"/>
-  <text x="360" y="246" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="middle">Official SSVDP activity photograph</text>
+  <text x="360" y="246" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="middle">Official SSVP activity photograph</text>
   <text x="360" y="285" fill="#f2b84b" font-family="Arial, sans-serif" font-size="22" font-weight="600" text-anchor="middle">will be added here</text>
 </svg>

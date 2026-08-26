@@ -24,7 +24,7 @@ $greeting = $hour < 12 ? 'Good morning' : ($hour < 17 ? 'Good afternoon' : 'Good
 require __DIR__ . '/includes/admin-header.php';
 ?>
 <section class="admin-greeting">
-    <h2><?php echo e($greeting); ?>, SSVDP Team!</h2>
+    <h2><?php echo e($greeting); ?>, SSVP Team!</h2>
     <p>Here&apos;s what&apos;s happening on your website.</p>
 </section>
 <section class="admin-stats" aria-label="Dashboard statistics">
@@ -70,4 +70,3 @@ require __DIR__ . '/includes/admin-header.php';
     </article>
 </section>
 <?php require __DIR__ . '/includes/admin-footer.php'; ?>
-

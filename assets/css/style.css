@@ -3963,7 +3963,7 @@ h2 {
     background: #ffd760;
     color: #041b42;
 }
-/* About page SSVDP brand colour refinement */
+/* About page SSVP brand colour refinement */
 .about-page {
     background: linear-gradient(180deg, #ffffff 0%, var(--ssvdp-pale-blue) 100%);
 }
@@ -4278,7 +4278,7 @@ h2 {
     background: #ffffff;
     color: var(--ssvdp-deep-blue);
 }
-/* About values card SSVDP colour treatment */
+/* About values card SSVP colour treatment */
 .value-card {
     border: 1px solid rgba(7, 59, 122, .08);
     box-shadow: 0 14px 32px rgba(7, 59, 122, .08);

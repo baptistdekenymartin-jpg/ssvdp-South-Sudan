@@ -12,7 +12,7 @@ $primaryEmail = $contactInformation['emails'][0] ?? 'Email address to be confirm
 <div class="contact-page">
     <section class="contact-hero section-reveal">
         <div class="container contact-hero-inner">
-            <p class="section-label">CONTACT SSVDP</p>
+            <p class="section-label">CONTACT SSVP</p>
             <h1>Contact Us</h1>
             <p>We are here to connect, collaborate and serve communities across South Sudan.</p>
         </div>
@@ -106,10 +106,10 @@ $primaryEmail = $contactInformation['emails'][0] ?? 'Email address to be confirm
             <div class="contact-map-panel">
                 <div class="contact-map-copy">
                     <p class="section-label">VISIT OR REACH US</p>
-                    <h2 id="contact-map-heading">Find SSVDP South Sudan</h2>
+                    <h2 id="contact-map-heading">Find SSVP South Sudan</h2>
                     <p>Confirmed map details can be added here when the official Google Maps embed is available.</p>
                 </div>
-                <div class="contact-map-placeholder" role="img" aria-label="Google Maps embed placeholder for SSVDP South Sudan office location">
+                <div class="contact-map-placeholder" role="img" aria-label="Google Maps embed placeholder for SSVP South Sudan office location">
                     <i class="bi bi-map" aria-hidden="true"></i>
                     <span>Google Maps embed ready</span>
                 </div>
@@ -120,7 +120,7 @@ $primaryEmail = $contactInformation['emails'][0] ?? 'Email address to be confirm
     <section class="contact-final-cta section-reveal" aria-labelledby="contact-final-heading">
         <div class="container contact-final-cta-inner">
             <p class="section-label">TOGETHER, WE CAN MAKE A DIFFERENCE</p>
-            <h2 id="contact-final-heading">Connect with SSVDP South Sudan to learn more about our work, partnerships and community programmes.</h2>
+            <h2 id="contact-final-heading">Connect with SSVP South Sudan to learn more about our work, partnerships and community programmes.</h2>
             <div class="hero-actions">
                 <a class="btn btn-primary" href="<?php echo site_url('resources.php'); ?>">Get Involved <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>

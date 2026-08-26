@@ -156,7 +156,7 @@ function ssvdp_handle_get_involved_submission(): array
         return array('success' => '', 'errors' => array('We could not submit your message. Please check the information and try again.'), 'values' => $values);
     }
 
-    return array('success' => 'Thank you for your interest in SSVDP South Sudan. Our team will review your submission.', 'errors' => array(), 'values' => array('full_name' => '', 'email' => '', 'phone' => '', 'location' => '', 'involvement_type' => '', 'areas_of_interest' => array(), 'message' => ''));
+    return array('success' => 'Thank you for your interest in SSVP South Sudan. Our team will review your submission.', 'errors' => array(), 'values' => array('full_name' => '', 'email' => '', 'phone' => '', 'location' => '', 'involvement_type' => '', 'areas_of_interest' => array(), 'message' => ''));
 }
 function ssvdp_handle_newsletter_submission(): array
 {
@@ -195,5 +195,5 @@ function ssvdp_handle_newsletter_submission(): array
         $stmt->execute(array($email));
     }
 
-    return array('success' => 'Thank you for subscribing to SSVDP South Sudan updates.', 'errors' => array(), 'values' => array('email' => ''));
+    return array('success' => 'Thank you for subscribing to SSVP South Sudan updates.', 'errors' => array(), 'values' => array('email' => ''));
 }

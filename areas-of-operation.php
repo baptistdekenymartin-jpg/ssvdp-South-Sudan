@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Areas of Operation';
-$pageDescription = 'SSVDP South Sudan areas of operation.';
+$pageDescription = 'SSVP South Sudan areas of operation.';
 $assetVersion = 'areas-process-four-v1';
 require_once __DIR__ . '/includes/header.php';
 
@@ -14,7 +14,7 @@ $workPage = $siteConfig['ourWorkPage'];
             <h1><?php echo e($workPage['areas_preview']['heading']); ?></h1>
             <p><?php echo e($workPage['areas_preview']['text']); ?></p>
         </div>
-        <div class="work-location-chips" aria-label="SSVDP areas of operation">
+        <div class="work-location-chips" aria-label="SSVP areas of operation">
             <?php foreach ($workPage['areas_preview']['locations'] as $location) : ?>
                 <span><i class="bi bi-geo-alt" aria-hidden="true"></i><?php echo e($location); ?></span>
             <?php endforeach; ?>
@@ -24,7 +24,7 @@ $workPage = $siteConfig['ourWorkPage'];
         <div class="operations-process__intro">
             <p class="operations-process__label">HOW OUR PRESENCE WORKS</p>
             <h2>From Local Presence to Lasting Impact</h2>
-            <p>Every community served by SSVDP South Sudan follows a journey of listening, planning, action and continued support. Our local presence allows us to respond quickly to community needs while building long-term relationships that restore dignity and strengthen resilience.</p>
+            <p>Every community served by SSVP South Sudan follows a journey of listening, planning, action and continued support. Our local presence allows us to respond quickly to community needs while building long-term relationships that restore dignity and strengthen resilience.</p>
         </div>
 
         <div class="operations-process__steps operations-process__steps--four">
@@ -50,12 +50,10 @@ $workPage = $siteConfig['ourWorkPage'];
                 <span class="operations-process__marker"><i class="bi bi-people" aria-hidden="true"></i></span>
                 <p class="operations-process__number">04</p>
                 <h3>Follow Up</h3>
-                <p>SSVDP continues engaging with communities, monitoring progress and strengthening long-term development through ongoing accompaniment.</p>
+                <p>SSVP continues engaging with communities, monitoring progress and strengthening long-term development through ongoing accompaniment.</p>
             </article>
         </div>
     </section>
 </div>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
-
-

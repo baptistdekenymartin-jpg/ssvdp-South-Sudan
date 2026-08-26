@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Gallery';
-$pageDescription = 'Explore moments from SSVDP activities, programmes, community engagement, training and events across South Sudan.';
+$pageDescription = 'Explore moments from SSVP activities, programmes, community engagement, training and events across South Sudan.';
 require_once __DIR__ . '/includes/header.php';
 
 $galleryCategories = array(
@@ -63,7 +63,7 @@ if ($dynamicGalleryItems) {
     <div class="container gallery-hero-inner">
         <p class="section-label">GALLERY</p>
         <h1 id="gallery-page-title">Our Work in Pictures</h1>
-        <p>Explore moments from SSVDP activities, programmes, community engagement, training and events across South Sudan.</p>
+        <p>Explore moments from SSVP activities, programmes, community engagement, training and events across South Sudan.</p>
     </div>
 </section>
 
@@ -72,7 +72,7 @@ if ($dynamicGalleryItems) {
         <div class="section-heading gallery-heading">
             <p class="section-label">PHOTO GALLERY</p>
             <h2 id="latest-gallery-heading">Latest Photo Gallery</h2>
-            <p>Browse selected moments from SSVDP South Sudan programmes and activities.</p>
+            <p>Browse selected moments from SSVP South Sudan programmes and activities.</p>
         </div>
 
         <div class="gallery-filters" role="group" aria-label="Filter gallery photos">
@@ -106,7 +106,7 @@ if ($dynamicGalleryItems) {
         <div class="section-heading gallery-heading">
             <p class="section-label">Income Generating Projects</p>
             <h2 id="income-generating-projects-gallery-heading">Income Generating Projects</h2>
-            <p>Explore SSVDP livelihood and income-generating activities supporting communities through farming, food production and poultry.</p>
+            <p>Explore SSVP livelihood and income-generating activities supporting communities through farming, food production and poultry.</p>
         </div>
         <div class="gallery-igp-panel-wrap">
             <div class="gallery-igp-grid">
@@ -128,7 +128,7 @@ if ($dynamicGalleryItems) {
         <div class="section-heading gallery-heading">
             <p class="section-label">Vocational Training</p>
             <h2 id="vocational-training-gallery-heading">Vocational Training</h2>
-            <p>Highlights from SSVDP vocational skills training activities and practical learning sessions.</p>
+            <p>Highlights from SSVP vocational skills training activities and practical learning sessions.</p>
         </div>
         <div class="gallery-vocational-panel-wrap">
             <div class="gallery-vocational-grid">
@@ -194,9 +194,3 @@ if ($dynamicGalleryItems) {
 </div>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
-
-
-
-
-
-

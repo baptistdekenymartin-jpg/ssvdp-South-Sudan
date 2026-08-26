@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Our Work';
-$pageDescription = 'Explore SSVDP South Sudan programmes, featured projects, areas of operation and impact.';
+$pageDescription = 'Explore SSVP South Sudan programmes, featured projects, areas of operation and impact.';
 $assetVersion = 'work-cta-about-match-v1';
 require_once __DIR__ . '/includes/header.php';
 
@@ -80,7 +80,7 @@ $workPage = $siteConfig['ourWorkPage'];
             <h2><?php echo e($workPage['areas_preview']['heading']); ?></h2>
             <p><?php echo e($workPage['areas_preview']['text']); ?></p>
         </div>
-        <div class="work-location-chips" aria-label="SSVDP areas of operation">
+        <div class="work-location-chips" aria-label="SSVP areas of operation">
             <?php foreach ($workPage['areas_preview']['locations'] as $location) : ?>
                 <span><i class="bi bi-geo-alt" aria-hidden="true"></i><?php echo e($location); ?></span>
             <?php endforeach; ?>
@@ -101,13 +101,13 @@ $workPage = $siteConfig['ourWorkPage'];
                     </div>
                 </div>
                 <figure class="cta-photo-cta-photo">
-                    <img src="<?php echo site_url('assets/images/work/women training.jpg'); ?>" alt="SSVDP South Sudan community training activity" loading="lazy" width="760" height="520">
+                    <img src="<?php echo site_url('assets/images/work/women training.jpg'); ?>" alt="SSVP South Sudan community training activity" loading="lazy" width="760" height="520">
                 </figure>
             </div>
         </div>
 
         <div class="prefooter-cta-lower">
-            <div class="container prefooter-values-panel" aria-label="SSVDP values">
+            <div class="container prefooter-values-panel" aria-label="SSVP values">
                 <article class="prefooter-value-item">
                     <span class="prefooter-value-icon"><i class="bi bi-heart" aria-hidden="true"></i></span>
                     <div>
@@ -143,7 +143,3 @@ $workPage = $siteConfig['ourWorkPage'];
 </div>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
-
-
-
-

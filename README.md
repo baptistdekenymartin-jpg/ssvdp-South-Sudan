@@ -1,4 +1,4 @@
-# SSVDP South Sudan Website
+# SSVP South Sudan Website
 
 ## Purpose
 This project creates the official public website for the Society of St. Vincent de Paul South Sudan using PHP, MySQL, HTML5, CSS3 and vanilla JavaScript. The first phase focuses on the public homepage, shared header/footer, reusable configuration and database preparation for later administration integration.

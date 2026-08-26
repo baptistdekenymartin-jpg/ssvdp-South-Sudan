@@ -68,7 +68,7 @@ $values = array(
 );
 
 $about = array(
-    'label' => 'ABOUT SSVDP SOUTH SUDAN',
+    'label' => 'ABOUT SSVP SOUTH SUDAN',
     'heading' => 'Building Skills, Restoring Hope and Strengthening Communities',
     'paragraphs' => array(
         'Welcome to the Society of St. Vincent de Paul South Sudan. We believe in inclusive youth empowerment through practical training, leadership development and mentorship. We also provide compassionate care and emergency support to vulnerable children, mothers and families.',
@@ -135,7 +135,7 @@ $featuredActivity = array(
     'participants' => '30 women',
     'category' => "Health, Nutrition and Women's Empowerment",
     'excerpt' => 'Thirty women participated in training on nutrition, hygiene and family planning in Nyarjwa Village on 13 July 2026. The activity was conducted as part of an empowerment programme for mothers and caregivers of children enrolled in the baby-feeding programme.',
-    'guests' => 'SSVDP senior staff and the President of SSVDP South Sudan.',
+    'guests' => 'SSVP senior staff and the President of SSVP South Sudan.',
     'placeholder' => 'Activity photograph will be added after approval.',
     'button_label' => 'Read Full Activity Report',
     'button_link' => 'news.php'
@@ -148,7 +148,7 @@ $whereWeWork = array(
     'county' => 'Juba County',
     'communities_reached' => '4',
     'office_location' => 'Luluggo 2, South Juba Town, Juba, South Sudan',
-    'paragraph' => 'SSVDP South Sudan currently serves communities within Central Equatoria State through the Archdiocese of Juba, supporting vulnerable people through skills development, education, health, nutrition and humanitarian programmes.',
+    'paragraph' => 'SSVP South Sudan currently serves communities within Central Equatoria State through the Archdiocese of Juba, supporting vulnerable people through skills development, education, health, nutrition and humanitarian programmes.',
     'button_label' => 'View Areas of Operation',
     'button_link' => 'programmes.php#areas',
     'details' => array(
@@ -194,7 +194,7 @@ $ourWorkPage = array(
     'hero' => array(
         'label' => 'OUR WORK',
         'heading' => 'Transforming Lives Through Compassionate Service',
-        'text' => 'Across South Sudan, SSVDP delivers humanitarian assistance, healthcare, vocational training, child protection, education and sustainable livelihood programmes that restore dignity and create hope.',
+        'text' => 'Across South Sudan, SSVP delivers humanitarian assistance, healthcare, vocational training, child protection, education and sustainable livelihood programmes that restore dignity and create hope.',
         'image' => 'assets/images/work/our work.jpg',
         'buttons' => array(
             array('label' => 'Explore Programmes', 'link' => 'programmes.php', 'class' => 'btn-primary', 'icon' => 'bi-arrow-right'),
@@ -203,7 +203,7 @@ $ourWorkPage = array(
     ),
     'intro' => array(
         'heading' => 'How We Serve',
-        'text' => 'At SSVDP South Sudan, we accompany vulnerable individuals, families and communities through practical acts of charity, compassion and sustainable development. Our work responds to immediate humanitarian needs while creating long-term opportunities for self-reliance, dignity and hope. Through healthcare, education, vocational skills training, emergency relief, food security, agricultural initiatives, child and family support, and community development programmes, we strive to improve lives and strengthen communities across the areas where we serve.'
+        'text' => 'At SSVP South Sudan, we accompany vulnerable individuals, families and communities through practical acts of charity, compassion and sustainable development. Our work responds to immediate humanitarian needs while creating long-term opportunities for self-reliance, dignity and hope. Through healthcare, education, vocational skills training, emergency relief, food security, agricultural initiatives, child and family support, and community development programmes, we strive to improve lives and strengthen communities across the areas where we serve.'
     ),
     'programme_areas' => array(
         'heading' => 'Our Programme Areas',
@@ -221,18 +221,18 @@ $ourWorkPage = array(
     ),
     'featured_projects' => array(
         'heading' => 'Featured Projects',
-        'text' => 'Explore some of SSVDP South Sudanâ€™s key projects supporting vulnerable communities through skills development, healthcare, agriculture, humanitarian assistance and sustainable livelihoods.',
+        'text' => 'Explore some of SSVP South SudanÃ¢â‚¬â„¢s key projects supporting vulnerable communities through skills development, healthcare, agriculture, humanitarian assistance and sustainable livelihoods.',
         'items' => array(
             array('title' => 'IDP Agricultural Training Project', 'location' => 'Kworijik, Luri', 'description' => 'Agricultural training designed to strengthen food security and promote self-reliance among internally displaced communities.', 'image' => 'assets/images/work/Agricultural.jpeg', 'link' => 'projects.php'),
             array('title' => 'Vocational Training Centre', 'location' => '', 'description' => 'Hands-on skills training in tailoring, building and construction, welding, general electricity, automobile mechanics, computer literacy and other practical trades.', 'image' => 'assets/images/work/vocational.jpeg', 'link' => 'projects.php'),
             array('title' => 'Nyarjwa Primary Health Care Centre', 'location' => 'Nyarjwa', 'description' => 'Primary healthcare and maternity services supporting vulnerable families in Nyarjwa and nearby communities.', 'image' => 'assets/images/work/nyarjwa.jpeg', 'link' => 'projects.php', 'class' => 'featured-project-card--nyarjwa'),
             array('title' => 'Emergency Relief for IDPs', 'location' => 'Kworijik, Juba', 'description' => 'Food assistance and essential shelter support for internally displaced households and other vulnerable families.', 'image' => 'assets/images/work/Emergency.jpeg', 'link' => 'projects.php'),
-            array('title' => 'Jam Production Initiative', 'location' => 'Lologo II', 'description' => 'Local fruit-jam production supporting food processing, income generation and SSVDP\'s charitable programmes.', 'image' => 'assets/images/work/jam.jpeg', 'link' => 'projects.php')
+            array('title' => 'Jam Production Initiative', 'location' => 'Lologo II', 'description' => 'Local fruit-jam production supporting food processing, income generation and SSVP\'s charitable programmes.', 'image' => 'assets/images/work/jam.jpeg', 'link' => 'projects.php')
         )
     ),
     'areas_preview' => array(
         'heading' => 'Where We Work',
-        'text' => 'SSVDP South Sudan serves vulnerable communities through its conferences, institutions and programme locations across Juba and surrounding areas.',
+        'text' => 'SSVP South Sudan serves vulnerable communities through its conferences, institutions and programme locations across Juba and surrounding areas.',
         'locations' => array('Juba', 'Lologo', 'Nyarjwa', 'Rejaf', 'Kworijik', 'Luri'),
         'button_label' => 'View Areas of Operation',
         'button_link' => 'areas-of-operation.php'
@@ -246,7 +246,7 @@ $ourWorkPage = array(
     'updates' => $latestNews,
     'cta' => array(
         'heading' => 'Together, We Can Build Stronger Communities',
-        'text' => 'Explore our programmes, volunteer your skills or partner with SSVDP South Sudan to help vulnerable people build lives of dignity, opportunity and self-reliance.',
+        'text' => 'Explore our programmes, volunteer your skills or partner with SSVP South Sudan to help vulnerable people build lives of dignity, opportunity and self-reliance.',
         'buttons' => array(
             array('label' => 'Explore Our Work', 'link' => 'programmes.php', 'class' => 'btn-primary', 'icon' => 'bi-arrow-right'),
             array('label' => 'Contact Us', 'link' => 'contact.php', 'class' => 'btn-outline-light', 'icon' => 'bi-envelope')
@@ -255,7 +255,7 @@ $ourWorkPage = array(
 );
 $getInvolved = array(
     'heading' => 'Join Us in Strengthening Communities',
-    'text' => 'Work with SSVDP South Sudan to expand opportunities, restore hope and support vulnerable people through practical community action.',
+    'text' => 'Work with SSVP South Sudan to expand opportunities, restore hope and support vulnerable people through practical community action.',
     'cards' => array(
         array(
             'title' => 'Become a Volunteer',
@@ -266,13 +266,13 @@ $getInvolved = array(
         ),
         array(
             'title' => 'Partner With Us',
-            'description' => 'Collaborate with SSVDP South Sudan in education, livelihoods, health and humanitarian support.',
+            'description' => 'Collaborate with SSVP South Sudan in education, livelihoods, health and humanitarian support.',
             'button_label' => 'Explore Partnerships',
             'link' => 'contact.php',
             'icon' => 'bi-diagram-3'
         ),
         array(
-            'title' => 'Contact SSVDP',
+            'title' => 'Contact SSVP',
             'description' => 'Speak with our team to learn more about our programmes and community work.',
             'button_label' => 'Contact Our Team',
             'link' => 'contact.php',
@@ -283,15 +283,15 @@ $getInvolved = array(
 
 $aboutPage = array(
     'banner' => array(
-        'label' => 'ABOUT SSVDP SOUTH SUDAN',
+        'label' => 'ABOUT SSVP SOUTH SUDAN',
         'heading' => 'Faith in Action, Hope for Communities',
         'text' => 'We are a Catholic Church-affiliated organisation dedicated to serving vulnerable people through compassionate service, education and sustainable development.',
         'motto' => 'Development Through Community Empowerment & Participation',
-        'watermark' => 'SSVDP',
+        'watermark' => 'SSVP',
         'breadcrumb_label' => 'Breadcrumb',
         'breadcrumb' => array(
             array('label' => 'Home', 'link' => 'index.php'),
-            array('label' => 'About SSVDP', 'link' => '')
+            array('label' => 'About SSVP', 'link' => '')
         )
     ),
     'introduction' => array(
@@ -303,12 +303,12 @@ $aboutPage = array(
             'Its work particularly supports poor and disadvantaged communities through programmes that respond to immediate humanitarian needs while also creating opportunities for long-term development and self-reliance.'
         ),
         'visual_statement' => 'Development Through Community Empowerment & Participation',
-        'visual_label' => 'Branded SSVDP South Sudan community development graphic'
+        'visual_label' => 'Branded SSVP South Sudan community development graphic'
     ),
     'who_we_are' => array(
         'heading' => 'Who We Are',
         'paragraphs' => array(
-            'SSVDP South Sudan is a Catholic Church-based nonprofit organisation committed to supporting poor and disadvantaged people without discrimination based on sex, colour, religion, gender or social background.',
+            'SSVP South Sudan is a Catholic Church-based nonprofit organisation committed to supporting poor and disadvantaged people without discrimination based on sex, colour, religion, gender or social background.',
             'The organisation provides skills development for young people, formal education for children, health services, supplementary feeding for malnourished children and humanitarian assistance to vulnerable families and displaced communities.',
             'Our work is rooted in Christian faith and service. We seek to bear witness to Christ and His Church by demonstrating that faith inspires people to work for the good of humanity.'
         ),
@@ -320,7 +320,7 @@ $aboutPage = array(
     ),
     'organization' => array(
         'paragraphs' => array(
-            'SSVDP South Sudan operates as a registered local nonprofit organization implementing humanitarian and development initiatives in partnership with communities and supporting organizations.',
+            'SSVP South Sudan operates as a registered local nonprofit organization implementing humanitarian and development initiatives in partnership with communities and supporting organizations.',
             'The organization is led by an Executive Director and supported by professional staff responsible for programme implementation, administration, finance and other operational functions.'
         ),
         'features' => array(
@@ -331,7 +331,7 @@ $aboutPage = array(
     ),    'mission' => array(
         'heading' => 'Our Mission',
         'paragraphs' => array(
-            'SSVDP South Sudan empowers individuals and communities through quality vocational training, inclusive education and sustainable livelihood opportunities, while providing compassionate care and emergency support to vulnerable children, mothers and families.',
+            'SSVP South Sudan empowers individuals and communities through quality vocational training, inclusive education and sustainable livelihood opportunities, while providing compassionate care and emergency support to vulnerable children, mothers and families.',
             'Guided by compassion, service and integrity, we build skills, restore hope and strengthen local capacity for lasting peace and human dignity.'
         ),
         'icon' => 'bi-bullseye'
@@ -363,17 +363,17 @@ $aboutPage = array(
         'items' => array(
             array('year' => '1833', 'title' => 'Vincentian Tradition Begins', 'description' => 'The wider Society of Saint Vincent de Paul was founded by Frederic Ozanam and his companions, establishing a Vincentian tradition of lay Catholic service to people experiencing poverty.'),
             array('year' => '1998', 'title' => 'Presence in Southern Sudan', 'description' => 'The Society presence was established within the Diocese in Southern Sudan as part of the wider Vincentian structure.'),
-            array('year' => 'Today', 'title' => 'Registered Local Nonprofit Organization', 'description' => 'SSVDP South Sudan operates as a registered local nonprofit organization implementing humanitarian and development programmes through professional staff and project-based partnerships.'),
+            array('year' => 'Today', 'title' => 'Registered Local Nonprofit Organization', 'description' => 'SSVP South Sudan operates as a registered local nonprofit organization implementing humanitarian and development programmes through professional staff and project-based partnerships.'),
             array('year' => 'Ongoing', 'title' => 'Vincentian Service in Action', 'description' => 'The organization continues to draw inspiration from the Vincentian tradition of service, dignity, solidarity and support to vulnerable communities.')
         ),
         'summary' => array(
-            'SSVDP South Sudan implements humanitarian and development programmes through professional staff and project-based partnerships.',
+            'SSVP South Sudan implements humanitarian and development programmes through professional staff and project-based partnerships.',
             'Its work is rooted in community empowerment, dignity, solidarity and support to vulnerable communities.'
         )
     ),
     'cta' => array(
         'heading' => 'Together, We Can Build Stronger Communities',
-        'text' => 'Explore our programmes, volunteer your skills or partner with SSVDP South Sudan to help vulnerable people build lives of dignity, opportunity and self-reliance.',
+        'text' => 'Explore our programmes, volunteer your skills or partner with SSVP South Sudan to help vulnerable people build lives of dignity, opportunity and self-reliance.',
         'buttons' => array(
             array('label' => 'Explore Our Work', 'link' => 'programmes.php', 'class' => 'btn-primary', 'icon' => 'bi-arrow-right'),
             array('label' => 'Contact Us', 'link' => 'contact.php', 'class' => 'btn-outline-light', 'icon' => 'bi-envelope')
@@ -384,7 +384,7 @@ $aboutPage = array(
 $contactEngagement = array(
     'volunteer' => array(
         'heading' => 'Volunteer With Us',
-        'text' => 'SSVDP South Sudan welcomes qualified individuals who wish to contribute their knowledge, time and professional skills to vulnerable communities.',
+        'text' => 'SSVP South Sudan welcomes qualified individuals who wish to contribute their knowledge, time and professional skills to vulnerable communities.',
         'list_heading' => 'Volunteer opportunities include:',
         'opportunities' => array('Vocational training instruction', 'Building and construction instruction', 'General electricity instruction', 'Automobile mechanics instruction', 'Welding and metal fabrication instruction', 'Computer literacy instruction', 'Air conditioning and refrigeration instruction', 'First aid and auxiliary nursing instruction', 'Social work at Be in Hope Home', 'Nutrition support within the supplementary feeding programme'),
         'button_label' => 'Contact Us About Volunteering',
@@ -394,12 +394,12 @@ $contactEngagement = array(
     'partnerships' => array(
         'heading' => 'Partner With Us',
         'paragraphs' => array(
-            'SSVDP South Sudan welcomes partnerships with local and international organisations that share its commitment to humanitarian service, education, skills development and community empowerment.',
+            'SSVP South Sudan welcomes partnerships with local and international organisations that share its commitment to humanitarian service, education, skills development and community empowerment.',
             'Partnerships are normally established through a Memorandum of Understanding covering a particular programme or service area.'
         ),
         'types' => array(
             array('title' => 'Donor Partnerships', 'description' => 'Partners provide financial or material support for the implementation and continuation of approved programmes.'),
-            array('title' => 'Service-Delivery Partnerships', 'description' => 'Organisations collaborate with SSVDP or refer participants to services such as vocational training, education, healthcare or community support.')
+            array('title' => 'Service-Delivery Partnerships', 'description' => 'Organisations collaborate with SSVP or refer participants to services such as vocational training, education, healthcare or community support.')
         ),
         'button_label' => 'Discuss a Partnership',
         'button_link' => 'contact.php',
@@ -424,9 +424,9 @@ $contactInformation = array(
 $siteConfig = array(
     'site_name' => 'Society of St. Vincent de Paul South Sudan',
     'site_tagline' => 'Serviens in Spe',
-    'site_description' => 'SSVDP South Sudan empowers young people and vulnerable communities through practical skills training, inclusive education, sustainable livelihood opportunities and compassionate humanitarian support.',
+    'site_description' => 'SSVP South Sudan empowers young people and vulnerable communities through practical skills training, inclusive education, sustainable livelihood opportunities and compassionate humanitarian support.',
     'site_url' => '/ssvdp-south-sudan/',
-    'default_page_title' => 'SSVDP South Sudan',
+    'default_page_title' => 'SSVP South Sudan',
     'logo' => 'assets/images/logo/ssvdp-logo-cutout.png',
     'hero' => $hero,
     'heroFeatures' => $heroFeatures,
@@ -490,19 +490,3 @@ function verify_csrf_token(string $token): bool {
         && isset($_SESSION['csrf_token'])
         && hash_equals($_SESSION['csrf_token'], $token);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,8 +10,8 @@ $programmePages = array(
             array('icon' => 'bi-graph-up-arrow', 'title' => 'Economic Independence', 'text' => 'Supporting participants to improve their ability to earn an income.')
         ),
         'paragraphs' => array(
-            'SSVDP South Sudan supports young people and women through practical vocational training that can improve employability and livelihood opportunities.',
-            'Training areas may include tailoring, building and construction, welding, general electricity, automobile mechanics, computer literacy and other practical trades supported by SSVDP programmes.',
+            'SSVP South Sudan supports young people and women through practical vocational training that can improve employability and livelihood opportunities.',
+            'Training areas may include tailoring, building and construction, welding, general electricity, automobile mechanics, computer literacy and other practical trades supported by SSVP programmes.',
             'The programme helps participants strengthen their skills, confidence and ability to become more economically self-reliant.'
         ),
         'support' => array('Tailoring', 'Building and Construction', 'Welding', 'General Electricity', 'Automobile Mechanics', 'Computer Literacy', 'Youth Skills Development', 'Women\'s Vocational Training'),
@@ -34,9 +34,9 @@ $programmePages = array(
             array('icon' => 'bi-mortarboard', 'title' => 'Brighter Futures', 'text' => 'Helping children build foundations for their future.')
         ),
         'paragraphs' => array(
-            'SSVDP South Sudan supports basic and primary education, school learning and educational opportunities for vulnerable children.',
+            'SSVP South Sudan supports basic and primary education, school learning and educational opportunities for vulnerable children.',
             'The programme includes school support and initiatives that help children participate in a safe and supportive learning environment.',
-            'SSVDP\'s education activities seek to strengthen children\'s opportunities to learn, develop and build foundations for their future.'
+            'SSVP\'s education activities seek to strengthen children\'s opportunities to learn, develop and build foundations for their future.'
         ),
         'support' => array('Basic Education', 'Primary Education', 'Nursery Education', 'School Support', 'Learning Materials where available', 'Support for Vulnerable Children', 'Child Development'),
         'gallery' => array(
@@ -58,9 +58,9 @@ $programmePages = array(
             array('icon' => 'bi-people', 'title' => 'Health & Wellbeing', 'text' => 'Promoting healthier families and communities.')
         ),
         'paragraphs' => array(
-            'SSVDP South Sudan supports healthcare activities including primary healthcare, maternal health services, medical assistance and community-based health support.',
+            'SSVP South Sudan supports healthcare activities including primary healthcare, maternal health services, medical assistance and community-based health support.',
             'The programme helps vulnerable individuals and communities who may otherwise struggle to obtain necessary services.',
-            'Through health-related activities and facilities, SSVDP works to improve access to essential care while promoting wellbeing and dignity.'
+            'Through health-related activities and facilities, SSVP works to improve access to essential care while promoting wellbeing and dignity.'
         ),
         'support' => array('Primary Healthcare', 'Maternal Healthcare', 'Medical Assistance', 'Community Health', 'Health Awareness', 'Vulnerable Patient Support'),
         'gallery' => array(
@@ -82,9 +82,9 @@ $programmePages = array(
             array('icon' => 'bi-heart', 'title' => 'Dignity & Care', 'text' => 'Supporting child welfare and dignity.')
         ),
         'paragraphs' => array(
-            'SSVDP South Sudan works with vulnerable and street-connected children who need care, education, guidance and additional protection.',
+            'SSVP South Sudan works with vulnerable and street-connected children who need care, education, guidance and additional protection.',
             'Activities focus on creating safer environments where children can receive support and opportunities for healthy development.',
-            'Be in Hope Home (BIH) forms part of SSVDP\'s commitment to helping children facing difficult circumstances restore dignity, hope and opportunity.'
+            'Be in Hope Home (BIH) forms part of SSVP\'s commitment to helping children facing difficult circumstances restore dignity, hope and opportunity.'
         ),
         'support' => array('Child Protection', 'Street-Connected Children', 'Safe Care', 'Education Support', 'Child Welfare', 'Guidance and Development', 'Be in Hope Home'),
         'gallery' => array(
@@ -106,7 +106,7 @@ $programmePages = array(
             array('icon' => 'bi-heart-pulse', 'title' => 'Health & Wellbeing', 'text' => 'Promoting healthier lives and brighter futures.')
         ),
         'paragraphs' => array(
-            'SSVDP South Sudan supports supplementary feeding, child nutrition, maternal nutrition, school snacks, food assistance and support for vulnerable households.',
+            'SSVP South Sudan supports supplementary feeding, child nutrition, maternal nutrition, school snacks, food assistance and support for vulnerable households.',
             'The programme helps children, mothers and families reduce food-related vulnerability and improve wellbeing.',
             'Nutrition support is combined with community-based activities that can strengthen household and community resilience.'
         ),
@@ -130,7 +130,7 @@ $programmePages = array(
             array('icon' => 'bi-house-check', 'title' => 'Household Resilience', 'text' => 'Helping families strengthen long-term independence.')
         ),
         'paragraphs' => array(
-            'SSVDP South Sudan supports farming, agricultural training, kitchen gardening, women\'s agribusiness and other livelihood activities.',
+            'SSVP South Sudan supports farming, agricultural training, kitchen gardening, women\'s agribusiness and other livelihood activities.',
             'The programme helps vulnerable households improve food production, develop practical livelihood skills and increase their ability to support themselves.',
             'Agriculture and livelihood support helps communities strengthen resilience and household self-reliance.'
         ),
@@ -154,7 +154,7 @@ $programmePages = array(
             array('icon' => 'bi-people', 'title' => 'Community Recovery', 'text' => 'Supporting people affected by displacement and crisis.')
         ),
         'paragraphs' => array(
-            'SSVDP South Sudan provides emergency relief, food support and assistance to internally displaced people, refugees and vulnerable communities.',
+            'SSVP South Sudan provides emergency relief, food support and assistance to internally displaced people, refugees and vulnerable communities.',
             'Assistance may include food distributions, essential household support and other forms of help according to identified community needs.',
             'Particular attention is given to displaced people, refugees and households requiring immediate humanitarian support.'
         ),
@@ -178,7 +178,7 @@ $programmePages = array(
             array('icon' => 'bi-house-check', 'title' => 'Self-Reliance', 'text' => 'Supporting families to strengthen long-term independence.')
         ),
         'paragraphs' => array(
-            'SSVDP South Sudan supports income-generating activities such as farming, poultry, jam production, women\'s economic empowerment and community development.',
+            'SSVP South Sudan supports income-generating activities such as farming, poultry, jam production, women\'s economic empowerment and community development.',
             'Rather than relying only on short-term assistance, these activities aim to build practical skills, create livelihood opportunities and strengthen community self-reliance.',
             'Social enterprise and community-development initiatives help individuals and families strengthen economic independence.'
         ),
@@ -262,7 +262,7 @@ require_once __DIR__ . '/includes/header.php';
 
     <section class="programme-detail-cta section-reveal">
         <h2>Working Together for Stronger Communities</h2>
-        <p>Through practical community-based programmes, SSVDP South Sudan works alongside vulnerable people to strengthen dignity, opportunity and self-reliance.</p>
+        <p>Through practical community-based programmes, SSVP South Sudan works alongside vulnerable people to strengthen dignity, opportunity and self-reliance.</p>
         <a class="btn btn-primary" href="<?php echo site_url('contact.php'); ?>">Get Involved <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
     </section>
 </div>

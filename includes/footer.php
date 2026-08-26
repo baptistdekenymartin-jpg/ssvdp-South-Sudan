@@ -2,11 +2,11 @@
 
     <footer class="site-footer">
         <div class="container footer-grid">
-            <section class="footer-column footer-organization" aria-label="SSVDP South Sudan">
+            <section class="footer-column footer-organization" aria-label="SSVP South Sudan">
                 <a class="brand footer-brand" href="<?php echo site_url('index.php'); ?>">
                     <img src="<?php echo site_url($siteConfig['logo']); ?>" alt="Society of St. Vincent de Paul South Sudan logo" class="site-logo" width="96" height="96" loading="lazy">
                     <span>
-                        <strong>SSVDP South Sudan</strong>
+                        <strong>SSVP South Sudan</strong>
                         <small>Serviens in Spe</small>
                     </span>
                 </a>
@@ -21,7 +21,7 @@
                 <h3>Quick Links</h3>
                 <ul class="footer-link-list">
                     <li><a href="<?php echo site_url('index.php'); ?>"><i class="bi bi-chevron-right" aria-hidden="true"></i>Home</a></li>
-                    <li><a href="<?php echo site_url('about.php'); ?>"><i class="bi bi-chevron-right" aria-hidden="true"></i>About SSVDP</a></li>
+                    <li><a href="<?php echo site_url('about.php'); ?>"><i class="bi bi-chevron-right" aria-hidden="true"></i>About SSVP</a></li>
                     <li><a href="<?php echo site_url('news.php'); ?>"><i class="bi bi-chevron-right" aria-hidden="true"></i>News &amp; Updates</a></li>
                     <li><a href="<?php echo site_url('gallery.php'); ?>"><i class="bi bi-chevron-right" aria-hidden="true"></i>Gallery</a></li>
                     <li><a href="<?php echo site_url('resources.php'); ?>"><i class="bi bi-chevron-right" aria-hidden="true"></i>Get Involved</a></li>
@@ -67,7 +67,7 @@
         </div>
     </footer>
     <?php if (!empty($contactInformation['whatsapp_url'])) : ?>
-        <a class="floating-whatsapp" href="<?php echo e($contactInformation['whatsapp_url']); ?>" aria-label="Contact SSVDP on WhatsApp" target="_blank" rel="noopener noreferrer">
+        <a class="floating-whatsapp" href="<?php echo e($contactInformation['whatsapp_url']); ?>" aria-label="Contact SSVP on WhatsApp" target="_blank" rel="noopener noreferrer">
             <i class="bi bi-whatsapp" aria-hidden="true"></i>
         </a>
     <?php endif; ?>

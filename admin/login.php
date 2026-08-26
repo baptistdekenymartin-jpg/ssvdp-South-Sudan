@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login | SSVDP South Sudan</title>
+    <title>Admin Login | SSVP South Sudan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/admin.css'); ?>">
 </head>
@@ -55,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form class="admin-login-card admin-form" method="post" action="<?php echo admin_url('login.php'); ?>">
         <input type="hidden" name="csrf_token" value="<?php echo e(admin_csrf_token()); ?>">
         <div class="admin-login-brand">
-            <img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVDP South Sudan">
-            <h1>SSVDP South Sudan</h1>
+            <img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVP South Sudan">
+            <h1>SSVP South Sudan</h1>
             <p>Staff Content Management</p>
         </div>
         <?php foreach (admin_take_flash() as $flashMessage) : ?><div class="admin-alert admin-alert--<?php echo e($flashMessage['type']); ?>" style="margin:0"><?php echo e($flashMessage['message']); ?></div><?php endforeach; ?>

@@ -75,9 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $pdo && !$hasAdmin) {
 if (empty($_SESSION['setup_csrf'])) { $_SESSION['setup_csrf'] = bin2hex(random_bytes(32)); }
 $messages = setup_messages();
 ?>
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Setup | SSVDP South Sudan</title><link rel="stylesheet" href="<?php echo site_url('assets/css/admin.css'); ?>"></head>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Setup | SSVP South Sudan</title><link rel="stylesheet" href="<?php echo site_url('assets/css/admin.css'); ?>"></head>
 <body class="admin-login-body"><div class="admin-login-card admin-form">
-<div class="admin-login-brand"><img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVDP"><h1>Phase 1 Setup</h1><p>Staff Content Management</p></div>
+<div class="admin-login-brand"><img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVP"><h1>Phase 1 Setup</h1><p>Staff Content Management</p></div>
 <?php foreach ($messages as $m) : ?><div class="admin-alert admin-alert--<?php echo e($m['type']); ?>" style="margin:0"><?php echo e($m['message']); ?></div><?php endforeach; ?>
 <?php if ($error) : ?><div class="admin-alert admin-alert--error" style="margin:0"><?php echo e($error); ?></div><?php endif; ?>
 <?php if ($hasAdmin) : ?>
@@ -91,8 +91,3 @@ $messages = setup_messages();
 <button class="admin-button" type="submit">Create Administrator</button></form>
 <?php endif; ?>
 </div></body></html>
-
-
-
-
-

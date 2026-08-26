@@ -1,6 +1,6 @@
-﻿<?php
-$pageTitle = 'About SSVDP South Sudan';
-$pageDescription = 'Learn about SSVDP South Sudan as a registered local nonprofit organization implementing humanitarian and development programmes with communities.';
+<?php
+$pageTitle = 'About SSVP South Sudan';
+$pageDescription = 'Learn about SSVP South Sudan as a registered local nonprofit organization implementing humanitarian and development programmes with communities.';
 $assetVersion = 'about-hero-no-panel-v1';
 require_once __DIR__ . '/includes/header.php';
 
@@ -72,7 +72,7 @@ require_once __DIR__ . '/includes/header.php';
             <?php foreach ($aboutPage['organization']['paragraphs'] as $paragraph) : ?>
                 <p><?php echo e($paragraph); ?></p>
             <?php endforeach; ?>
-            <div class="organization-feature-list organization-timeline" aria-label="SSVDP organization process">
+            <div class="organization-feature-list organization-timeline" aria-label="SSVP organization process">
                 <?php foreach ($aboutPage['organization']['features'] as $feature) : ?>
                     <article class="organization-feature-item organization-timeline-item">
                         <span class="organization-timeline-icon"><i class="bi <?php echo e($feature['icon']); ?>" aria-hidden="true"></i></span>
@@ -106,10 +106,10 @@ require_once __DIR__ . '/includes/header.php';
                 <?php endforeach; ?>
             </article>
 
-            <div class="mission-vision-center" aria-label="SSVDP connects mission and vision">
+            <div class="mission-vision-center" aria-label="SSVP connects mission and vision">
                 <span class="mission-chevron mission-chevron--blue" aria-hidden="true"></span>
                 <div class="mission-logo-orbit">
-                    <img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVDP South Sudan logo" loading="lazy" width="150" height="150">
+                    <img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVP South Sudan logo" loading="lazy" width="150" height="150">
                 </div>
                 <span class="mission-chevron mission-chevron--gold" aria-hidden="true"></span>
             </div>
@@ -216,12 +216,12 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="history-label"><?php echo e($aboutPage['history']['label']); ?></div>
                 <h2><?php echo e($aboutPage['history']['heading']); ?></h2>
                 <span class="history-title-rule" aria-hidden="true"></span>
-                <div class="history-logo-orbit" aria-label="SSVDP South Sudan logo">
+                <div class="history-logo-orbit" aria-label="SSVP South Sudan logo">
                     <img src="<?php echo site_url($siteConfig['logo']); ?>" alt="Society of St. Vincent de Paul South Sudan logo" loading="lazy" width="210" height="210">
                 </div>
             </div>
 
-            <div class="history-timeline" aria-label="SSVDP Vincentian roots timeline">
+            <div class="history-timeline" aria-label="SSVP Vincentian roots timeline">
                 <article class="history-timeline-item">
                     <span class="history-timeline-icon"><i class="bi bi-clock-history" aria-hidden="true"></i></span>
                     <div class="history-timeline-card">
@@ -240,7 +240,7 @@ require_once __DIR__ . '/includes/header.php';
                     <span class="history-timeline-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></span>
                     <div class="history-timeline-card">
                         <h3>Growth in South Sudan</h3>
-                        <p>Following the development of South Sudan, SSVDP South Sudan also operates as a registered local nonprofit organization implementing humanitarian and development programmes through professional staff and project-based partnerships.</p>
+                        <p>Following the development of South Sudan, SSVP South Sudan also operates as a registered local nonprofit organization implementing humanitarian and development programmes through professional staff and project-based partnerships.</p>
                     </div>
                 </article>
                 <article class="history-timeline-item">
@@ -278,13 +278,13 @@ require_once __DIR__ . '/includes/header.php';
                     </div>
                 </div>
                 <figure class="cta-photo-cta-photo">
-                    <img src="<?php echo site_url('assets/images/work/our work.jpeg'); ?>" alt="SSVDP South Sudan community engagement activity" loading="lazy" width="760" height="520">
+                    <img src="<?php echo site_url('assets/images/work/our work.jpeg'); ?>" alt="SSVP South Sudan community engagement activity" loading="lazy" width="760" height="520">
                 </figure>
             </div>
         </div>
 
         <div class="prefooter-cta-lower">
-            <div class="container prefooter-values-panel" aria-label="SSVDP values">
+            <div class="container prefooter-values-panel" aria-label="SSVP values">
                 <article class="prefooter-value-item">
                     <span class="prefooter-value-icon"><i class="bi bi-heart" aria-hidden="true"></i></span>
                     <div>
@@ -322,14 +322,3 @@ require_once __DIR__ . '/includes/header.php';
 <?php
 require_once __DIR__ . '/includes/footer.php';
 ?>
-
-
-
-
-
-
-
-
-
-
-

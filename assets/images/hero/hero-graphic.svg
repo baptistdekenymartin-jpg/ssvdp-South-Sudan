@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
-  <title id="title">SSVDP South Sudan graphic hero banner</title>
+  <title id="title">SSVP South Sudan graphic hero banner</title>
   <desc id="desc">A blue and gold abstract banner with layered shapes and a South Sudan outline.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
@@ -19,5 +19,5 @@
   <path d="M214 236l87 39 103-10 74 70-11 99-85 65-113-10-81-61-32-94 58-98z" fill="#ffffff" opacity=".08"/>
   <path d="M606 140h154M642 184h116M578 464h197" stroke="url(#gold)" stroke-width="10" stroke-linecap="round"/>
   <path d="M89 401h104M112 436h156" stroke="#f2b84b" stroke-width="6" stroke-linecap="round" opacity=".72"/>
-  <text x="450" y="334" fill="#ffffff" opacity=".07" font-family="Arial, sans-serif" font-size="112" font-weight="700" text-anchor="middle">SSVDP</text>
+  <text x="450" y="334" fill="#ffffff" opacity=".07" font-family="Arial, sans-serif" font-size="112" font-weight="700" text-anchor="middle">SSVP</text>
 </svg>
