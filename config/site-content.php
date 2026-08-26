@@ -410,8 +410,8 @@ $contactEngagement = array(
 $contactInformation = array(
     'telephone' => '0923330307',
     'telephone_link' => 'tel:0923330307',
-    'whatsapp' => '09233303037',
-    'whatsapp_url' => '',
+    'whatsapp' => '+211 923 330 307',
+    'whatsapp_url' => 'https://wa.me/211923330307',
     'emails' => array(
         'info.saintvincentdepaul@gmail.com',
         'simbakuol@yahoo.de'

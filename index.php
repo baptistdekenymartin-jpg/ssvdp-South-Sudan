@@ -71,28 +71,56 @@ $partners = ssvdp_public_partners($partners);
             <img class="hero-curve-logo" src="<?php echo site_url('assets/images/logo/ssvdp-logo-transparent.png'); 
 ?>" alt="SSVDP South Sudan" width="320" height="320">
         </article>
-        <article class="hero-slide" data-hero-slide aria-hidden="true">
+        <article class="hero-slide hero-slide-caption-left" data-hero-slide aria-hidden="true">
             <div class="hero-photo" aria-hidden="true">
                 <img src="<?php echo site_url('assets/images/work/hero/slide 2.jpg') . '?v=' . filemtime(__DIR__ . '/assets/images/work/hero/slide 2.jpg'); 
 ?>" alt="" width="1672" height="941" onerror="this.classList.add('is-missing');">
             </div>
+            <div class="container hero-grid">
+                <div class="hero-copy hero-slide-caption">
+                    <p class="hero-kicker">VOCATIONAL TRAINING</p>
+                    <h2 class="hero-title">Skills for Self-Reliance</h2>
+                    <p class="hero-description">Practical training equips young people with hands-on skills for work and dignity.</p>
+                </div>
+            </div>
         </article>
-        <article class="hero-slide" data-hero-slide aria-hidden="true">
+        <article class="hero-slide hero-slide-caption-right" data-hero-slide aria-hidden="true">
             <div class="hero-photo" aria-hidden="true">
                 <img src="<?php echo site_url('assets/images/work/hero/slide 3.jpg'); 
 ?>" alt="" width="1672" height="941" onerror="this.classList.add('is-missing');">
             </div>
+            <div class="container hero-grid">
+                <div class="hero-copy hero-slide-caption">
+                    <p class="hero-kicker">COMMUNITY ENGAGEMENT</p>
+                    <h2 class="hero-title">Working With Communities</h2>
+                    <p class="hero-description">SSVDP walks with local communities to strengthen participation and shared action.</p>
+                </div>
+            </div>
         </article>
-        <article class="hero-slide" data-hero-slide aria-hidden="true">
+        <article class="hero-slide hero-slide-caption-left" data-hero-slide aria-hidden="true">
             <div class="hero-photo" aria-hidden="true">
                 <img src="<?php echo site_url('assets/images/work/hero/slide 4.jpg'); 
 ?>" alt="" width="1672" height="941" onerror="this.classList.add('is-missing');">
             </div>
+            <div class="container hero-grid">
+                <div class="hero-copy hero-slide-caption">
+                    <p class="hero-kicker">LIVELIHOOD SUPPORT</p>
+                    <h2 class="hero-title">Building Stronger Futures</h2>
+                    <p class="hero-description">Community activities support families with practical pathways toward stability.</p>
+                </div>
+            </div>
         </article>
-        <article class="hero-slide" data-hero-slide aria-hidden="true">
+        <article class="hero-slide hero-slide-caption-right" data-hero-slide aria-hidden="true">
             <div class="hero-photo" aria-hidden="true">
                 <img src="<?php echo site_url('assets/images/work/hero/slide 5.png'); 
 ?>" alt="" width="1672" height="941" onerror="this.classList.add('is-missing');">
+            </div>
+            <div class="container hero-grid">
+                <div class="hero-copy hero-slide-caption">
+                    <p class="hero-kicker">HEALTHCARE SERVICES</p>
+                    <h2 class="hero-title">Care for Community Wellbeing</h2>
+                    <p class="hero-description">Health support helps vulnerable families access care with dignity and compassion.</p>
+                </div>
             </div>
         </article>
     </div>

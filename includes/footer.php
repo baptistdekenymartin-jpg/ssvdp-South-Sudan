@@ -43,7 +43,7 @@
                 <h3 id="footer-contact-heading">Contact Us</h3>
                 <ul class="footer-contact-list">
                     <li><i class="bi bi-telephone" aria-hidden="true"></i><span><strong>Telephone:</strong> <a href="<?php echo e($contactInformation['telephone_link']); ?>"><?php echo e($contactInformation['telephone']); ?></a></span></li>
-                    <li><i class="bi bi-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp:</strong> <?php echo e($contactInformation['whatsapp']); ?></span></li>
+                    <li><i class="bi bi-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp:</strong> <a href="<?php echo e($contactInformation['whatsapp_url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo e($contactInformation['whatsapp']); ?></a></span></li>
                     <?php foreach ($contactInformation['emails'] as $email) : ?>
                         <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>Email:</strong> <a href="mailto:<?php echo e($email); ?>"><?php echo e($email); ?></a></span></li>
                     <?php endforeach; ?>
