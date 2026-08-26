@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p>SSVDP South Sudan empowers young people and vulnerable communities through practical skills training, inclusive education, sustainable livelihood opportunities and compassionate humanitarian support.</p>
                 <div class="social-links footer-social-links" aria-label="Social and contact links">
                     <a href="https://www.facebook.com/share/1AwAfW5Ejx/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
-                    <a href="contact.html" aria-label="WhatsApp" ><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/211923330307" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
                     <a href="mailto:info.saintvincentdepaul@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
                 </div>
             </section>
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h3 id="footer-contact-heading">Contact Us</h3>
                 <ul class="footer-contact-list">
                     <li><i class="bi bi-telephone" aria-hidden="true"></i><span><strong>Telephone:</strong> <a href="tel:0923330307">0923330307</a></span></li>
-                    <li><i class="bi bi-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp:</strong> 09233303037</span></li>
+                    <li><i class="bi bi-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp:</strong> <a href="https://wa.me/211923330307" target="_blank" rel="noopener noreferrer">+211 923 330 307</a></span></li>
                                             <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>Email:</strong> <a href="mailto:info.saintvincentdepaul@gmail.com">info.saintvincentdepaul@gmail.com</a></span></li>
                                             <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>Email:</strong> <a href="mailto:simbakuol@yahoo.de">simbakuol@yahoo.de</a></span></li>
                                         <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><strong>Office:</strong> Luluggo 2, South Juba Town, Juba, South Sudan</span></li>
@@ -271,34 +271,34 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span>Serviens in Spe</span>
                     <div class="social-links footer-bottom-social" aria-label="Footer social links">
                         <a href="https://www.facebook.com/share/1AwAfW5Ejx/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
-                        <a href="contact.html" aria-label="WhatsApp" ><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/211923330307" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
                         <a href="mailto:info.saintvincentdepaul@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+            <a class="floating-whatsapp" href="https://wa.me/211923330307" aria-label="Contact SSVDP on WhatsApp" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+        </a>
         <button class="back-to-top" type="button" aria-label="Back to top">
         <i class="bi bi-arrow-up" aria-hidden="true"></i>
     </button>
 
     <script src="assets/js/main.js"></script>
-    <script>
-    (function () {
-        document.querySelectorAll('form[data-preview-form]').forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                var message = form.querySelector('[data-preview-message]');
-                if (!message) {
-                    message = document.createElement('p');
-                    message.setAttribute('data-preview-message', '');
-                    message.className = 'form-success';
-                    form.appendChild(message);
-                }
-                message.textContent = 'Preview mode - form submission is disabled.';
-            });
-        });
-    }());
-    </script>
+<script>
+document.querySelectorAll('form[data-preview-form]').forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var existing = form.querySelector('.form-success');
+        if (!existing) {
+            existing = document.createElement('p');
+            existing.className = 'form-success';
+            form.appendChild(existing);
+        }
+        existing.textContent = 'Preview mode - form submission is disabled.';
+    });
+});
+</script>
 </body>
 </html>
