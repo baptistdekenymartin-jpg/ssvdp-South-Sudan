@@ -14,7 +14,7 @@
                 <div class="social-links footer-social-links" aria-label="Social and contact links">
                     <a href="<?php echo e($contactInformation['facebook']); ?>" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
                     <a href="<?php echo !empty($contactInformation['whatsapp_url']) ? e($contactInformation['whatsapp_url']) : site_url('contact.php'); ?>" aria-label="WhatsApp" <?php echo !empty($contactInformation['whatsapp_url']) ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
-                    <a href="mailto:<?php echo e($contactInformation['emails'][0]); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+                    <a href="<?php echo site_url('contact.php'); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
                 </div>
             </section>
             <nav class="footer-column" aria-label="Footer quick links">
@@ -31,21 +31,23 @@
             <section class="footer-column" aria-labelledby="footer-programmes-heading">
                 <h3 id="footer-programmes-heading">Our Programmes</h3>
                 <ul class="footer-link-list footer-programmes-list">
-                    <li><a href="<?php echo site_url('programmes.php'); ?>">Vocational Training</a></li>
-                    <li><a href="<?php echo site_url('programmes.php'); ?>">Education and Youth Empowerment</a></li>
-                    <li><a href="<?php echo site_url('programmes.php'); ?>">Health and Community Wellbeing</a></li>
-                    <li><a href="<?php echo site_url('programmes.php'); ?>">Humanitarian Support</a></li>
-                    <li><a href="<?php echo site_url('programmes.php'); ?>">Child Nutrition</a></li>
-                    <li><a href="<?php echo site_url('programmes.php'); ?>">Street Children Care</a></li>
+                    <li><a href="<?php echo site_url('programme.php?programme=vocational-training'); ?>">Vocational Training</a></li>
+                    <li><a href="<?php echo site_url('programme.php?programme=education'); ?>">Education</a></li>
+                    <li><a href="<?php echo site_url('programme.php?programme=healthcare'); ?>">Healthcare Services</a></li>
+                    <li><a href="<?php echo site_url('programme.php?programme=child-care'); ?>">Child Protection, Rehabilitation and Re-integration</a></li>
+                    <li><a href="<?php echo site_url('programme.php?programme=food-nutrition'); ?>">Nutrition</a></li>
+                    <li><a href="<?php echo site_url('programme.php?programme=agriculture-livelihoods'); ?>">Agriculture and Livelihoods</a></li>
+                    <li><a href="<?php echo site_url('programme.php?programme=humanitarian-assistance'); ?>">Humanitarian Assistance</a></li>
+                    <li><a href="<?php echo site_url('programme.php?programme=community-development'); ?>">Self-Reliance Initiative</a></li>
                 </ul>
             </section>
             <section class="footer-column" aria-labelledby="footer-contact-heading">
                 <h3 id="footer-contact-heading">Contact Us</h3>
                 <ul class="footer-contact-list">
-                    <li><i class="bi bi-telephone" aria-hidden="true"></i><span><strong>Telephone:</strong> <a href="<?php echo e($contactInformation['telephone_link']); ?>"><?php echo e($contactInformation['telephone']); ?></a></span></li>
-                    <li><i class="bi bi-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp:</strong> <a href="<?php echo e($contactInformation['whatsapp_url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo e($contactInformation['whatsapp']); ?></a></span></li>
+                    <li><i class="bi bi-telephone" aria-hidden="true"></i><span><strong>Phone:</strong> <?php echo e($contactInformation['telephone']); ?></span></li>
+
                     <?php foreach ($contactInformation['emails'] as $email) : ?>
-                        <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>Email:</strong> <a href="mailto:<?php echo e($email); ?>"><?php echo e($email); ?></a></span></li>
+                        <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>Email:</strong> <?php echo e($email); ?></span></li>
                     <?php endforeach; ?>
                     <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><strong>Office:</strong> <?php echo e($contactInformation['office']); ?></span></li>
                     <li><i class="bi bi-clock" aria-hidden="true"></i><span><strong>Office schedule:</strong> <?php echo e($contactInformation['office_schedule']); ?></span></li>
@@ -60,7 +62,7 @@
                     <div class="social-links footer-bottom-social" aria-label="Footer social links">
                         <a href="<?php echo e($contactInformation['facebook']); ?>" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
                         <a href="<?php echo !empty($contactInformation['whatsapp_url']) ? e($contactInformation['whatsapp_url']) : site_url('contact.php'); ?>" aria-label="WhatsApp" <?php echo !empty($contactInformation['whatsapp_url']) ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
-                        <a href="mailto:<?php echo e($contactInformation['emails'][0]); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+                        <a href="<?php echo site_url('contact.php'); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>

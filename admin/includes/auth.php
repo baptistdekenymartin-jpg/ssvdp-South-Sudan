@@ -324,5 +324,5 @@ function admin_store_document_upload(array $file): string
 
 function admin_get_programme_names(): array
 {
-    return array('Vocational Training', 'Education', 'Healthcare Services', 'Child Care and Protection', 'Food Security and Nutrition', 'Agriculture and Livelihoods', 'Humanitarian Assistance', 'Social Enterprise and Community Development', 'Income Generating Projects', 'Baby Feeding', 'Kitchen Gardening', 'Emergency / IDP Support');
+    return array('Vocational Training', 'Education', 'Healthcare Services', 'Child Protection, Rehabilitation and Re-integration', 'Nutrition', 'Agriculture and Livelihoods', 'Humanitarian Assistance', 'Self-Reliance Initiative', 'Income Generating Projects', 'Baby Feeding', 'Kitchen Gardening', 'Emergency / IDP Support');
 }

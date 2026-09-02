@@ -37,22 +37,14 @@ $primaryEmail = $contactInformation['emails'][0] ?? 'Email address to be confirm
                         <span><i class="bi bi-telephone" aria-hidden="true"></i></span>
                         <div>
                             <h3>Phone Number</h3>
-                            <?php if (!empty($contactInformation['telephone']) && !empty($contactInformation['telephone_link'])) : ?>
-                                <p><a href="<?php echo e($contactInformation['telephone_link']); ?>"><?php echo e($contactInformation['telephone']); ?></a></p>
-                            <?php else : ?>
-                                <p>Phone number to be confirmed</p>
-                            <?php endif; ?>
+                            <p><?php echo e($contactInformation['telephone'] ?? '09xxxxxxx'); ?></p>
                         </div>
                     </article>
                     <article class="contact-info-item">
                         <span><i class="bi bi-envelope" aria-hidden="true"></i></span>
                         <div>
                             <h3>Email Address</h3>
-                            <?php if (!empty($primaryEmail)) : ?>
-                                <p><a href="mailto:<?php echo e($primaryEmail); ?>"><?php echo e($primaryEmail); ?></a></p>
-                            <?php else : ?>
-                                <p>Email address to be confirmed</p>
-                            <?php endif; ?>
+                            <p><?php echo e($primaryEmail ?: 'xxxxxxxxxxxx'); ?></p>
                         </div>
                     </article>
                     <article class="contact-info-item">

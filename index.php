@@ -99,7 +99,7 @@ $partners = ssvdp_public_partners($partners);
         </article>
         <article class="hero-slide hero-slide-caption-left" data-hero-slide aria-hidden="true">
             <div class="hero-photo" aria-hidden="true">
-                <img src="<?php echo site_url('assets/images/work/hero/slide 4.jpg'); 
+                <img src="<?php echo site_url('assets/images/work/vocational.jpeg');
 ?>" alt="" width="1672" height="941" onerror="this.classList.add('is-missing');">
             </div>
             <div class="container hero-grid">
@@ -217,7 +217,7 @@ $partners = ssvdp_public_partners($partners);
                 <span class="home-impact-icon"><i class="bi bi-calendar-check" aria-hidden="true"></i></span>
                 <div>
                     <h3>Years of Service</h3>
-                    <p>Serving communities in South Sudan <mark>Since 2009</mark>.</p>
+                    <p>Serving communities in South Sudan <mark>Since 2000</mark>.</p>
                 </div>
             </article>
             <article class="home-impact-item">

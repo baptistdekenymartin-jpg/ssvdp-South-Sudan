@@ -147,7 +147,7 @@ $whereWeWork = array(
     'archdiocese' => 'Archdiocese of Juba',
     'county' => 'Juba County',
     'communities_reached' => '4',
-    'office_location' => 'Luluggo 2, South Juba Town, Juba, South Sudan',
+    'office_location' => 'Lologo 2, North of Freedom Bridge, Juba, South Sudan.',
     'paragraph' => 'SSVP South Sudan currently serves communities within Central Equatoria State through the Archdiocese of Juba, supporting vulnerable people through skills development, education, health, nutrition and humanitarian programmes.',
     'button_label' => 'View Areas of Operation',
     'button_link' => 'programmes.php#areas',
@@ -156,7 +156,7 @@ $whereWeWork = array(
         array('label' => 'Archdiocese', 'value' => 'Archdiocese of Juba', 'icon' => 'bi-building'),
         array('label' => 'County', 'value' => 'Juba County', 'icon' => 'bi-signpost'),
         array('label' => 'Communities reached', 'value' => '4', 'icon' => 'bi-geo-alt'),
-        array('label' => 'Office location', 'value' => 'Luluggo 2, South Juba Town, Juba, South Sudan', 'icon' => 'bi-pin-map')
+        array('label' => 'Office location', 'value' => 'Lologo 2, North of Freedom Bridge, Juba, South Sudan.', 'icon' => 'bi-pin-map')
     )
 );
 
@@ -167,7 +167,7 @@ $latestNews = array(
         'date' => '13 July 2026',
         'category' => "Health, Nutrition and Women's Empowerment",
         'placeholder' => 'Activity photograph will be added after approval.',
-        'image' => 'assets/images/work/wt2.jpg',
+        'image' => 'assets/images/work/women training.jpg',
         'link' => 'news.php'
     ),
     array(
@@ -212,11 +212,11 @@ $ourWorkPage = array(
             array('title' => 'Vocational Training', 'description' => 'Practical skills development for young people and women through tailoring, building and construction, welding, general electricity, automobile mechanics, computer literacy and other trades.', 'icon' => 'bi-tools', 'link' => 'programme.php?programme=vocational-training'),
             array('title' => 'Education', 'description' => 'Basic and primary education, school support and learning opportunities for vulnerable children.', 'icon' => 'bi-book', 'link' => 'programme.php?programme=education'),
             array('title' => 'Healthcare Services', 'description' => 'Primary healthcare, maternal services, medical support and community health services for people who cannot afford essential care.', 'icon' => 'bi-heart-pulse', 'link' => 'programme.php?programme=healthcare'),
-            array('title' => 'Child Care and Protection', 'description' => 'Support for street-connected children, child welfare, safe care, education and long-term development through programmes such as Be in Hope Home.', 'icon' => 'bi-shield-heart', 'link' => 'programme.php?programme=child-care'),
-            array('title' => 'Food Security and Nutrition', 'description' => 'Supplementary feeding, nutrition support, school snacks and food assistance for malnourished children and vulnerable families.', 'icon' => 'bi-basket', 'link' => 'programme.php?programme=food-nutrition'),
+            array('title' => 'Child Protection, Rehabilitation and Re-integration', 'description' => 'Support for street-connected children, child welfare, safe care, education and long-term development through programmes such as Be in Hope Home.', 'icon' => 'bi-shield-heart', 'link' => 'programme.php?programme=child-care'),
+            array('title' => 'Nutrition', 'description' => 'Supplementary feeding, nutrition support, school snacks and food assistance for malnourished children and vulnerable families.', 'icon' => 'bi-basket', 'link' => 'programme.php?programme=food-nutrition'),
             array('title' => 'Agriculture and Livelihoods', 'description' => 'Agricultural training, women\'s agribusiness, sustainable farming and livelihood support for IDPs and vulnerable communities.', 'icon' => 'bi-tree', 'link' => 'programme.php?programme=agriculture-livelihoods'),
             array('title' => 'Humanitarian Assistance', 'description' => 'Emergency relief, food distributions, plastic-sheet support, cash assistance and services for internally displaced people and refugees.', 'icon' => 'bi-box2-heart', 'link' => 'programme.php?programme=humanitarian-assistance'),
-            array('title' => 'Social Enterprise and Community Development', 'description' => 'Income-generating initiatives such as the Lologo jam-production activity, women\'s empowerment, community capacity building and self-reliance programmes.', 'icon' => 'bi-graph-up-arrow', 'link' => 'programme.php?programme=community-development')
+            array('title' => 'Self-Reliance Initiative', 'description' => 'Income-generating initiatives such as the Lologo jam-production activity, women\'s empowerment, community capacity building and self-reliance programmes.', 'icon' => 'bi-graph-up-arrow', 'link' => 'programme.php?programme=community-development')
         )
     ),
     'featured_projects' => array(
@@ -299,7 +299,7 @@ $aboutPage = array(
         'heading' => 'Serving Vulnerable Communities With Compassion',
         'paragraphs' => array(
             'The Society of Saint Vincent de Paul South Sudan is a Catholic Church-affiliated, charitable and nonprofit humanitarian and development organisation serving communities in South Sudan.',
-            'Since 2009, the organisation has provided rehabilitation, humanitarian support, education, vocational training and capacity-building services to children, young people, women and vulnerable families.',
+            'Since 2000, the organisation has provided rehabilitation, humanitarian support, education, vocational training and capacity-building services to children, young people, women and vulnerable families.',
             'Its work particularly supports poor and disadvantaged communities through programmes that respond to immediate humanitarian needs while also creating opportunities for long-term development and self-reliance.'
         ),
         'visual_statement' => 'Development Through Community Empowerment & Participation',
@@ -408,15 +408,14 @@ $contactEngagement = array(
 );
 
 $contactInformation = array(
-    'telephone' => '0923330307',
-    'telephone_link' => 'tel:0923330307',
-    'whatsapp' => '+211 923 330 307',
-    'whatsapp_url' => 'https://wa.me/211923330307',
+    'telephone' => '09xxxxxxx',
+    'telephone_link' => '',
+    'whatsapp' => '09xxxxxxx',
+    'whatsapp_url' => '',
     'emails' => array(
-        'info.saintvincentdepaul@gmail.com',
-        'simbakuol@yahoo.de'
+        'xxxxxxxxxxxx'
     ),
-    'office' => 'Luluggo 2, South Juba Town, Juba, South Sudan',
+    'office' => 'Lologo 2, North of Freedom Bridge, Juba, South Sudan.',
     'office_schedule' => '8 hours per day, 5 days per week',
     'facebook' => 'https://www.facebook.com/share/1AwAfW5Ejx/'
 );

@@ -73,7 +73,7 @@ $programmePages = array(
         )
     ),
     'child-care' => array(
-        'title' => 'Child Care and Protection',
+        'title' => 'Child Protection, Rehabilitation and Re-integration',
         'intro' => 'Supporting vulnerable children with care, protection, education and opportunities for development.',
         'feature' => 'assets/images/programmes/child-care/child-care-01.jpg',
         'highlights' => array(
@@ -97,7 +97,7 @@ $programmePages = array(
         )
     ),
     'food-nutrition' => array(
-        'title' => 'Food Security and Nutrition',
+        'title' => 'Nutrition',
         'intro' => 'Nutrition and food-security support for vulnerable children, mothers and families.',
         'feature' => 'assets/images/programmes/food-nutrition/food-01.jpg',
         'highlights' => array(
@@ -112,12 +112,12 @@ $programmePages = array(
         ),
         'support' => array('Supplementary Feeding', 'Child Nutrition', 'Maternal Nutrition', 'School Snacks', 'Food Assistance', 'Nutrition Awareness', 'Support for Vulnerable Households'),
         'gallery' => array(
-            array('image' => 'assets/images/programmes/food-nutrition/food-01.jpg', 'caption' => 'Food Security and Nutrition / Supplementary Feeding'),
-            array('image' => 'assets/images/programmes/food-nutrition/food-02.jpg', 'caption' => 'Food Security and Nutrition / Child Nutrition'),
-            array('image' => 'assets/images/programmes/food-nutrition/food-03.jpg', 'caption' => 'Food Security and Nutrition / Kitchen Gardening'),
-            array('image' => 'assets/images/programmes/food-nutrition/food-04.jpg', 'caption' => 'Food Security and Nutrition / Nutrition Support'),
-            array('image' => 'assets/images/programmes/food-nutrition/food-05.jpg', 'caption' => 'Food Security and Nutrition / Mothers and Children'),
-            array('image' => 'assets/images/programmes/food-nutrition/food-06.jpg', 'caption' => 'Food Security and Nutrition / Household Resilience')
+            array('image' => 'assets/images/programmes/food-nutrition/food-01.jpg', 'caption' => 'Nutrition / Supplementary Feeding'),
+            array('image' => 'assets/images/programmes/food-nutrition/food-02.jpg', 'caption' => 'Nutrition / Child Nutrition'),
+            array('image' => 'assets/images/programmes/food-nutrition/food-03.jpg', 'caption' => 'Nutrition / Kitchen Gardening'),
+            array('image' => 'assets/images/programmes/food-nutrition/food-04.jpg', 'caption' => 'Nutrition / Nutrition Support'),
+            array('image' => 'assets/images/programmes/food-nutrition/food-05.jpg', 'caption' => 'Nutrition / Mothers and Children'),
+            array('image' => 'assets/images/programmes/food-nutrition/food-06.jpg', 'caption' => 'Nutrition / Household Resilience')
         )
     ),
     'agriculture-livelihoods' => array(
@@ -169,7 +169,7 @@ $programmePages = array(
         )
     ),
     'community-development' => array(
-        'title' => 'Social Enterprise and Community Development',
+        'title' => 'Self-Reliance Initiative',
         'intro' => 'Supporting income-generating activities and community initiatives that strengthen economic self-reliance.',
         'feature' => 'assets/images/programmes/community-development/community-01.jpg',
         'highlights' => array(
@@ -180,7 +180,7 @@ $programmePages = array(
         'paragraphs' => array(
             'SSVP South Sudan supports income-generating activities such as farming, poultry, jam production, women\'s economic empowerment and community development.',
             'Rather than relying only on short-term assistance, these activities aim to build practical skills, create livelihood opportunities and strengthen community self-reliance.',
-            'Social enterprise and community-development initiatives help individuals and families strengthen economic independence.'
+            'Self-reliance initiatives help individuals and families strengthen economic independence.'
         ),
         'support' => array('Income-Generating Projects', 'Small-Scale Enterprise', 'Poultry', 'Jam Production', 'Farming', 'Women\'s Economic Empowerment', 'Community Capacity Building', 'Self-Reliance'),
         'gallery' => array(

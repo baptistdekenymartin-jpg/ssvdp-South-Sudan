@@ -12,7 +12,7 @@ $primaryStory = array(
     'title' => "Women's Training in Nutrition, Hygiene and Family Planning",
     'description' => 'Thirty women participated in training on nutrition, hygiene and family planning in Nyarjwa Village as part of an empowerment programme for mothers and caregivers.',
     'date' => '13 July 2026',
-    'image' => 'assets/images/news/featured-women-nutrition.jpg',
+    'image' => 'assets/images/work/women training.jpg',
     'image_alt' => 'SSVP women participating in a nutrition, hygiene and family planning training activity',
     'link' => 'news.php'
 );
