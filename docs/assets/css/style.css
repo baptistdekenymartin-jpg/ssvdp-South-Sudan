@@ -7186,7 +7186,7 @@ body.gallery-lightbox-open {
     background: #eef6ff;
 }
 .news-article-featured-image {
-    aspect-ratio: 16 / 9;
+    height: min(450px, 56.25vw);
     margin-bottom: 34px;
 }
 .news-article-inline-image {
