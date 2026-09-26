@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-if (!defined('SSVDP_SITE_CONFIG')) {
-    define('SSVDP_SITE_CONFIG', true);
+if (!defined('SSVP_SITE_CONFIG')) {
+    define('SSVP_SITE_CONFIG', true);
 }
 
 $hero = array(
@@ -433,7 +433,7 @@ $siteConfig = array(
     'site_url' => '/ssvdp-south-sudan/',
     'production_url' => 'https://www.ssvp-ss.org/',
     'default_page_title' => 'SSVP South Sudan',
-    'logo' => 'assets/images/logo/ssvdp-logo-cutout.png',
+    'logo' => 'assets/images/logo/ssvp-logo-cutout.png',
     'organization_name' => 'The Society of St. Vincent de Paul (SSVP) – South Sudan',
     'organization_alternate_name' => 'SSVP South Sudan',
     'hero' => $hero,

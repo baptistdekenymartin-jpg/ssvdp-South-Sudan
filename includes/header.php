@@ -67,10 +67,10 @@ $responsiveVersion = (string) (@filemtime(__DIR__ . '/../assets/css/responsive.c
     <meta property="og:description" content="<?php echo e($pageDescription); ?>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
-    <meta property="og:image" content="<?php echo e(production_asset_url('assets/images/logo/ssvdp-logo-cutout.png')); ?>">
+    <meta property="og:image" content="<?php echo e(production_asset_url('assets/images/logo/ssvp-logo-cutout.png')); ?>">
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
     <script type="application/ld+json"><?php echo json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?></script>
-    <link rel="icon" href="<?php echo site_url('assets/images/logo/ssvdp-logo.jpg'); ?>" type="image/jpeg">
+    <link rel="icon" href="<?php echo site_url('assets/images/logo/ssvp-logo.jpg'); ?>" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">

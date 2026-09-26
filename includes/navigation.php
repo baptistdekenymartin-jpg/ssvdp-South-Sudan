@@ -4,7 +4,7 @@
         <li class="nav-item has-dropdown">
             <a class="nav-link dropdown-toggle <?php echo $currentPage === 'about' ? 'active' : ''; ?>" href="<?php echo site_url('about.php'); ?>" aria-expanded="false" <?php echo $currentPage === 'about' ? 'aria-current="page"' : ''; ?>>About SSVP <i class="bi bi-chevron-down" aria-hidden="true"></i></a>
             <ul class="dropdown-menu">
-                <li><a href="<?php echo site_url('about.php#about-ssvdp'); ?>">About SSVP</a></li>
+                <li><a href="<?php echo site_url('about.php#about-ssvp'); ?>">About SSVP</a></li>
                 <li><a href="<?php echo site_url('about.php#how-we-work'); ?>">How We Work</a></li>
                 <li><a href="<?php echo site_url('about.php#mission'); ?>">Mission and Vision</a></li>
                 <li><a href="<?php echo site_url('about.php#values'); ?>">Our Values</a></li>

@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form class="admin-login-card admin-form" method="post" action="<?php echo admin_url('login.php'); ?>">
         <input type="hidden" name="csrf_token" value="<?php echo e(admin_csrf_token()); ?>">
         <div class="admin-login-brand">
-            <img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVP South Sudan">
+            <img src="<?php echo site_url('assets/images/logo/ssvp-logo-cutout.png'); ?>" alt="SSVP South Sudan">
             <h1>SSVP South Sudan</h1>
             <p>Staff Content Management</p>
         </div>

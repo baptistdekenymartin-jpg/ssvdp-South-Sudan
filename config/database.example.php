@@ -7,8 +7,8 @@ declare(strict_types=1);
  * with credentials from the target hosting environment.
  */
 
-if (!defined('SSVDP_APP')) {
-    define('SSVDP_APP', true);
+if (!defined('SSVP_APP')) {
+    define('SSVP_APP', true);
 }
 
 $databaseConfig = [

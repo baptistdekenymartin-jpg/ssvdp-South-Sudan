@@ -5,7 +5,7 @@ ssvdp_configure_error_handling();
 ssvdp_require_https_in_production();
 ssvdp_security_headers(true);
 
-ssvdp_start_secure_session('SSVDPADMIN');
+ssvdp_start_secure_session('SSVPADMIN');
 
 
 require_once __DIR__ . '/../../config/site-content.php';

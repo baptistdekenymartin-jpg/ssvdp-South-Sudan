@@ -449,7 +449,7 @@ function ssvdp_public_partners(array $fallback): array
     if (!$rows) { return $fallback; }
     $slotCount = count($fallback);
     $databasePartners = array_map(static function (array $row): array {
-        return array('name' => ssvdp_public_plain_text($row['name']), 'logo' => $row['logo_path'] ?: 'assets/images/logo/ssvdp-logo-cutout.png', 'url' => ssvdp_public_url($row['website_url'], '#'), 'type' => ssvdp_public_plain_text($row['type']), 'description' => ssvdp_public_teaser($row['description'] ?: '', 180));
+        return array('name' => ssvdp_public_plain_text($row['name']), 'logo' => $row['logo_path'] ?: 'assets/images/logo/ssvp-logo-cutout.png', 'url' => ssvdp_public_url($row['website_url'], '#'), 'type' => ssvdp_public_plain_text($row['type']), 'description' => ssvdp_public_teaser($row['description'] ?: '', 180));
     }, array_slice($rows, 0, $slotCount));
     foreach ($databasePartners as $index => $partner) {
         $fallback[$index] = $partner;

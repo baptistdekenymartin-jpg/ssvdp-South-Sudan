@@ -15,13 +15,13 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="about-hero-rule" aria-hidden="true"></span>
                 <p class="about-hero-text"><?php echo e($aboutPage['banner']['text']); ?></p>
                 <div class="about-hero-actions">
-                    <a class="btn btn-primary" href="<?php echo site_url('about.php#about-ssvdp'); ?>"><i class="bi bi-people" aria-hidden="true"></i>Learn More About Us <i class="bi bi-chevron-right" aria-hidden="true"></i></a>
+                    <a class="btn btn-primary" href="<?php echo site_url('about.php#about-ssvp'); ?>"><i class="bi bi-people" aria-hidden="true"></i>Learn More About Us <i class="bi bi-chevron-right" aria-hidden="true"></i></a>
                     <a class="btn btn-outline-light" href="<?php echo site_url('programmes.php'); ?>"><i class="bi bi-heart" aria-hidden="true"></i>Our Work <i class="bi bi-chevron-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="about-overview section-reveal" id="about-ssvdp">
+    <section class="about-overview section-reveal" id="about-ssvp">
         <div class="about-overview-inner">
             <div class="about-overview-copy">
                 <p class="about-overview-label"><?php echo e($aboutPage['introduction']['label']); ?></p>
@@ -109,7 +109,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="mission-vision-center" aria-label="SSVP connects mission and vision">
                 <span class="mission-chevron mission-chevron--blue" aria-hidden="true"></span>
                 <div class="mission-logo-orbit">
-                    <img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVP South Sudan logo" loading="lazy" width="150" height="150">
+                    <img src="<?php echo site_url('assets/images/logo/ssvp-logo-cutout.png'); ?>" alt="SSVP South Sudan logo" loading="lazy" width="150" height="150">
                 </div>
                 <span class="mission-chevron mission-chevron--gold" aria-hidden="true"></span>
             </div>

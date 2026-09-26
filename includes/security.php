@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 function ssvdp_is_production(): bool
 {
-    $env = strtolower((string) (getenv('SSVDP_ENV') ?: getenv('APP_ENV') ?: ''));
+    $env = strtolower((string) (getenv('SSVP_ENV') ?: getenv('SSVDP_ENV') ?: getenv('APP_ENV') ?: ''));
     return in_array($env, array('production', 'prod'), true)
+        || getenv('SSVP_PRODUCTION') === '1'
         || getenv('SSVDP_PRODUCTION') === '1';
 }
 
@@ -27,7 +28,8 @@ function ssvdp_is_local_request(): bool
 function ssvdp_configure_error_handling(): void
 {
     ini_set('log_errors', '1');
-    ini_set('display_errors', ssvdp_is_production() ? '0' : (getenv('SSVDP_DISPLAY_ERRORS') === '1' ? '1' : '0'));
+    $displayErrors = getenv('SSVP_DISPLAY_ERRORS') === '1' || getenv('SSVDP_DISPLAY_ERRORS') === '1';
+    ini_set('display_errors', ssvdp_is_production() ? '0' : ($displayErrors ? '1' : '0'));
     ini_set('display_startup_errors', '0');
 }
 
@@ -59,7 +61,7 @@ function ssvdp_security_headers(bool $admin = false): void
 
 function ssvdp_require_https_in_production(): void
 {
-    $forceHttps = getenv('SSVDP_FORCE_HTTPS') === '1' || ssvdp_is_production();
+    $forceHttps = getenv('SSVP_FORCE_HTTPS') === '1' || getenv('SSVDP_FORCE_HTTPS') === '1' || ssvdp_is_production();
     if (!$forceHttps || ssvdp_is_local_request() || ssvdp_is_https_request() || headers_sent()) {
         return;
     }

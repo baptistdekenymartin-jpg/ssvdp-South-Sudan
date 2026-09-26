@@ -1,7 +1,7 @@
 <?php require_once __DIR__ . '/communication.php'; ?>
 <aside class="admin-sidebar" data-admin-sidebar>
     <a class="admin-brand" href="<?php echo admin_url('dashboard.php'); ?>">
-        <img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVP South Sudan" width="56" height="56">
+        <img src="<?php echo site_url('assets/images/logo/ssvp-logo-cutout.png'); ?>" alt="SSVP South Sudan" width="56" height="56">
         <span><strong>SSVP South Sudan</strong><small>Serviens in Spe</small></span>
     </a>
     <nav class="admin-nav" aria-label="Admin navigation">

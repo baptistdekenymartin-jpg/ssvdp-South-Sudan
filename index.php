@@ -69,7 +69,7 @@ $partners = ssvdp_public_partners($partners);
                     </div>
                 </div>
             </div>
-            <img class="hero-curve-logo" src="<?php echo site_url('assets/images/logo/ssvdp-logo-transparent.png'); 
+            <img class="hero-curve-logo" src="<?php echo site_url('assets/images/logo/ssvp-logo-transparent.png');
 ?>" alt="SSVP South Sudan" width="320" height="320">
         </article>
         <article class="hero-slide hero-slide-caption-left" data-hero-slide aria-hidden="true">

@@ -2,8 +2,8 @@
 
 Before publishing SSVP South Sudan to production:
 
-- Set `SSVDP_ENV=production` or `SSVDP_PRODUCTION=1` in the hosting environment.
-- Enable HTTPS and set `SSVDP_FORCE_HTTPS=1` after the certificate is installed.
+- Set `SSVP_ENV=production` or `SSVP_PRODUCTION=1` in the hosting environment.
+- Enable HTTPS and set `SSVP_FORCE_HTTPS=1` after the certificate is installed.
 - Keep `display_errors` off and confirm PHP errors are written to server-side logs only.
 - Use strong unique database credentials; keep `config/database.php` out of Git and outside public backups.
 - Remove default/test admin accounts and review active Super Administrator users.

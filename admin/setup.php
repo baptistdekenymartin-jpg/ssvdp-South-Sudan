@@ -4,7 +4,7 @@ ssvdp_configure_error_handling();
 require_once __DIR__ . '/../config/site-content.php';
 require_once __DIR__ . '/../config/database.php';
 
-ssvdp_start_secure_session('SSVDPSETUP');
+ssvdp_start_secure_session('SSVPSETUP');
 
 function setup_admin_url(string $path = ''): string { return site_url('admin/' . ltrim($path, '/')); }
 function setup_flash(string $type, string $message): void { $_SESSION['setup_flash'][] = compact('type', 'message'); }
@@ -90,7 +90,7 @@ $messages = setup_messages();
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow"><title>Admin Setup | SSVP South Sudan</title><link rel="stylesheet" href="<?php echo site_url('assets/css/admin.css'); ?>"></head>
 <body class="admin-login-body"><div class="admin-login-card admin-form">
-<div class="admin-login-brand"><img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVP"><h1>Phase 1 Setup</h1><p>Staff Content Management</p></div>
+<div class="admin-login-brand"><img src="<?php echo site_url('assets/images/logo/ssvp-logo-cutout.png'); ?>" alt="SSVP"><h1>Phase 1 Setup</h1><p>Staff Content Management</p></div>
 <?php foreach ($messages as $m) : ?><div class="admin-alert admin-alert--<?php echo e($m['type']); ?>" style="margin:0"><?php echo e($m['message']); ?></div><?php endforeach; ?>
 <?php if ($error) : ?><div class="admin-alert admin-alert--error" style="margin:0"><?php echo e($error); ?></div><?php endif; ?>
 <?php if ($hasAdmin) : ?>
