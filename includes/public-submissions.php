@@ -75,7 +75,7 @@ function ssvdp_user_agent(): string
 function ssvdp_handle_contact_submission(): array
 {
     $values = array('name' => '', 'email' => '', 'phone' => '', 'subject' => '', 'message' => '');
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST' || ($_POST['form_type'] ?? '') !== 'contact') {
+    if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST' || ($_POST['form_type'] ?? '') !== 'contact') {
         return array('success' => '', 'errors' => array(), 'values' => $values);
     }
 
@@ -116,7 +116,7 @@ function ssvdp_handle_contact_submission(): array
 function ssvdp_handle_get_involved_submission(): array
 {
     $values = array('full_name' => '', 'email' => '', 'phone' => '', 'location' => '', 'involvement_type' => '', 'areas_of_interest' => array(), 'message' => '');
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST' || ($_POST['form_type'] ?? '') !== 'get_involved') {
+    if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST' || ($_POST['form_type'] ?? '') !== 'get_involved') {
         return array('success' => '', 'errors' => array(), 'values' => $values);
     }
 
@@ -166,7 +166,7 @@ function ssvdp_handle_get_involved_submission(): array
 function ssvdp_handle_newsletter_submission(): array
 {
     $values = array('email' => '');
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST' || ($_POST['form_type'] ?? '') !== 'newsletter') {
+    if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST' || ($_POST['form_type'] ?? '') !== 'newsletter') {
         return array('success' => '', 'errors' => array(), 'values' => $values);
     }
 
