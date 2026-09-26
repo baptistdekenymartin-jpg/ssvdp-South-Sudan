@@ -14,7 +14,11 @@
                 <div class="social-links footer-social-links" aria-label="Social and contact links">
                     <a href="<?php echo e($contactInformation['facebook']); ?>" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
                     <a href="<?php echo !empty($contactInformation['whatsapp_url']) ? e($contactInformation['whatsapp_url']) : site_url('contact.php'); ?>" aria-label="WhatsApp" <?php echo !empty($contactInformation['whatsapp_url']) ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
-                    <a href="<?php echo site_url('contact.php'); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+                    <?php if (!empty($contactInformation['emails'][0])) : ?>
+                        <a href="mailto:<?php echo e($contactInformation['emails'][0]); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+                    <?php else : ?>
+                        <a href="<?php echo site_url('contact.php'); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+                    <?php endif; ?>
                 </div>
             </section>
             <nav class="footer-column" aria-label="Footer quick links">
@@ -51,7 +55,7 @@
                     </span></li>
 
                     <?php foreach ($contactInformation['emails'] as $email) : ?>
-                        <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>Email:</strong> <?php echo e($email); ?></span></li>
+                        <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>Email:</strong> <a href="mailto:<?php echo e($email); ?>"><?php echo e($email); ?></a></span></li>
                     <?php endforeach; ?>
                     <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><?php echo e($contactInformation['office']); ?></span></li>
                     <li><i class="bi bi-clock" aria-hidden="true"></i><span><strong>Office schedule:</strong> <?php echo e($contactInformation['office_schedule']); ?></span></li>
@@ -60,13 +64,17 @@
         </div>
         <div class="footer-bottom">
             <div class="container footer-bottom-inner">
-                <p>&copy; 2026 Society of St. Vincent de Paul South Sudan. All Rights Reserved.</p>
+                <p>&copy; <?php echo date('Y'); ?> Society of St. Vincent de Paul South Sudan. All Rights Reserved.</p>
                 <div class="footer-bottom-right">
                     <span>Serviens in Spe</span>
                     <div class="social-links footer-bottom-social" aria-label="Footer social links">
                         <a href="<?php echo e($contactInformation['facebook']); ?>" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
                         <a href="<?php echo !empty($contactInformation['whatsapp_url']) ? e($contactInformation['whatsapp_url']) : site_url('contact.php'); ?>" aria-label="WhatsApp" <?php echo !empty($contactInformation['whatsapp_url']) ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
-                        <a href="<?php echo site_url('contact.php'); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+                        <?php if (!empty($contactInformation['emails'][0])) : ?>
+                            <a href="mailto:<?php echo e($contactInformation['emails'][0]); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+                        <?php else : ?>
+                            <a href="<?php echo site_url('contact.php'); ?>" aria-label="Email"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

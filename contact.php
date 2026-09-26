@@ -52,7 +52,11 @@ $officeDirectionsUrl = $contactInformation['google_maps_link'] ?? 'https://maps.
                         <span><i class="bi bi-envelope" aria-hidden="true"></i></span>
                         <div>
                             <h3>Email Address</h3>
-                            <p><?php echo e($primaryEmail ?: 'xxxxxxxxxxxx'); ?></p>
+                            <?php if ($primaryEmail) : ?>
+                                <p><a href="mailto:<?php echo e($primaryEmail); ?>"><?php echo e($primaryEmail); ?></a></p>
+                            <?php else : ?>
+                                <p>Email address to be confirmed</p>
+                            <?php endif; ?>
                         </div>
                     </article>
                     <article class="contact-info-item">

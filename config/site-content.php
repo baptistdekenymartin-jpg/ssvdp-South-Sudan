@@ -417,7 +417,7 @@ $contactInformation = array(
     'whatsapp' => "+211 910 085 563\n+211 921 453 844",
     'whatsapp_url' => '',
     'emails' => array(
-        'xxxxxxxxxxxx'
+        'info@ssvp-ss.org'
     ),
     'office' => 'Office: Lologo 2, North of Freedom Bridge, Juba, South Sudan',
     'office_coordinates' => array('latitude' => '4.8112763', 'longitude' => '31.5991651'),
