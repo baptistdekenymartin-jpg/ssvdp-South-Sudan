@@ -1,4 +1,4 @@
-﻿CREATE DATABASE IF NOT EXISTS `ssvdp_south_sudan` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `ssvdp_south_sudan` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `ssvdp_south_sudan`;
 
 CREATE TABLE IF NOT EXISTS `admin_users` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `content` LONGTEXT DEFAULT NULL,
   `featured_image` VARCHAR(255) DEFAULT NULL,
   `category` VARCHAR(100) DEFAULT NULL,
-  `status` ENUM('draft','published') NOT NULL DEFAULT 'draft',
+  `status` ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft',
   `published_at` DATETIME NULL DEFAULT NULL,
   `created_by` INT UNSIGNED DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `featured_activity` (
   `image_path` VARCHAR(255) DEFAULT NULL,
   `button_label` VARCHAR(120) NOT NULL DEFAULT 'Read Full Activity Report',
   `button_link` VARCHAR(255) NOT NULL DEFAULT 'news.php',
-  `status` ENUM('draft','active') NOT NULL DEFAULT 'draft',
+  `status` ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft',
   `updated_by` INT UNSIGNED NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `gallery_albums` (
   `location` VARCHAR(160) DEFAULT NULL,
   `description` TEXT DEFAULT NULL,
   `cover_image` VARCHAR(255) DEFAULT NULL,
-  `status` ENUM('draft','published') NOT NULL DEFAULT 'draft',
+  `status` ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft',
   `created_by` INT UNSIGNED NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

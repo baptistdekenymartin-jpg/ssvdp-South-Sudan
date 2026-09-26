@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /docs/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /uploads/documents/
+Disallow: /newsletter-unsubscribe.php
+
+Sitemap: https://www.ssvp-ss.org/sitemap.xml

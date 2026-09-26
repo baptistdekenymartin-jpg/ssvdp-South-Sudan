@@ -202,6 +202,7 @@ if (!isset($programmePages[$programmeKey])) {
 $programme = $programmePages[$programmeKey];
 $pageTitle = $programme['title'];
 $pageDescription = $programme['intro'];
+$canonicalPath = 'programme.php?programme=' . rawurlencode($programmeKey);
 require_once __DIR__ . '/includes/header.php';
 ?>
 

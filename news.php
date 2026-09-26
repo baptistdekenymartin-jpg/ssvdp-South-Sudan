@@ -82,17 +82,16 @@ if (count($latestGridStories) < 3) {
 }
 $communityStories = array(
     array('title' => 'Jam Production and Practical Livelihood Training', 'date' => 'To be updated', 'image' => 'assets/images/news/jam-production-02.jpg', 'link' => 'news-livelihood-skills.php'),
-    array('title' => 'Vocational Training Activities Continuing', 'date' => 'To be updated', 'image' => 'assets/images/news/vocational-training-02.jpg', 'link' => 'news-community-empowerment.php'),
+    array('title' => 'Vocational Training Activities Continuing', 'date' => 'To be updated', 'image' => 'assets/images/gallery/vocational-training/vt-01.jpg', 'image_alt' => 'SSVP vocational training activities', 'link' => 'news-community-empowerment.php'),
     array('title' => 'Community Farming Project Supports Livelihoods', 'date' => 'To be updated', 'image' => 'assets/images/news/farm-livelihood-01.jpg', 'link' => 'gallery.php')
 );
-$impactUpdates = array(
+$programmeFallbackUpdates = array(
     'Vocational skills training activities continuing',
     'Income generating groups supporting community livelihoods',
     'Emergency assistance reaching vulnerable households'
 );
 $publicEvents = ssvdp_public_events(3);
 $publicProgrammeUpdates = ssvdp_public_programme_updates(3);
-$publicImpactUpdates = ssvdp_public_impact_updates(3);
 $filters = array(
     array('key' => 'all', 'label' => 'All', 'icon' => 'bi-grid-3x3-gap'),
     array('key' => 'programmes', 'label' => 'Programmes', 'icon' => 'bi-briefcase'),
@@ -204,7 +203,7 @@ $filters = array(
                 <div class="community-list">
                     <?php foreach ($communityStories as $story) : ?>
                         <a class="community-story" href="<?php echo site_url($story['link']); ?>">
-                            <img src="<?php echo site_url($story['image']); ?>" alt="" loading="lazy" width="86" height="66">
+                            <img src="<?php echo site_url($story['image']); ?>" alt="<?php echo e($story['image_alt'] ?? ''); ?>" loading="lazy" width="86" height="66">
                             <span>
                                 <strong><?php echo e($story['title']); ?></strong>
                                 <small><?php echo e($story['date']); ?></small>
@@ -224,8 +223,10 @@ $filters = array(
                             <div class="event-item">
                                 <span class="event-icon"><i class="bi bi-calendar-event" aria-hidden="true"></i></span>
                                 <div>
-                                    <strong><?php echo e($event['title']); ?></strong>
+                                    <strong><a href="<?php echo site_url($event['link']); ?>"><?php echo e($event['title']); ?></a></strong>
                                     <small><?php echo e(ssvdp_format_date($event['start_date'], '')); ?><?php echo $event['location'] ? ' | ' . e($event['location']) : ''; ?></small>
+                                    <?php if ($event['short_description'] !== '') : ?><p><?php echo e($event['short_description']); ?></p><?php endif; ?>
+                                    <a class="event-read-more" href="<?php echo site_url($event['link']); ?>">Read More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -241,28 +242,33 @@ $filters = array(
                         <?php endfor; ?>
                     <?php endif; ?>
                 </div>
-                <a class="digest-link" href="<?php echo site_url('contact.php'); ?>">View All Events <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                <a class="digest-link" href="<?php echo site_url('events.php'); ?>">View All Events <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </article>
 
             <article class="digest-panel digest-panel--impact">
-                <h2>Impact / <span>Programme Updates</span></h2>
+                <h2><span>Programme Updates</span></h2>
                 <span class="digest-rule" aria-hidden="true"></span>
-                <div class="impact-update-list">
-                    <?php if ($publicImpactUpdates || $publicProgrammeUpdates) : ?>
-                        <?php foreach ($publicImpactUpdates as $update) : ?>
-                            <div class="impact-update">
-                                <span><i class="bi bi-check2" aria-hidden="true"></i></span>
-                                <p><?php echo e(trim(($update['value'] ? $update['value'] . ' ' . $update['unit'] . ' - ' : '') . $update['title'])); ?></p>
-                            </div>
-                        <?php endforeach; ?>
-                        <?php foreach (array_slice($publicProgrammeUpdates, 0, max(0, 3 - count($publicImpactUpdates))) as $update) : ?>
-                            <div class="impact-update">
-                                <span><i class="bi bi-check2" aria-hidden="true"></i></span>
-                                <p><?php echo e($update['title']); ?></p>
-                            </div>
+                <div class="impact-update-list programme-update-list">
+                    <?php if ($publicProgrammeUpdates) : ?>
+                        <?php foreach ($publicProgrammeUpdates as $update) : ?>
+                            <article class="impact-update programme-update-item">
+                                <?php if ($update['featured_image'] !== '') : ?>
+                                    <a class="programme-update-thumb" href="<?php echo site_url($update['link']); ?>">
+                                        <img src="<?php echo site_url($update['featured_image']); ?>" alt="<?php echo e($update['title']); ?>" loading="lazy" width="96" height="72">
+                                    </a>
+                                <?php else : ?>
+                                    <span><i class="bi bi-check2" aria-hidden="true"></i></span>
+                                <?php endif; ?>
+                                <div class="programme-update-summary">
+                                    <h3><a href="<?php echo site_url($update['link']); ?>"><?php echo e($update['title']); ?></a></h3>
+                                    <small><?php echo e($update['programme']); ?><?php echo $update['date'] !== '' ? ' | ' . e($update['date']) : ''; ?><?php echo $update['location'] !== '' ? ' | ' . e($update['location']) : ''; ?></small>
+                                    <?php if ($update['short_description'] !== '') : ?><p><?php echo e($update['short_description']); ?></p><?php endif; ?>
+                                    <a class="event-read-more" href="<?php echo site_url($update['link']); ?>">Read More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                                </div>
+                            </article>
                         <?php endforeach; ?>
                     <?php else : ?>
-                        <?php foreach ($impactUpdates as $update) : ?>
+                        <?php foreach ($programmeFallbackUpdates as $update) : ?>
                             <div class="impact-update">
                                 <span><i class="bi bi-check2" aria-hidden="true"></i></span>
                                 <p><?php echo e($update); ?></p>
@@ -270,7 +276,7 @@ $filters = array(
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-                <a class="digest-link" href="<?php echo site_url('programmes.php'); ?>">See More Impact <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                <a class="digest-link" href="<?php echo site_url('programme-updates.php'); ?>">View All Programme Updates <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </article>
         </div>
     </section>

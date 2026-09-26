@@ -64,9 +64,11 @@ CREATE TABLE IF NOT EXISTS `newsletter_subscribers` (
   `status` ENUM('active','unsubscribed') NOT NULL DEFAULT 'active',
   `subscribed_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `unsubscribed_at` TIMESTAMP NULL DEFAULT NULL,
+  `unsubscribe_token` VARCHAR(64) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_newsletter_email` (`email`),
+  UNIQUE KEY `uniq_newsletter_unsubscribe_token` (`unsubscribe_token`),
   KEY `idx_newsletter_status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

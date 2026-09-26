@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/content-database.php';
+require_once __DIR__ . '/newsletter.php';
 
 function ssvdp_form_old(string $key, array $source): string
 {
@@ -40,6 +40,11 @@ function ssvdp_submission_security_error(string $formKey, array $source): ?strin
     $last = isset($_SESSION[$lastKey]) ? (int) $_SESSION[$lastKey] : 0;
     if ($last > 0 && ($now - $last) < 10) {
         return 'Please wait a moment before submitting again.';
+    }
+
+    $email = strtolower(trim((string) ($source['email'] ?? '')));
+    if (ssvdp_session_rate_limited('public_' . $formKey, 5, 600, $email)) {
+        return 'Please wait a few minutes before submitting again.';
     }
 
     return null;
@@ -165,12 +170,13 @@ function ssvdp_handle_newsletter_submission(): array
         return array('success' => '', 'errors' => array(), 'values' => $values);
     }
 
-    $email = strtolower(trim((string) ($_POST['email'] ?? '')));
+    $email = ssvdp_newsletter_normalize_email($_POST['email'] ?? '');
     $values['email'] = $email;
     $errors = array();
     $securityError = ssvdp_form_check_security('newsletter', $_POST);
     if ($securityError) { $errors[] = $securityError; }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $errors[] = 'Enter a valid email address.'; }
+    if ($email === '') { $errors[] = 'Enter your email address.'; }
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $errors[] = 'Enter a valid email address.'; }
 
     $pdo = ssvdp_db();
     if (!$pdo || !ssvdp_table_exists($pdo, 'newsletter_subscribers')) { $errors[] = 'The newsletter service is temporarily unavailable.'; }
@@ -179,20 +185,29 @@ function ssvdp_handle_newsletter_submission(): array
         return array('success' => '', 'errors' => $errors, 'values' => $values);
     }
 
-    $stmt = $pdo->prepare('SELECT id, status FROM newsletter_subscribers WHERE email = ? LIMIT 1');
-    $stmt->execute(array($email));
-    $existing = $stmt->fetch();
+    ssvdp_newsletter_ensure_schema($pdo);
 
-    if ($existing && $existing['status'] === 'active') {
-        return array('success' => 'You are already subscribed.', 'errors' => array(), 'values' => array('email' => ''));
-    }
-
-    if ($existing) {
-        $stmt = $pdo->prepare("UPDATE newsletter_subscribers SET status = 'active', subscribed_at = CURRENT_TIMESTAMP, unsubscribed_at = NULL WHERE id = ?");
-        $stmt->execute(array((int) $existing['id']));
-    } else {
-        $stmt = $pdo->prepare("INSERT INTO newsletter_subscribers (email, status, subscribed_at) VALUES (?, 'active', CURRENT_TIMESTAMP)");
+    try {
+        $stmt = $pdo->prepare('SELECT id, status, unsubscribe_token FROM newsletter_subscribers WHERE email = ? LIMIT 1');
         $stmt->execute(array($email));
+        $existing = $stmt->fetch();
+
+        if ($existing && $existing['status'] === 'active') {
+            return array('success' => '', 'errors' => array('This email is already subscribed.'), 'values' => array('email' => $email));
+        }
+
+        if ($existing) {
+            $token = ssvdp_newsletter_token_for_save($pdo, $existing['unsubscribe_token'] ?? null);
+            $stmt = $pdo->prepare("UPDATE newsletter_subscribers SET email = ?, status = 'active', subscribed_at = CURRENT_TIMESTAMP, unsubscribed_at = NULL, unsubscribe_token = ? WHERE id = ?");
+            $stmt->execute(array($email, $token, (int) $existing['id']));
+        } else {
+            $token = ssvdp_newsletter_token_for_save($pdo);
+            $stmt = $pdo->prepare("INSERT INTO newsletter_subscribers (email, status, subscribed_at, unsubscribe_token) VALUES (?, 'active', CURRENT_TIMESTAMP, ?)");
+            $stmt->execute(array($email, $token));
+        }
+    } catch (Throwable $exception) {
+        error_log('Newsletter subscription failed: ' . $exception->getMessage());
+        return array('success' => '', 'errors' => array('The newsletter service is temporarily unavailable.'), 'values' => $values);
     }
 
     return array('success' => 'Thank you for subscribing to SSVP South Sudan updates.', 'errors' => array(), 'values' => array('email' => ''));

@@ -1218,7 +1218,8 @@
     .contact-final-cta .btn {
         width: 100%;
     }
-    .contact-map-placeholder {
+    .contact-map-frame,
+    .contact-map-frame iframe {
         min-height: 230px;
     }
 }

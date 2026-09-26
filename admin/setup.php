@@ -1,15 +1,26 @@
 <?php
+require_once __DIR__ . '/../includes/security.php';
+ssvdp_configure_error_handling();
 require_once __DIR__ . '/../config/site-content.php';
 require_once __DIR__ . '/../config/database.php';
 
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_set_cookie_params(['lifetime' => 0, 'path' => '/', 'httponly' => true, 'samesite' => 'Lax', 'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off']);
-    session_start();
-}
+ssvdp_start_secure_session('SSVDPSETUP');
 
 function setup_admin_url(string $path = ''): string { return site_url('admin/' . ltrim($path, '/')); }
 function setup_flash(string $type, string $message): void { $_SESSION['setup_flash'][] = compact('type', 'message'); }
 function setup_messages(): array { $m = $_SESSION['setup_flash'] ?? array(); unset($_SESSION['setup_flash']); return $m; }
+
+function setup_password_errors(string $password): array
+{
+    $errors = array();
+    $lower = strtolower($password);
+    if (strlen($password) < 12) { $errors[] = 'Password must be at least 12 characters.'; }
+    if (in_array($lower, array('password123!', 'admin123456!', 'ssvp123456!', 'qwerty12345!', 'letmein12345!'), true)) { $errors[] = 'Choose a less common password.'; }
+    if (!preg_match('/[A-Z]/', $password) || !preg_match('/[a-z]/', $password) || !preg_match('/\d/', $password) || !preg_match('/[^A-Za-z0-9]/', $password)) {
+        $errors[] = 'Password should include upper and lower case letters, a number and a symbol.';
+    }
+    return $errors;
+}
 
 function setup_server_connection(): PDO
 {
@@ -61,8 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $pdo && !$hasAdmin) {
         $email = trim((string) ($_POST['email'] ?? ''));
         $username = trim((string) ($_POST['username'] ?? ''));
         $password = (string) ($_POST['password'] ?? '');
-        if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || $username === '' || strlen($password) < 10) {
-            $error = 'Enter a name, valid email, username and a password of at least 10 characters.';
+        $passwordErrors = setup_password_errors($password);
+        if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || $username === '' || $passwordErrors) {
+            $error = $passwordErrors ? implode(' ', $passwordErrors) : 'Enter a name, valid email and username.';
         } else {
             $stmt = $pdo->prepare("INSERT INTO admin_users (name, email, username, password_hash, role, status) VALUES (?, ?, ?, ?, 'administrator', 'active')");
             $stmt->execute([$name, $email, $username, password_hash($password, PASSWORD_DEFAULT)]);
@@ -75,7 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $pdo && !$hasAdmin) {
 if (empty($_SESSION['setup_csrf'])) { $_SESSION['setup_csrf'] = bin2hex(random_bytes(32)); }
 $messages = setup_messages();
 ?>
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Setup | SSVP South Sudan</title><link rel="stylesheet" href="<?php echo site_url('assets/css/admin.css'); ?>"></head>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"><title>Admin Setup | SSVP South Sudan</title><link rel="stylesheet" href="<?php echo site_url('assets/css/admin.css'); ?>"></head>
 <body class="admin-login-body"><div class="admin-login-card admin-form">
 <div class="admin-login-brand"><img src="<?php echo site_url('assets/images/logo/ssvdp-logo-cutout.png'); ?>" alt="SSVP"><h1>Phase 1 Setup</h1><p>Staff Content Management</p></div>
 <?php foreach ($messages as $m) : ?><div class="admin-alert admin-alert--<?php echo e($m['type']); ?>" style="margin:0"><?php echo e($m['message']); ?></div><?php endforeach; ?>
@@ -87,7 +100,7 @@ $messages = setup_messages();
 <div class="admin-field"><label>Name</label><input class="admin-input" name="name" required></div>
 <div class="admin-field"><label>Email</label><input class="admin-input" name="email" type="email" required></div>
 <div class="admin-field"><label>Username</label><input class="admin-input" name="username" required></div>
-<div class="admin-field"><label>Password</label><input class="admin-input" name="password" type="password" minlength="10" required><small>Use at least 10 characters. It will be stored with password_hash().</small></div>
+<div class="admin-field"><label>Password</label><input class="admin-input" name="password" type="password" minlength="12" required><small>Use at least 12 characters with upper/lower case, number and symbol. It will be stored with password_hash().</small></div>
 <button class="admin-button" type="submit">Create Administrator</button></form>
 <?php endif; ?>
 </div></body></html>

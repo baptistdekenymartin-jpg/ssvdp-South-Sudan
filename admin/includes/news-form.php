@@ -4,6 +4,17 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/auth.php';
 
+function admin_news_ensure_schema(PDO $pdo): void
+{
+    try {
+        $stmt = $pdo->query("SHOW COLUMNS FROM news LIKE 'status'");
+        $column = $stmt ? $stmt->fetch() : null;
+        $type = strtolower((string) ($column['Type'] ?? ''));
+        if ($type !== '' && !str_contains($type, 'pending_review')) {
+            $pdo->exec("ALTER TABLE news MODIFY status ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft'");
+        }
+    } catch (Throwable $exception) {}
+}
 function admin_news_sanitize_html(string $html): string
 {
     $html = trim($html);
@@ -68,15 +79,12 @@ function admin_news_render_form(array $story, array $categories, array $fieldErr
         <input type="hidden" name="csrf_token" value="<?php echo e(admin_csrf_token()); ?>">
         <?php if ($isEdit) : ?><input type="hidden" name="id" value="<?php echo (int) $id; ?>"><?php endif; ?>
         <textarea class="admin-rich-source" name="content" data-rich-source required><?php echo e($content); ?></textarea>
+        <div class="admin-field"><label>News Title</label><input class="admin-input" name="title" value="<?php echo e($story['title']); ?>"><small>The public URL slug is generated automatically from the title.</small><small>Recommended maximum: 100-120 characters so public cards keep their approved size.</small><?php admin_news_render_field_error($fieldErrors, 'title'); ?></div>
         <div class="admin-form-grid">
-            <div class="admin-field"><label>News Title</label><input class="admin-input" name="title" data-slug-title value="<?php echo e($story['title']); ?>"><small>Recommended maximum: 100-120 characters so public cards keep their approved size.</small><?php admin_news_render_field_error($fieldErrors, 'title'); ?></div>
-            <div class="admin-field"><label>Slug</label><input class="admin-input" name="slug" data-slug-input value="<?php echo e($story['slug']); ?>"><small>Generated from the title. You can edit it manually.</small></div>
-        </div>
-        <div class="admin-form-grid">
-            <div class="admin-field"><label>Category</label><select class="admin-select" name="category"><option value="">Select category</option><?php foreach ($categories as $cat) : ?><option value="<?php echo e($cat); ?>" <?php echo $story['category']===$cat?'selected':''; ?>><?php echo e($cat); ?></option><?php endforeach; ?></select><?php admin_news_render_field_error($fieldErrors, 'category'); ?></div>
+            <?php admin_render_select_other('category', 'Category', $story['category'] ?? '', $categories, 'Custom Category', true, $fieldErrors); ?>
             <div class="admin-field"><label>Publication Date</label><input class="admin-input" type="date" name="published_at" value="<?php echo e(substr((string) $story['published_at'], 0, 10)); ?>"><?php admin_news_render_field_error($fieldErrors, 'published_at'); ?></div>
         </div>
-        <div class="admin-field"><label>Location</label><input class="admin-input" name="location" value="<?php echo e($story['location']); ?>"></div>
+        <?php admin_render_select_other('location', 'Location', $story['location'] ?? '', admin_content_locations(), 'Custom Location'); ?>
         <div class="admin-field"><label>Short Summary</label><textarea class="admin-textarea admin-summary-textarea" name="excerpt" data-summary-counter><?php echo e($story['excerpt']); ?></textarea><small><span data-summary-count>0</span> characters. Aim for 160-250 characters; longer summaries are shortened visually on public overview pages.</small><?php admin_news_render_field_error($fieldErrors, 'excerpt'); ?></div>
         <div class="admin-field"><label>Full Story</label><small>Use safe story content only. Public templates control layout, spacing, colors and card sizes.</small><div class="admin-rich-editor" data-rich-editor><div class="admin-rich-toolbar" role="toolbar" aria-label="Story formatting"><button type="button" data-cmd="bold"><strong>B</strong></button><button type="button" data-cmd="italic"><em>I</em></button><button type="button" data-cmd="underline"><u>U</u></button><button type="button" data-block="h2">H2</button><button type="button" data-block="h3">H3</button><button type="button" data-block="p">P</button><button type="button" data-cmd="insertUnorderedList">Bullets</button><button type="button" data-cmd="insertOrderedList">Numbers</button><button type="button" data-block="blockquote">Quote</button><button type="button" data-link>Link</button><button type="button" data-cmd="undo">Undo</button><button type="button" data-cmd="redo">Redo</button><button type="button" data-clear>Clear</button></div><div class="admin-rich-editable" data-rich-editable contenteditable="true"><?php echo $content; ?></div></div><?php admin_news_render_field_error($fieldErrors, 'content'); ?></div>
         <div class="admin-form-grid">
@@ -85,7 +93,7 @@ function admin_news_render_form(array $story, array $categories, array $fieldErr
         </div>
         <?php if ($additionalImages) : ?><div class="admin-field"><label>Existing Additional Images</label><div class="admin-photo-grid"><?php foreach ($additionalImages as $image) : ?><article class="admin-photo-card"><img src="<?php echo site_url($image['image_path']); ?>" alt=""><div><?php echo e($image['caption'] ?: 'Additional image'); ?></div></article><?php endforeach; ?></div></div><?php endif; ?>
         <label class="admin-checkbox-help"><input type="checkbox" name="is_featured" value="1" <?php echo (int) $story['is_featured'] === 1 ? 'checked' : ''; ?>> <span>Featured Story<small>Only one story can occupy the large Featured Story position. Publishing this as featured automatically removes the previous featured story.</small></span></label>
-        <div class="admin-actions admin-news-actions"><button class="admin-button admin-button--light" name="submit_action" value="draft" type="submit">Save Draft</button><button class="admin-button admin-button--outline" name="submit_action" value="preview" type="button" data-news-preview>Preview</button><button class="admin-button" name="submit_action" value="publish" type="submit">Publish</button></div>
+        <div class="admin-actions admin-news-actions"><button class="admin-button admin-button--outline" name="submit_action" value="preview" type="button" data-news-preview>Preview</button><?php foreach (admin_content_allowed_actions($story) as $workflowAction) : ?><button class="admin-button<?php echo $workflowAction === 'publish' ? '' : ' admin-button--light'; ?>" name="submit_action" value="<?php echo e($workflowAction); ?>" type="submit" <?php echo $workflowAction === 'archive' ? 'onclick="return confirm(\'Archive this news story? It will no longer appear publicly.\');"' : ''; ?>><?php echo e(admin_content_action_label($workflowAction)); ?></button><?php endforeach; ?></div>
     </form>
     <?php
 }

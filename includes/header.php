@@ -1,29 +1,10 @@
 <?php
 
-ini_set('display_errors', '0');
-ini_set('log_errors', '1');
+require_once __DIR__ . '/security.php';
+ssvdp_configure_error_handling();
+ssvdp_security_headers(false);
 
-if (session_status() === PHP_SESSION_NONE) {
-    $sessionPath = session_save_path();
-    if ($sessionPath !== '' && (!is_dir($sessionPath) || !is_writable($sessionPath))) {
-        $localSessionPath = dirname(__DIR__) . '/.runtime/sessions';
-        if (!is_dir($localSessionPath)) {
-            @mkdir($localSessionPath, 0775, true);
-        }
-        if (is_dir($localSessionPath) && is_writable($localSessionPath)) {
-            session_save_path($localSessionPath);
-        }
-    }
-
-    session_set_cookie_params([
-        'lifetime' => 0,
-        'path' => '/',
-        'httponly' => true,
-        'samesite' => 'Lax',
-        'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
-    ]);
-    session_start();
-}
+ssvdp_start_secure_session();
 
 require_once __DIR__ . '/../config/site-content.php';
 require_once __DIR__ . '/content-database.php';
@@ -38,6 +19,39 @@ if (strpos($currentScript, '/admin/') !== false) {
 
 $pageTitle = isset($pageTitle) ? $pageTitle : $siteConfig['default_page_title'];
 $pageDescription = isset($pageDescription) ? $pageDescription : $siteConfig['site_description'];
+$canonicalPath = isset($canonicalPath) ? (string) $canonicalPath : ltrim($currentPage === 'home' ? 'index.php' : basename($_SERVER['PHP_SELF'] ?? 'index.php'), '/');
+$canonicalUrl = isset($canonicalUrl) ? (string) $canonicalUrl : production_url($canonicalPath);
+$robotsMeta = isset($pageRobots) ? (string) $pageRobots : 'index, follow';
+$siteTitle = $pageTitle === $siteConfig['site_name'] || str_contains($pageTitle, '|') ? $pageTitle : $pageTitle . ' | ' . $siteConfig['site_name'];
+$organizationAddress = preg_replace('/^Office:\s*/', '', (string) ($contactInformation['office'] ?? 'Lologo 2, North of Freedom Bridge, Juba, South Sudan'));
+$structuredData = array(
+    array(
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => 'SSVP South Sudan',
+        'alternateName' => 'Society of St. Vincent de Paul South Sudan',
+        'url' => production_url('')
+    ),
+    array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Organization',
+        'name' => $siteConfig['organization_name'] ?? 'The Society of St. Vincent de Paul (SSVP) - South Sudan',
+        'alternateName' => $siteConfig['organization_alternate_name'] ?? 'SSVP South Sudan',
+        'url' => production_url(''),
+        'logo' => production_asset_url($siteConfig['logo']),
+        'address' => array(
+            '@type' => 'PostalAddress',
+            'streetAddress' => $organizationAddress,
+            'addressLocality' => 'Juba',
+            'addressCountry' => 'SS'
+        ),
+        'geo' => array(
+            '@type' => 'GeoCoordinates',
+            'latitude' => $contactInformation['office_coordinates']['latitude'] ?? '4.8112763',
+            'longitude' => $contactInformation['office_coordinates']['longitude'] ?? '31.5991651'
+        )
+    )
+);
 $styleVersion = (string) (@filemtime(__DIR__ . '/../assets/css/style.css') ?: ($assetVersion ?? '1'));
 $responsiveVersion = (string) (@filemtime(__DIR__ . '/../assets/css/responsive.css') ?: ($assetVersion ?? '1'));
 ?>
@@ -47,11 +61,15 @@ $responsiveVersion = (string) (@filemtime(__DIR__ . '/../assets/css/responsive.c
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo e($pageDescription); ?>">
-    <title><?php echo e($pageTitle); ?> | <?php echo e($siteConfig['site_name']); ?></title>
-    <meta property="og:title" content="<?php echo e($pageTitle); ?>">
+    <meta name="robots" content="<?php echo e($robotsMeta); ?>">
+    <title><?php echo e($siteTitle); ?></title>
+    <meta property="og:title" content="<?php echo e($siteTitle); ?>">
     <meta property="og:description" content="<?php echo e($pageDescription); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="<?php echo site_url('assets/images/hero/hero-graphic.svg'); ?>">
+    <meta property="og:url" content="<?php echo e($canonicalUrl); ?>">
+    <meta property="og:image" content="<?php echo e(production_asset_url('assets/images/logo/ssvdp-logo-cutout.png')); ?>">
+    <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
+    <script type="application/ld+json"><?php echo json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?></script>
     <link rel="icon" href="<?php echo site_url('assets/images/logo/ssvdp-logo.jpg'); ?>" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

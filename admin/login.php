@@ -18,14 +18,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = (string) ($_POST['password'] ?? '');
     $pdo = admin_db();
     $ip = admin_client_ip();
-    $genericError = 'Unable to sign in. Please check your credentials or try again later.';
+    $genericError = 'Invalid login details.';
 
     if ($pdo && $login !== '' && !admin_login_is_blocked($pdo, $login, $ip)) {
         $stmt = $pdo->prepare("SELECT * FROM admin_users WHERE (email = ? OR username = ?) AND status = 'active' LIMIT 1");
         $stmt->execute([$login, $login]);
         $user = $stmt->fetch();
-        if ($user && password_verify($password, $user['password_hash'])) {
+        $passwordValid = $user && password_verify($password, $user['password_hash']);
+        $legacyPlaintext = false;
+        if (!$passwordValid && $user) {
+            $hashInfo = password_get_info((string) $user['password_hash']);
+            $legacyPlaintext = (int) ($hashInfo['algo'] ?? 0) === 0 && hash_equals((string) $user['password_hash'], $password);
+            $passwordValid = $legacyPlaintext;
+        }
+        if ($user && $passwordValid) {
             admin_record_login_attempt($pdo, $login, $ip, true);
+            if ($legacyPlaintext || password_needs_rehash((string) $user['password_hash'], PASSWORD_DEFAULT)) {
+                $pdo->prepare('UPDATE admin_users SET password_hash = ?, password_changed_at = COALESCE(password_changed_at, NOW()) WHERE id = ?')->execute([password_hash($password, PASSWORD_DEFAULT), (int) $user['id']]);
+            }
             session_regenerate_id(true);
             $_SESSION['admin_user_id'] = (int) $user['id'];
             $_SESSION['admin_started_at'] = time();
@@ -47,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Admin Login | SSVP South Sudan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/admin.css'); ?>">

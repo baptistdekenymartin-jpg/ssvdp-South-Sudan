@@ -1,6 +1,7 @@
 <?php
 $pageTitle = 'News Story';
 $pageDescription = 'Latest news from SSVP South Sudan.';
+$pageRobots = 'noindex, follow';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/news-content.php';
 

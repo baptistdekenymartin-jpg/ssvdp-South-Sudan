@@ -4,23 +4,9 @@
 
     const source = form.querySelector('[data-rich-source]');
     const editor = form.querySelector('[data-rich-editable]');
-    const title = form.querySelector('[data-slug-title]');
-    const slug = form.querySelector('[data-slug-input]');
-    let slugTouched = Boolean(slug && slug.value.trim());
 
     function syncSource() {
         if (source && editor) source.value = editor.innerHTML.trim();
-    }
-
-    function slugify(value) {
-        return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-    }
-
-    if (slug) slug.addEventListener('input', () => { slugTouched = true; });
-    if (title && slug) {
-        title.addEventListener('input', () => {
-            if (!slugTouched || slug.value.trim() === '') slug.value = slugify(title.value);
-        });
     }
 
     if (editor) {

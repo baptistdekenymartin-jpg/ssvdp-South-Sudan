@@ -1,0 +1,27 @@
+Options -Indexes
+ServerSignature Off
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{ENV:HTTPS} !on
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1|\[::1\])(:[0-9]+)?$ [NC]
+    RewriteCond %{ENV:SSVDP_FORCE_HTTPS} =1 [OR]
+    RewriteCond %{ENV:SSVDP_PRODUCTION} =1
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+<FilesMatch "(^\.env|^\.git|\.sql$|\.bak$|\.backup$|\.old$|\.log$|composer\.(json|lock)$|package(-lock)?\.json$|phpunit\.xml$)">
+    Require all denied
+</FilesMatch>
+
+RedirectMatch 404 /\.git(/|$)
+RedirectMatch 404 /\.runtime(/|$)
+RedirectMatch 404 /backups?(/|$)
+RedirectMatch 404 /database/.*\.(sql|dump|bak|backup|gz)$
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>

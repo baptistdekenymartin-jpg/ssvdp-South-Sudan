@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../includes/communication.php';
-$adminUser = admin_require_auth();
+$adminUser = admin_require_permission('communications.manage');
 $pdo = admin_require_db();
 $adminTitle = 'View Get Involved Request';
 $activeNav = 'get-involved';

@@ -146,24 +146,8 @@ function ssvdp_public_news(array $fallback): array
     }, $rows);
 }
 
-function ssvdp_public_featured_activity(array $fallback): array
+function ssvdp_featured_activity_from_row(array $fallback, array $row): array
 {
-    $pdo = ssvdp_db();
-    if (!$pdo || !ssvdp_table_exists($pdo, 'featured_activity')) {
-        return $fallback;
-    }
-
-    try {
-        $stmt = $pdo->query("SELECT * FROM featured_activity WHERE status = 'active' ORDER BY updated_at DESC, id DESC LIMIT 1");
-        $row = $stmt->fetch();
-    } catch (Throwable $exception) {
-        return $fallback;
-    }
-
-    if (!$row) {
-        return $fallback;
-    }
-
     $fallback['label'] = ssvdp_public_plain_text($row['label'] ?: $fallback['label']);
     $fallback['title'] = ssvdp_public_plain_text($row['title'] ?: $fallback['title']);
     $fallback['date'] = ssvdp_public_plain_text($row['date_label'] ?: ssvdp_format_date($row['activity_date'], $fallback['date']));
@@ -173,10 +157,31 @@ function ssvdp_public_featured_activity(array $fallback): array
     $fallback['excerpt'] = ssvdp_public_teaser($row['description'] ?: $fallback['excerpt'], 320);
     $fallback['guests'] = ssvdp_public_teaser($row['guests'] ?: ($fallback['guests'] ?? ''), 180);
     $fallback['image'] = $row['image_path'] ?: ($fallback['image'] ?? 'assets/images/work/women training.jpg');
-    $fallback['button_label'] = ssvdp_public_plain_text($row['button_label'] ?: $fallback['button_label']);
+    $fallback['button_label'] = 'Read Full Activity Report';
     $fallback['button_link'] = ssvdp_public_url($row['button_link'] ?: $fallback['button_link'], $fallback['button_link']);
 
     return $fallback;
+}
+
+function ssvdp_public_featured_activity(array $fallback): array
+{
+    $pdo = ssvdp_db();
+    if (!$pdo || !ssvdp_table_exists($pdo, 'featured_activity')) {
+        return $fallback;
+    }
+
+    try {
+        $stmt = $pdo->query("SELECT * FROM featured_activity WHERE status IN ('published','active') ORDER BY updated_at DESC, id DESC LIMIT 1");
+        $row = $stmt->fetch();
+    } catch (Throwable $exception) {
+        return $fallback;
+    }
+
+    if (!$row) {
+        return $fallback;
+    }
+
+    return ssvdp_featured_activity_from_row($fallback, $row);
 }
 
 function ssvdp_public_gallery_items(): array
@@ -209,22 +214,169 @@ function ssvdp_public_gallery_items(): array
 
 
 
+
+function ssvdp_public_gallery_albums(): array
+{
+    $pdo = ssvdp_db();
+    if (!$pdo || !ssvdp_table_exists($pdo, 'gallery_albums') || !ssvdp_table_exists($pdo, 'gallery_photos')) {
+        return array();
+    }
+
+    try {
+        $albumRows = $pdo->query("SELECT id, title, category, activity_date, location, description, created_at FROM gallery_albums WHERE status = 'published' ORDER BY COALESCE(activity_date, created_at) DESC, id DESC")->fetchAll();
+    } catch (Throwable $exception) {
+        return array();
+    }
+
+    if (!$albumRows) {
+        return array();
+    }
+
+    $albums = array();
+    $albumIds = array();
+    foreach ($albumRows as $row) {
+        $albumId = (int) $row['id'];
+        $category = $row['category'] ?: 'Community Activities';
+        $albumIds[] = $albumId;
+        $albums[$albumId] = array(
+            'id' => $albumId,
+            'title' => ssvdp_public_plain_text($row['title'] ?: 'Gallery Album'),
+            'category' => ssvdp_public_plain_text($category),
+            'category_slug' => ssvdp_slugify($category),
+            'location' => ssvdp_public_plain_text($row['location'] ?: ''),
+            'date' => ssvdp_format_date($row['activity_date'], ''),
+            'description' => ssvdp_public_teaser($row['description'] ?: '', 220),
+            'photos' => array()
+        );
+    }
+
+    $placeholders = implode(',', array_fill(0, count($albumIds), '?'));
+    try {
+        $stmt = $pdo->prepare("SELECT album_id, image_path, caption FROM gallery_photos WHERE album_id IN ($placeholders) ORDER BY album_id ASC, sort_order ASC, id ASC");
+        foreach ($albumIds as $index => $albumId) {
+            $stmt->bindValue($index + 1, $albumId, PDO::PARAM_INT);
+        }
+        $stmt->execute();
+        $photoRows = $stmt->fetchAll();
+    } catch (Throwable $exception) {
+        return array_values($albums);
+    }
+
+    foreach ($photoRows as $row) {
+        $albumId = (int) $row['album_id'];
+        if (!isset($albums[$albumId]) || count($albums[$albumId]['photos']) >= 6) {
+            continue;
+        }
+        $albums[$albumId]['photos'][] = array(
+            'image' => $row['image_path'],
+            'title' => ssvdp_public_teaser($row['caption'] ?: $albums[$albumId]['title'], 120),
+            'caption' => ssvdp_public_teaser($row['caption'] ?: '', 180),
+            'location' => $albums[$albumId]['location'],
+            'date' => $albums[$albumId]['date']
+        );
+    }
+
+    return array_values(array_filter($albums, static function (array $album): bool {
+        return !empty($album['photos']);
+    }));
+}
+
+function ssvdp_public_event_url(array $event): string
+{
+    $slug = trim((string) ($event['slug'] ?? ''));
+    if ($slug !== '') {
+        return 'event-detail.php?slug=' . rawurlencode($slug);
+    }
+    return 'event-detail.php?id=' . (int) ($event['id'] ?? 0);
+}
+
+function ssvdp_public_event_from_row(array $row): array
+{
+    $shortDescription = ssvdp_public_teaser($row['short_description'] ?: '', 180);
+    $event = array(
+        'id' => (int) $row['id'],
+        'title' => ssvdp_public_plain_text($row['title']),
+        'slug' => (string) ($row['slug'] ?? ''),
+        'type' => ssvdp_public_plain_text($row['type'] ?: 'Event'),
+        'short_description' => $shortDescription,
+        'full_description' => ssvdp_public_plain_text($row['full_description'] ?: ''),
+        'start_date' => (string) $row['start_date'],
+        'end_date' => (string) ($row['end_date'] ?? ''),
+        'start_time' => (string) ($row['start_time'] ?? ''),
+        'end_time' => (string) ($row['end_time'] ?? ''),
+        'location' => ssvdp_public_plain_text($row['location'] ?: ''),
+        'featured_image' => (string) ($row['featured_image'] ?? '')
+    );
+    $event['link'] = ssvdp_public_event_url($event);
+    return $event;
+}
+
 function ssvdp_public_events(int $limit = 3): array
 {
     $pdo = ssvdp_db();
     if (!$pdo || !ssvdp_table_exists($pdo, 'events')) { return array(); }
     try {
-        $stmt = $pdo->prepare("SELECT title, type, short_description, start_date, end_date, start_time, location FROM events WHERE status = 'published' AND start_date >= CURDATE() ORDER BY start_date ASC, start_time ASC, id DESC LIMIT ?");
-        $stmt->bindValue(1, $limit, PDO::PARAM_INT);
-        $stmt->execute();
-        return array_map(static function (array $row): array {
-            $row['title'] = ssvdp_public_plain_text($row['title']);
-            $row['type'] = ssvdp_public_plain_text($row['type']);
-            $row['short_description'] = ssvdp_public_teaser($row['short_description'], 220);
-            $row['location'] = ssvdp_public_plain_text($row['location']);
-            return $row;
-        }, $stmt->fetchAll());
+        $sql = "SELECT id, title, slug, type, short_description, full_description, start_date, end_date, start_time, end_time, location, featured_image FROM events WHERE status = 'published' ORDER BY start_date ASC, COALESCE(start_time, '00:00:00') ASC, id DESC";
+        if ($limit > 0) {
+            $sql .= ' LIMIT ?';
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, $limit, PDO::PARAM_INT);
+            $stmt->execute();
+        } else {
+            $stmt = $pdo->query($sql);
+        }
+        return array_map('ssvdp_public_event_from_row', $stmt->fetchAll());
     } catch (Throwable $exception) { return array(); }
+}
+
+function ssvdp_public_event_detail(?string $slug, int $id = 0): ?array
+{
+    $pdo = ssvdp_db();
+    if (!$pdo || !ssvdp_table_exists($pdo, 'events')) { return null; }
+
+    try {
+        if ($slug !== null && trim($slug) !== '') {
+            $stmt = $pdo->prepare("SELECT id, title, slug, type, short_description, full_description, start_date, end_date, start_time, end_time, location, featured_image FROM events WHERE status = 'published' AND slug = ? LIMIT 1");
+            $stmt->execute([trim($slug)]);
+        } elseif ($id > 0) {
+            $stmt = $pdo->prepare("SELECT id, title, slug, type, short_description, full_description, start_date, end_date, start_time, end_time, location, featured_image FROM events WHERE status = 'published' AND id = ? LIMIT 1");
+            $stmt->execute([$id]);
+        } else {
+            return null;
+        }
+        $row = $stmt->fetch();
+    } catch (Throwable $exception) {
+        return null;
+    }
+
+    return $row ? ssvdp_public_event_from_row($row) : null;
+}
+
+function ssvdp_public_programme_update_url(array $update): string
+{
+    $slug = trim((string) ($update['slug'] ?? ''));
+    if ($slug !== '') {
+        return 'programme-update-detail.php?slug=' . rawurlencode($slug);
+    }
+    return 'programme-update-detail.php?id=' . (int) ($update['id'] ?? 0);
+}
+
+function ssvdp_public_programme_update_from_row(array $row): array
+{
+    $update = array(
+        'id' => (int) $row['id'],
+        'programme' => ssvdp_public_plain_text($row['programme']),
+        'title' => ssvdp_public_plain_text($row['title']),
+        'slug' => (string) ($row['slug'] ?? ''),
+        'short_description' => ssvdp_public_teaser($row['short_description'], 220),
+        'full_description' => ssvdp_public_plain_text($row['full_description'] ?? ''),
+        'update_date' => (string) $row['update_date'],
+        'date' => ssvdp_format_date($row['update_date'], ''),
+        'location' => ssvdp_public_plain_text($row['location']),
+        'featured_image' => (string) ($row['featured_image'] ?? '')
+    );
+    $update['link'] = ssvdp_public_programme_update_url($update);
+    return $update;
 }
 
 function ssvdp_public_programme_updates(int $limit = 3): array
@@ -232,17 +384,40 @@ function ssvdp_public_programme_updates(int $limit = 3): array
     $pdo = ssvdp_db();
     if (!$pdo || !ssvdp_table_exists($pdo, 'programme_updates')) { return array(); }
     try {
-        $stmt = $pdo->prepare("SELECT programme, title, short_description, update_date, location FROM programme_updates WHERE status = 'published' ORDER BY update_date DESC, id DESC LIMIT ?");
-        $stmt->bindValue(1, $limit, PDO::PARAM_INT);
-        $stmt->execute();
-        return array_map(static function (array $row): array {
-            $row['programme'] = ssvdp_public_plain_text($row['programme']);
-            $row['title'] = ssvdp_public_plain_text($row['title']);
-            $row['short_description'] = ssvdp_public_teaser($row['short_description'], 220);
-            $row['location'] = ssvdp_public_plain_text($row['location']);
-            return $row;
-        }, $stmt->fetchAll());
+        $sql = "SELECT id, programme, title, slug, short_description, full_description, update_date, location, featured_image FROM programme_updates WHERE status = 'published' ORDER BY update_date DESC, id DESC";
+        if ($limit > 0) {
+            $sql .= ' LIMIT ?';
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, $limit, PDO::PARAM_INT);
+            $stmt->execute();
+        } else {
+            $stmt = $pdo->query($sql);
+        }
+        return array_map('ssvdp_public_programme_update_from_row', $stmt->fetchAll());
     } catch (Throwable $exception) { return array(); }
+}
+
+function ssvdp_public_programme_update_detail(?string $slug, int $id = 0): ?array
+{
+    $pdo = ssvdp_db();
+    if (!$pdo || !ssvdp_table_exists($pdo, 'programme_updates')) { return null; }
+
+    try {
+        if ($slug !== null && trim($slug) !== '') {
+            $stmt = $pdo->prepare("SELECT id, programme, title, slug, short_description, full_description, update_date, location, featured_image FROM programme_updates WHERE status = 'published' AND slug = ? LIMIT 1");
+            $stmt->execute([trim($slug)]);
+        } elseif ($id > 0) {
+            $stmt = $pdo->prepare("SELECT id, programme, title, slug, short_description, full_description, update_date, location, featured_image FROM programme_updates WHERE status = 'published' AND id = ? LIMIT 1");
+            $stmt->execute([$id]);
+        } else {
+            return null;
+        }
+        $row = $stmt->fetch();
+    } catch (Throwable $exception) {
+        return null;
+    }
+
+    return $row ? ssvdp_public_programme_update_from_row($row) : null;
 }
 
 function ssvdp_public_impact_updates(int $limit = 3): array
@@ -269,7 +444,7 @@ function ssvdp_public_partners(array $fallback): array
     $pdo = ssvdp_db();
     if (!$pdo || !ssvdp_table_exists($pdo, 'partners')) { return $fallback; }
     try {
-        $rows = $pdo->query("SELECT name, type, logo_path, website_url, description FROM partners WHERE status = 'active' ORDER BY display_order ASC, name ASC")->fetchAll();
+        $rows = $pdo->query("SELECT name, type, logo_path, website_url, description FROM partners WHERE status IN ('published','active') ORDER BY display_order ASC, name ASC")->fetchAll();
     } catch (Throwable $exception) { return $fallback; }
     if (!$rows) { return $fallback; }
     $slotCount = count($fallback);

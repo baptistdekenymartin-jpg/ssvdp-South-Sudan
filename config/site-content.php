@@ -147,7 +147,7 @@ $whereWeWork = array(
     'archdiocese' => 'Archdiocese of Juba',
     'county' => 'Juba County',
     'communities_reached' => '4',
-    'office_location' => 'Lologo 2, North of Freedom Bridge, Juba, South Sudan.',
+    'office_location' => 'Office: Lologo 2, North of Freedom Bridge, Juba, South Sudan',
     'paragraph' => 'SSVP South Sudan currently serves communities within Central Equatoria State through the Archdiocese of Juba, supporting vulnerable people through skills development, education, health, nutrition and humanitarian programmes.',
     'button_label' => 'View Areas of Operation',
     'button_link' => 'programmes.php#areas',
@@ -156,7 +156,7 @@ $whereWeWork = array(
         array('label' => 'Archdiocese', 'value' => 'Archdiocese of Juba', 'icon' => 'bi-building'),
         array('label' => 'County', 'value' => 'Juba County', 'icon' => 'bi-signpost'),
         array('label' => 'Communities reached', 'value' => '4', 'icon' => 'bi-geo-alt'),
-        array('label' => 'Office location', 'value' => 'Lologo 2, North of Freedom Bridge, Juba, South Sudan.', 'icon' => 'bi-pin-map')
+        array('label' => 'Office location', 'value' => 'Office: Lologo 2, North of Freedom Bridge, Juba, South Sudan', 'icon' => 'bi-pin-map')
     )
 );
 
@@ -172,8 +172,8 @@ $latestNews = array(
     ),
     array(
         'title' => 'Community Programme Update',
-        'excerpt' => 'Approved community programme updates will be published here when confirmed content is available.',
-        'date' => 'To be updated',
+        'excerpt' => 'Updates on SSVP community programmes, activities and achievements supporting vulnerable communities across South Sudan.',
+        'date' => 'Community Development',
         'category' => 'Programme Update',
         'placeholder' => 'Approved photograph will be added later.',
         'image' => 'assets/images/work/Picture77.jpg',
@@ -181,8 +181,8 @@ $latestNews = array(
     ),
     array(
         'title' => 'Youth Skills Development Update',
-        'excerpt' => 'Future youth skills development updates will be shared after official review and approval.',
-        'date' => 'To be updated',
+        'excerpt' => 'Highlights from SSVP youth skills development, vocational training and empowerment activities.',
+        'date' => 'Skills & Livelihoods',
         'category' => 'Youth Empowerment',
         'placeholder' => 'Approved photograph will be added later.',
         'image' => 'assets/images/work/Picture25.jpg',
@@ -408,25 +408,34 @@ $contactEngagement = array(
 );
 
 $contactInformation = array(
-    'telephone' => '09xxxxxxx',
-    'telephone_link' => '',
-    'whatsapp' => '09xxxxxxx',
+    'telephone' => "+211 910 085 563\n+211 921 453 844",
+    'telephone_numbers' => array(
+        array('label' => '+211 910 085 563', 'link' => 'tel:+211910085563'),
+        array('label' => '+211 921 453 844', 'link' => 'tel:+211921453844')
+    ),
+    'telephone_link' => 'tel:+211910085563',
+    'whatsapp' => "+211 910 085 563\n+211 921 453 844",
     'whatsapp_url' => '',
     'emails' => array(
         'xxxxxxxxxxxx'
     ),
-    'office' => 'Lologo 2, North of Freedom Bridge, Juba, South Sudan.',
+    'office' => 'Office: Lologo 2, North of Freedom Bridge, Juba, South Sudan',
+    'office_coordinates' => array('latitude' => '4.8112763', 'longitude' => '31.5991651'),
+    'google_maps_link' => 'https://maps.app.goo.gl/xEzuFoqpP916CwBi8?g_st=ac',
     'office_schedule' => '8 hours per day, 5 days per week',
     'facebook' => 'https://www.facebook.com/share/1AwAfW5Ejx/'
 );
 
 $siteConfig = array(
-    'site_name' => 'Society of St. Vincent de Paul South Sudan',
+    'site_name' => 'SSVP South Sudan',
     'site_tagline' => 'Serviens in Spe',
-    'site_description' => 'SSVP South Sudan empowers young people and vulnerable communities through practical skills training, inclusive education, sustainable livelihood opportunities and compassionate humanitarian support.',
+    'site_description' => 'SSVP South Sudan, The Society of St. Vincent de Paul in South Sudan, supports community development through practical skills training, education, healthcare, livelihoods and humanitarian assistance.',
     'site_url' => '/ssvdp-south-sudan/',
+    'production_url' => 'https://www.ssvp-ss.org/',
     'default_page_title' => 'SSVP South Sudan',
     'logo' => 'assets/images/logo/ssvdp-logo-cutout.png',
+    'organization_name' => 'The Society of St. Vincent de Paul (SSVP) – South Sudan',
+    'organization_alternate_name' => 'SSVP South Sudan',
     'hero' => $hero,
     'heroFeatures' => $heroFeatures,
     'values' => $values,
@@ -468,6 +477,18 @@ function site_url($path = '') {
     return $base . '/' . ltrim((string) $path, '/');
 }
 
+function production_url($path = '') {
+    $base = rtrim((string) ($GLOBALS['siteConfig']['production_url'] ?? 'https://www.ssvp-ss.org/'), '/');
+    $path = ltrim((string) $path, '/');
+    if ($path === '' || $path === 'index.php' || $path === 'index.html') {
+        return $base . '/';
+    }
+    return $base . '/' . $path;
+}
+
+function production_asset_url($path = '') {
+    return production_url($path);
+}
 function e($value) {
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }

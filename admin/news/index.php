@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../includes/auth.php';
-$adminUser = admin_require_auth();
+$adminUser = admin_require_permission('content.manage');
 $pdo = admin_require_db();
 admin_require_csrf();
 
@@ -60,19 +60,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = (int) ($_POST['id'] ?? 0);
     $action = (string) ($_POST['action'] ?? '');
     if ($id > 0) {
-        if ($action === 'publish') {
-            $pdo->prepare("UPDATE news SET status = 'published', published_at = COALESCE(published_at, NOW()) WHERE id = ?")->execute([$id]);
-            admin_log('published', 'news', $id, 'News story published.');
-            admin_flash('success', 'News story published.');
-        } elseif ($action === 'unpublish') {
-            $pdo->prepare("UPDATE news SET status = 'draft' WHERE id = ?")->execute([$id]);
-            admin_log('unpublished', 'news', $id, 'News story unpublished.');
-            admin_flash('success', 'News story unpublished.');
-        } elseif ($action === 'archive') {
-            $pdo->prepare('UPDATE news SET archived_at = NOW(), status = \'draft\' WHERE id = ?')->execute([$id]);
-            admin_log('archived', 'news', $id, 'News story archived.');
-            admin_flash('success', 'News story archived.');
-        } elseif ($action === 'delete') {
+        if (in_array($action, array('publish','unpublish','archive','return_draft','submit_review'), true)) {
+            $stmt = $pdo->prepare('SELECT * FROM news WHERE id = ? LIMIT 1');
+            $stmt->execute([$id]);
+            $targetStory = $stmt->fetch();
+            if (!$targetStory || !admin_can_transition_content($action, $targetStory)) { admin_forbidden(); }
+            $newStatus = admin_content_status_for_action($action, $targetStory);
+            $publishedSql = $newStatus === 'published' ? ', published_at = COALESCE(published_at, NOW())' : '';
+            $archiveSql = $newStatus === 'archived' ? ', archived_at = NOW()' : '';
+            $pdo->prepare('UPDATE news SET status = ?' . $publishedSql . $archiveSql . ' WHERE id = ?')->execute([$newStatus, $id]);
+            admin_log($action, 'news', $id, 'News story workflow status changed.');
+            admin_flash('success', 'News story updated.');        } elseif ($action === 'delete') {
             if (!admin_is_administrator($adminUser)) {
                 admin_forbidden();
             }
@@ -153,7 +151,7 @@ require __DIR__ . '/../includes/admin-header.php';
     <form class="admin-filters" method="get">
         <input class="admin-input" style="width:220px" name="search" placeholder="Search news" value="<?php echo e($search); ?>">
         <select class="admin-select" style="width:220px" name="category"><option value="">All categories</option><?php foreach ($categories as $cat) : ?><option value="<?php echo e($cat); ?>" <?php echo $category === $cat ? 'selected' : ''; ?>><?php echo e($cat); ?></option><?php endforeach; ?></select>
-        <select class="admin-select" style="width:150px" name="status"><option value="">All statuses</option><option value="draft" <?php echo $status === 'draft' ? 'selected' : ''; ?>>Draft</option><option value="published" <?php echo $status === 'published' ? 'selected' : ''; ?>>Published</option></select>
+        <select class="admin-select" style="width:180px" name="status"><option value="">All statuses</option><option value="draft" <?php echo $status === 'draft' ? 'selected' : ''; ?>>Draft</option><option value="pending_review" <?php echo $status === 'pending_review' ? 'selected' : ''; ?>>Pending Review</option><option value="published" <?php echo $status === 'published' ? 'selected' : ''; ?>>Published</option><option value="archived" <?php echo $status === 'archived' ? 'selected' : ''; ?>>Archived</option></select>
         <button class="admin-button admin-button--light" type="submit">Filter</button>
     </form>
     <a class="admin-button" href="<?php echo admin_url('news/add.php'); ?>"><i class="bi bi-plus-lg" aria-hidden="true"></i> Add News</a>

@@ -1,5 +1,5 @@
 ALTER TABLE `admin_users`
-  ADD COLUMN IF NOT EXISTS `role` ENUM('administrator','editor') NOT NULL DEFAULT 'administrator' AFTER `password_hash`,
+  ADD COLUMN IF NOT EXISTS `role` ENUM('administrator','editor','reviewer') NOT NULL DEFAULT 'administrator' AFTER `password_hash`,
   ADD COLUMN IF NOT EXISTS `two_factor_enabled` TINYINT(1) NOT NULL DEFAULT 0 AFTER `last_login`,
   ADD COLUMN IF NOT EXISTS `two_factor_secret` VARCHAR(255) NULL AFTER `two_factor_enabled`,
   ADD COLUMN IF NOT EXISTS `password_changed_at` DATETIME NULL AFTER `two_factor_secret`;

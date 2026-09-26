@@ -7,6 +7,10 @@ require_once __DIR__ . '/includes/public-submissions.php';
 $contactResult = ssvdp_handle_contact_submission();
 
 $primaryEmail = $contactInformation['emails'][0] ?? 'Email address to be confirmed';
+$officeMapLatitude = $contactInformation['office_coordinates']['latitude'] ?? '4.8112763';
+$officeMapLongitude = $contactInformation['office_coordinates']['longitude'] ?? '31.5991651';
+$officeMapQuery = rawurlencode($officeMapLatitude . ',' . $officeMapLongitude);
+$officeDirectionsUrl = $contactInformation['google_maps_link'] ?? 'https://maps.app.goo.gl/xEzuFoqpP916CwBi8?g_st=ac';
 ?>
 
 <div class="contact-page">
@@ -37,7 +41,11 @@ $primaryEmail = $contactInformation['emails'][0] ?? 'Email address to be confirm
                         <span><i class="bi bi-telephone" aria-hidden="true"></i></span>
                         <div>
                             <h3>Phone Number</h3>
-                            <p><?php echo e($contactInformation['telephone'] ?? '09xxxxxxx'); ?></p>
+                            <p>
+                                <?php foreach (($contactInformation['telephone_numbers'] ?? array()) as $telephoneNumber) : ?>
+                                    <a href="<?php echo e($telephoneNumber['link']); ?>"><?php echo e($telephoneNumber['label']); ?></a><br>
+                                <?php endforeach; ?>
+                            </p>
                         </div>
                     </article>
                     <article class="contact-info-item">
@@ -99,11 +107,12 @@ $primaryEmail = $contactInformation['emails'][0] ?? 'Email address to be confirm
                 <div class="contact-map-copy">
                     <p class="section-label">VISIT OR REACH US</p>
                     <h2 id="contact-map-heading">Find SSVP South Sudan</h2>
-                    <p>Confirmed map details can be added here when the official Google Maps embed is available.</p>
+                    <div class="contact-map-actions">
+                        <a class="btn btn-primary" href="<?php echo e($officeDirectionsUrl); ?>" target="_blank" rel="noopener noreferrer">Get Directions <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-                <div class="contact-map-placeholder" role="img" aria-label="Google Maps embed placeholder for SSVP South Sudan office location">
-                    <i class="bi bi-map" aria-hidden="true"></i>
-                    <span>Google Maps embed ready</span>
+                <div class="contact-map-frame">
+                    <iframe src="<?php echo e('https://www.google.com/maps?q=' . $officeMapQuery . '&z=18&output=embed'); ?>" title="Google map showing SSVP South Sudan office location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>

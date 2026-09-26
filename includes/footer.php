@@ -44,12 +44,16 @@
             <section class="footer-column" aria-labelledby="footer-contact-heading">
                 <h3 id="footer-contact-heading">Contact Us</h3>
                 <ul class="footer-contact-list">
-                    <li><i class="bi bi-telephone" aria-hidden="true"></i><span><strong>Phone:</strong> <?php echo e($contactInformation['telephone']); ?></span></li>
+                    <li><i class="bi bi-telephone" aria-hidden="true"></i><span><strong>Phone:</strong>
+                        <?php foreach (($contactInformation['telephone_numbers'] ?? array()) as $telephoneNumber) : ?>
+                            <a href="<?php echo e($telephoneNumber['link']); ?>"><?php echo e($telephoneNumber['label']); ?></a><br>
+                        <?php endforeach; ?>
+                    </span></li>
 
                     <?php foreach ($contactInformation['emails'] as $email) : ?>
                         <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>Email:</strong> <?php echo e($email); ?></span></li>
                     <?php endforeach; ?>
-                    <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><strong>Office:</strong> <?php echo e($contactInformation['office']); ?></span></li>
+                    <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><?php echo e($contactInformation['office']); ?></span></li>
                     <li><i class="bi bi-clock" aria-hidden="true"></i><span><strong>Office schedule:</strong> <?php echo e($contactInformation['office_schedule']); ?></span></li>
                 </ul>
             </section>

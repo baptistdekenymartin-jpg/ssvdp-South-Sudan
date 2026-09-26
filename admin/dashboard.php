@@ -9,11 +9,10 @@ function dashboard_count(PDO $pdo, string $sql): int { try { return (int) $pdo->
 $publishedNews = dashboard_count($pdo, "SELECT COUNT(*) FROM news WHERE status = 'published' AND archived_at IS NULL");
 $draftNews = dashboard_count($pdo, "SELECT COUNT(*) FROM news WHERE status = 'draft' AND archived_at IS NULL");
 $galleryPhotos = dashboard_count($pdo, "SELECT COUNT(*) FROM gallery_photos p INNER JOIN gallery_albums a ON a.id = p.album_id WHERE a.status = 'published'");
-$featuredActive = dashboard_count($pdo, "SELECT COUNT(*) FROM featured_activity WHERE status = 'active'") > 0 ? 'Active' : 'Not Set';
+$featuredActive = dashboard_count($pdo, "SELECT COUNT(*) FROM featured_activity WHERE status IN ('published','active')") > 0 ? 'Published' : 'Not Set';
 $upcomingEvents = dashboard_count($pdo, "SELECT COUNT(*) FROM events WHERE status = 'published' AND start_date >= CURDATE()");
 $publishedProgrammeUpdates = dashboard_count($pdo, "SELECT COUNT(*) FROM programme_updates WHERE status = 'published'");
-$activePartners = dashboard_count($pdo, "SELECT COUNT(*) FROM partners WHERE status = 'active'");
-$publishedDocuments = dashboard_count($pdo, "SELECT COUNT(*) FROM documents WHERE status = 'published'");
+$activePartners = dashboard_count($pdo, "SELECT COUNT(*) FROM partners WHERE status IN ('published','active')");
 $newContactMessages = dashboard_count($pdo, "SELECT COUNT(*) FROM contact_messages WHERE status = 'new'");
 $newGetInvolvedRequests = dashboard_count($pdo, "SELECT COUNT(*) FROM get_involved_submissions WHERE status = 'new'");
 $activeNewsletterSubscribers = dashboard_count($pdo, "SELECT COUNT(*) FROM newsletter_subscribers WHERE status = 'active'");
@@ -37,7 +36,6 @@ require __DIR__ . '/includes/admin-header.php';
     <article class="admin-stat"><i class="bi bi-calendar-event" aria-hidden="true"></i><div><span>Upcoming Events</span><strong><?php echo e((string) $upcomingEvents); ?></strong></div></article>
     <article class="admin-stat"><i class="bi bi-clipboard-data" aria-hidden="true"></i><div><span>Programme Updates</span><strong><?php echo e((string) $publishedProgrammeUpdates); ?></strong></div></article>
     <article class="admin-stat"><i class="bi bi-handshake" aria-hidden="true"></i><div><span>Active Partners</span><strong><?php echo e((string) $activePartners); ?></strong></div></article>
-    <article class="admin-stat"><i class="bi bi-file-earmark-text" aria-hidden="true"></i><div><span>Published Documents</span><strong><?php echo e((string) $publishedDocuments); ?></strong></div></article>
 </section>
 <section class="admin-stats" aria-label="Communication status">
     <article class="admin-stat"><i class="bi bi-envelope" aria-hidden="true"></i><div><span>New Messages</span><strong><?php echo e((string) $newContactMessages); ?></strong></div></article>

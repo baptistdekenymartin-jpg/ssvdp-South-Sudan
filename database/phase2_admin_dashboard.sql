@@ -1,4 +1,4 @@
-﻿CREATE DATABASE IF NOT EXISTS `ssvdp_south_sudan` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `ssvdp_south_sudan` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `ssvdp_south_sudan`;
 
 CREATE TABLE IF NOT EXISTS `events` (
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `end_time` TIME NULL DEFAULT NULL,
   `location` VARCHAR(180) DEFAULT NULL,
   `featured_image` VARCHAR(255) DEFAULT NULL,
-  `status` ENUM('draft','published','archived') NOT NULL DEFAULT 'draft',
+  `status` ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft',
   `created_by` INT UNSIGNED NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `programme_updates` (
   `short_description` TEXT DEFAULT NULL,
   `full_description` LONGTEXT DEFAULT NULL,
   `featured_image` VARCHAR(255) DEFAULT NULL,
-  `status` ENUM('draft','published','archived') NOT NULL DEFAULT 'draft',
+  `status` ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft',
   `created_by` INT UNSIGNED NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -43,12 +43,13 @@ CREATE TABLE IF NOT EXISTS `programme_updates` (
 CREATE TABLE IF NOT EXISTS `impact_updates` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
+  `impact_type` VARCHAR(120) NOT NULL DEFAULT 'Beneficiaries Reached',
   `value` VARCHAR(80) DEFAULT NULL,
   `unit` VARCHAR(80) DEFAULT NULL,
   `programme` VARCHAR(160) DEFAULT NULL,
   `description` TEXT NOT NULL,
   `impact_date` DATE NOT NULL,
-  `status` ENUM('draft','published','archived') NOT NULL DEFAULT 'draft',
+  `status` ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft',
   `created_by` INT UNSIGNED NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -64,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `documents` (
   `file_path` VARCHAR(255) NOT NULL,
   `file_type` VARCHAR(80) DEFAULT NULL,
   `published_at` DATE NULL DEFAULT NULL,
-  `status` ENUM('draft','published','archived') NOT NULL DEFAULT 'draft',
+  `status` ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft',
   `created_by` INT UNSIGNED NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -80,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `partners` (
   `website_url` VARCHAR(255) DEFAULT NULL,
   `description` TEXT DEFAULT NULL,
   `display_order` INT NOT NULL DEFAULT 0,
-  `status` ENUM('active','hidden','archived') NOT NULL DEFAULT 'active',
+  `status` ENUM('draft','pending_review','published','archived') NOT NULL DEFAULT 'draft',
   `created_by` INT UNSIGNED NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

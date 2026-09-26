@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../includes/communication.php';
-$adminUser = admin_require_auth();
+$adminUser = admin_require_permission('communications.manage');
 $pdo = admin_require_db();
 $adminTitle = 'View Message';
 $activeNav = 'messages';
@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     admin_require_csrf();
     $action = (string) ($_POST['action'] ?? '');
     $statuses = array('read' => 'read', 'unread' => 'new', 'contacted' => 'contacted', 'resolved' => 'resolved', 'archive' => 'archived');
+    if (!admin_can_communication_action($action, $adminUser)) { admin_forbidden(); }
     if ($action === 'delete') {
         admin_phase3_delete_row($pdo, 'contact_messages', $id, 'contact_messages', 'Contact message permanently deleted.');
         admin_flash('success', 'Message deleted.');

@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../includes/communication.php';
-$adminUser = admin_require_auth();
+$adminUser = admin_require_permission('communications.manage');
 $pdo = admin_require_db();
 admin_require_csrf();
 $adminTitle = 'Messages / Enquiries';
@@ -9,6 +9,7 @@ $activeNav = 'messages';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = (int) ($_POST['id'] ?? 0);
     $action = (string) ($_POST['action'] ?? '');
+    if (!admin_can_communication_action($action, $adminUser)) { admin_forbidden(); }
     $statuses = array('read' => 'read', 'unread' => 'new', 'contacted' => 'contacted', 'resolved' => 'resolved', 'archive' => 'archived');
     if ($id > 0 && isset($statuses[$action])) {
         admin_phase3_update_status($pdo, 'contact_messages', $id, $statuses[$action], 'contact_messages', 'Contact message status updated.');

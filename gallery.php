@@ -53,10 +53,7 @@ $moreMoments = array(
     array('image' => 'assets/images/gallery/nyarjwa-clinic/nyarjwa-clinic-02.jpg', 'title' => 'Nyarjwa Clinic', 'category' => 'Nyarjwa Clinic')
 );
 
-$dynamicGalleryItems = ssvdp_public_gallery_items();
-if ($dynamicGalleryItems) {
-    $galleryItems = array_merge($dynamicGalleryItems, $galleryItems);
-}
+$dynamicGalleryAlbums = ssvdp_public_gallery_albums();
 ?>
 
 <section class="gallery-hero section-reveal" aria-labelledby="gallery-page-title">
@@ -101,6 +98,36 @@ if ($dynamicGalleryItems) {
     </div>
 </section>
 
+
+<?php if (!empty($dynamicGalleryAlbums)) : ?>
+    <?php foreach ($dynamicGalleryAlbums as $dynamicAlbum) : ?>
+        <section class="gallery-vocational-section gallery-uploaded-section section-reveal" id="uploaded-gallery-album-<?php echo (int) $dynamicAlbum['id']; ?>" aria-labelledby="uploaded-gallery-album-heading-<?php echo (int) $dynamicAlbum['id']; ?>">
+            <div class="container">
+                <div class="section-heading gallery-heading">
+                    <p class="section-label"><?php echo e($dynamicAlbum['category']); ?></p>
+                    <h2 id="uploaded-gallery-album-heading-<?php echo (int) $dynamicAlbum['id']; ?>"><?php echo e($dynamicAlbum['title']); ?></h2>
+                    <?php if ($dynamicAlbum['location'] !== '' || $dynamicAlbum['date'] !== '') : ?>
+                        <p class="gallery-uploaded-meta"><?php echo e(trim($dynamicAlbum['location'] . ($dynamicAlbum['location'] !== '' && $dynamicAlbum['date'] !== '' ? ' | ' : '') . $dynamicAlbum['date'])); ?></p>
+                    <?php endif; ?>
+                    <?php if ($dynamicAlbum['description'] !== '') : ?><p><?php echo e($dynamicAlbum['description']); ?></p><?php endif; ?>
+                </div>
+                <div class="gallery-vocational-panel-wrap">
+                    <div class="gallery-vocational-grid gallery-uploaded-grid">
+                        <?php foreach ($dynamicAlbum['photos'] as $item) : ?>
+                            <button class="gallery-photo-item gallery-vocational-item" type="button" data-gallery-item data-category="<?php echo e($dynamicAlbum['category_slug']); ?>" data-src="<?php echo site_url($item['image']); ?>" data-title="<?php echo e($item['title']); ?>" data-caption="<?php echo e($item['caption']); ?>" data-location="<?php echo e($item['location']); ?>" data-date="<?php echo e($item['date']); ?>">
+                                <span class="gallery-photo-frame">
+                                    <img src="<?php echo site_url($item['image']); ?>" alt="<?php echo e($item['title']); ?>" loading="lazy" width="520" height="325" onerror="this.closest('.gallery-photo-frame').classList.add('is-missing'); this.remove();">
+                                    <span class="gallery-photo-placeholder">Photo coming soon</span>
+                                </span>
+                                <span class="gallery-photo-title"><?php echo e($item['title']); ?></span>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php endforeach; ?>
+<?php endif; ?>
 <section class="gallery-igp-section section-reveal" id="income-generating-projects-gallery" aria-labelledby="income-generating-projects-gallery-heading">
     <div class="container">
         <div class="section-heading gallery-heading">

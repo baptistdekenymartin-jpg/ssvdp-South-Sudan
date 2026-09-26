@@ -1,8 +1,8 @@
 Options -Indexes
-<FilesMatch "\.(php|php3|php4|php5|phtml|phar|cgi|pl|asp|aspx|jsp|sh|cmd|bat|exe|com|vbs|ps1)$">
+<FilesMatch "\.(php|php3|php4|php5|phtml|phar|cgi|pl|asp|aspx|jsp|sh|cmd|bat|exe|com|vbs|ps1|html?)$">
     Require all denied
 </FilesMatch>
 <IfModule mod_php.c>
     php_flag engine off
 </IfModule>
-AddType text/plain .php .php3 .php4 .php5 .phtml .phar .cgi .pl .asp .aspx .jsp .sh .cmd .bat .exe .com .vbs .ps1
+AddType text/plain .php .php3 .php4 .php5 .phtml .phar .cgi .pl .asp .aspx .jsp .sh .cmd .bat .exe .com .vbs .ps1 .html .htm
