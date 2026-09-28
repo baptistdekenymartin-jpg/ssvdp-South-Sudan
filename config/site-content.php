@@ -221,7 +221,7 @@ $ourWorkPage = array(
     ),
     'featured_projects' => array(
         'heading' => 'Featured Projects',
-        'text' => 'Explore some of SSVP South SudanÃ¢â‚¬â„¢s key projects supporting vulnerable communities through skills development, healthcare, agriculture, humanitarian assistance and sustainable livelihoods.',
+        'text' => 'Explore some of SSVP South Sudan’s key projects supporting vulnerable communities through skills development, healthcare, agriculture, humanitarian assistance and sustainable livelihoods.',
         'items' => array(
             array('title' => 'IDP Agricultural Training Project', 'location' => 'Kworijik, Luri', 'description' => 'Agricultural training designed to strengthen food security and promote self-reliance among internally displaced communities.', 'image' => 'assets/images/work/Agricultural.jpeg', 'link' => 'projects.php'),
             array('title' => 'Vocational Training Centre', 'location' => '', 'description' => 'Hands-on skills training in tailoring, building and construction, welding, general electricity, automobile mechanics, computer literacy and other practical trades.', 'image' => 'assets/images/work/vocational.jpeg', 'link' => 'projects.php'),

@@ -44,9 +44,9 @@ function ssvdp_security_headers(bool $admin = false): void
     header('Referrer-Policy: strict-origin-when-cross-origin');
     header('Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()');
 
-    $style = "'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net";
+    $style = "'self' 'unsafe-inline' https://cdn.jsdelivr.net";
     $script = "'self' 'unsafe-inline' https://cdn.jsdelivr.net";
-    $font = "'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:";
+    $font = "'self' https://cdn.jsdelivr.net data:";
     $image = "'self' data: blob:";
     $frame = "'self' https://www.google.com https://maps.google.com";
     $upgrade = ssvdp_is_https_request() && !ssvdp_is_local_request() ? '; upgrade-insecure-requests' : '';

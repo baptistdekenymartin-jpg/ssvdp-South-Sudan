@@ -60,7 +60,7 @@ unset($_SESSION['admin_news_view_url']);
 ?>
 <section class="admin-panel">
     <?php foreach ($generalErrors as $error) : ?><div class="admin-alert admin-alert--error" style="margin:0 0 12px"><?php echo e($error); ?></div><?php endforeach; ?>
-    <?php if ($viewUrl) : ?><div class="admin-actions" style="margin-bottom:16px"><a class="admin-button" href="<?php echo e($viewUrl); ?>" target="_blank" rel="noopener noreferrer">View on Website ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â€</a></div><?php endif; ?>
+    <?php if ($viewUrl) : ?><div class="admin-actions" style="margin-bottom:16px"><a class="admin-button" href="<?php echo e($viewUrl); ?>" target="_blank" rel="noopener noreferrer">View on Website ↗</a></div><?php endif; ?>
     <?php admin_news_render_form($story, $categories, $fieldErrors, array(), false); ?>
 </section>
 <script src="<?php echo site_url('assets/js/admin-news-editor.js'); ?>?v=<?php echo rawurlencode((string) (@filemtime(__DIR__ . '/../../assets/js/admin-news-editor.js') ?: '1')); ?>"></script>
