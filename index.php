@@ -292,7 +292,8 @@ $partners = ssvdp_public_partners($partners);
 
         <div class="where-layout">
             <div class="where-map-panel">
-                <iframe src="<?php echo e('https://www.google.com/maps?q=' . rawurlencode($contactInformation['office_coordinates']['latitude'] . ',' . $contactInformation['office_coordinates']['longitude']) . '&z=18&output=embed'); ?>" title="Google map showing the SSVP South Sudan compound" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <img src="<?php echo site_url('assets/images/placeholders/south-sudan-states.svg');
+?>" alt="Map of South Sudan with Central Equatoria State highlighted and Juba marked" loading="lazy" width="1000" height="762">
             </div>
 
             <div class="where-info-panel">
@@ -337,7 +338,6 @@ $partners = ssvdp_public_partners($partners);
                         <h3>OFFICE LOCATION</h3>
                         <p><?php echo e($whereWeWork['office_location']); 
 ?></p>
-                        <a class="where-directions-link" href="<?php echo e($contactInformation['google_maps_link']); ?>" target="_blank" rel="noopener noreferrer">Get Directions <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
                     </div>
                 </article>
             </div>
