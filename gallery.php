@@ -53,6 +53,16 @@ $moreMoments = array(
     array('image' => 'assets/images/gallery/nyarjwa-clinic/nyarjwa-clinic-02.jpg', 'title' => 'Nyarjwa Clinic', 'category' => 'Nyarjwa Clinic')
 );
 
+function ssvdp_gallery_static_image_exists(array $item): bool
+{
+    return !empty($item['image']) && is_file(__DIR__ . '/' . ltrim((string) $item['image'], '/'));
+}
+
+$galleryItems = array_values(array_filter($galleryItems, 'ssvdp_gallery_static_image_exists'));
+$incomeGeneratingItems = array_values(array_filter($incomeGeneratingItems, 'ssvdp_gallery_static_image_exists'));
+$vocationalTrainingItems = array_values(array_filter($vocationalTrainingItems, 'ssvdp_gallery_static_image_exists'));
+$moreMoments = array_values(array_filter($moreMoments, 'ssvdp_gallery_static_image_exists'));
+
 $dynamicGalleryAlbums = ssvdp_public_gallery_albums();
 ?>
 
@@ -84,7 +94,6 @@ $dynamicGalleryAlbums = ssvdp_public_gallery_albums();
                     <button class="gallery-photo-item" type="button" data-gallery-item data-gallery-filter-item data-category="<?php echo e($item['category']); ?>" data-index="<?php echo e((string) $index); ?>" data-src="<?php echo site_url($item['image']); ?>" data-title="<?php echo e($item['title']); ?>" data-caption="<?php echo e($item['caption']); ?>" data-location="<?php echo e($item['location']); ?>" data-date="<?php echo e($item['date']); ?>">
                         <span class="gallery-photo-frame">
                             <img src="<?php echo site_url($item['image']); ?>" alt="<?php echo e($item['title']); ?>" loading="lazy" width="520" height="360" onerror="this.closest('.gallery-photo-frame').classList.add('is-missing'); this.remove();">
-                            <span class="gallery-photo-placeholder">Photo coming soon</span>
                         </span>
                         <span class="gallery-photo-title"><?php echo e($item['title']); ?></span>
                     </button>
@@ -117,7 +126,6 @@ $dynamicGalleryAlbums = ssvdp_public_gallery_albums();
                             <button class="gallery-photo-item gallery-vocational-item" type="button" data-gallery-item data-category="<?php echo e($dynamicAlbum['category_slug']); ?>" data-src="<?php echo site_url($item['image']); ?>" data-title="<?php echo e($item['title']); ?>" data-caption="<?php echo e($item['caption']); ?>" data-location="<?php echo e($item['location']); ?>" data-date="<?php echo e($item['date']); ?>">
                                 <span class="gallery-photo-frame">
                                     <img src="<?php echo site_url($item['image']); ?>" alt="<?php echo e($item['title']); ?>" loading="lazy" width="520" height="325" onerror="this.closest('.gallery-photo-frame').classList.add('is-missing'); this.remove();">
-                                    <span class="gallery-photo-placeholder">Photo coming soon</span>
                                 </span>
                                 <span class="gallery-photo-title"><?php echo e($item['title']); ?></span>
                             </button>
@@ -141,7 +149,6 @@ $dynamicGalleryAlbums = ssvdp_public_gallery_albums();
                     <button class="gallery-photo-item gallery-igp-item" type="button" data-gallery-item data-category="<?php echo e($item['category']); ?>" data-src="<?php echo site_url($item['image']); ?>" data-title="<?php echo e($item['title']); ?>" data-caption="<?php echo e($item['caption']); ?>" data-location="<?php echo e($item['location']); ?>" data-date="<?php echo e($item['date']); ?>">
                         <span class="gallery-photo-frame">
                             <img src="<?php echo site_url($item['image']); ?>" alt="<?php echo e($item['title']); ?>" loading="lazy" width="520" height="325" onerror="this.closest('.gallery-photo-frame').classList.add('is-missing'); this.remove();">
-                            <span class="gallery-photo-placeholder">Photo coming soon</span>
                         </span>
                         <span class="gallery-photo-title"><?php echo e($item['title']); ?></span>
                     </button>
@@ -163,7 +170,6 @@ $dynamicGalleryAlbums = ssvdp_public_gallery_albums();
                     <button class="gallery-photo-item gallery-vocational-item" type="button" data-gallery-item data-category="<?php echo e($item['category']); ?>" data-src="<?php echo site_url($item['image']); ?>" data-title="<?php echo e($item['title']); ?>" data-caption="<?php echo e($item['caption']); ?>" data-location="<?php echo e($item['location']); ?>" data-date="<?php echo e($item['date']); ?>">
                         <span class="gallery-photo-frame">
                             <img src="<?php echo site_url($item['image']); ?>" alt="<?php echo e($item['title']); ?>" loading="lazy" width="520" height="325" onerror="this.closest('.gallery-photo-frame').classList.add('is-missing'); this.remove();">
-                            <span class="gallery-photo-placeholder">Photo coming soon</span>
                         </span>
                         <span class="gallery-photo-title"><?php echo e($item['title']); ?></span>
                     </button>
@@ -185,7 +191,6 @@ $dynamicGalleryAlbums = ssvdp_public_gallery_albums();
                 <article class="gallery-moment-card">
                     <div class="gallery-photo-frame">
                         <img src="<?php echo site_url($item['image']); ?>" alt="<?php echo e($item['title']); ?>" loading="lazy" width="520" height="390" onerror="this.closest('.gallery-photo-frame').classList.add('is-missing'); this.remove();">
-                        <span class="gallery-photo-placeholder">Photo coming soon</span>
                     </div>
                     <div>
                         <p><?php echo e($item['category']); ?></p>
@@ -205,7 +210,6 @@ $dynamicGalleryAlbums = ssvdp_public_gallery_albums();
         <figure>
             <div class="gallery-lightbox-image-wrap">
                 <img data-gallery-lightbox-image src="" alt="">
-                <span class="gallery-lightbox-placeholder">Photo coming soon</span>
             </div>
             <figcaption>
                 <h3 id="gallery-lightbox-title" data-gallery-lightbox-title></h3>

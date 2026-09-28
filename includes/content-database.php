@@ -41,7 +41,7 @@ function ssvdp_slugify(string $value): string
     return $slug !== '' ? $slug : 'item-' . bin2hex(random_bytes(3));
 }
 
-function ssvdp_format_date(?string $date, string $fallback = 'To be updated'): string
+function ssvdp_format_date(?string $date, string $fallback = ''): string
 {
     if (!$date || $date === '0000-00-00' || $date === '0000-00-00 00:00:00') {
         return $fallback;
@@ -112,6 +112,17 @@ function ssvdp_public_url(?string $value, string $fallback = '#'): string
     return $fallback;
 }
 
+function ssvdp_public_asset_exists(?string $path): bool
+{
+    $path = trim((string) $path);
+    if ($path === '' || preg_match('#^(https?://|data:)#i', $path)) {
+        return false;
+    }
+
+    $relativePath = ltrim(parse_url($path, PHP_URL_PATH) ?: $path, '/');
+    return $relativePath !== '' && is_file(dirname(__DIR__) . '/' . $relativePath);
+}
+
 function ssvdp_public_news(array $fallback): array
 {
     $pdo = ssvdp_db();
@@ -126,6 +137,15 @@ function ssvdp_public_news(array $fallback): array
         return $fallback;
     }
 
+    if (!$rows) {
+        return $fallback;
+    }
+
+    $rows = array_values(array_filter($rows, static function (array $row): bool {
+        return ssvdp_public_plain_text($row['title'] ?? '') !== ''
+            && ssvdp_public_teaser(($row['excerpt'] ?? '') ?: ($row['content'] ?? ''), 240) !== ''
+            && ssvdp_format_date(($row['published_at'] ?? '') ?: ($row['created_at'] ?? ''), '') !== '';
+    }));
     if (!$rows) {
         return $fallback;
     }
@@ -192,11 +212,14 @@ function ssvdp_public_gallery_items(): array
     }
 
     try {
-        $stmt = $pdo->query("SELECT p.image_path, p.caption, a.title, a.category, a.activity_date, a.location FROM gallery_photos p INNER JOIN gallery_albums a ON a.id = p.album_id WHERE a.status = 'published' ORDER BY COALESCE(a.activity_date, a.created_at) DESC, a.id DESC, p.sort_order ASC, p.id ASC");
+        $stmt = $pdo->query("SELECT p.image_path, p.caption, a.title, a.category, a.activity_date, a.location FROM gallery_photos p INNER JOIN gallery_albums a ON a.id = p.album_id WHERE a.status = 'published' AND p.image_path <> '' ORDER BY COALESCE(a.activity_date, a.created_at) DESC, a.id DESC, p.sort_order ASC, p.id ASC");
         $rows = $stmt->fetchAll();
     } catch (Throwable $exception) {
         return array();
     }
+    $rows = array_values(array_filter($rows, static function (array $row): bool {
+        return ssvdp_public_asset_exists($row['image_path'] ?? '');
+    }));
 
     return array_map(static function (array $row): array {
         $category = $row['category'] ?: 'community-activities';
@@ -252,7 +275,7 @@ function ssvdp_public_gallery_albums(): array
 
     $placeholders = implode(',', array_fill(0, count($albumIds), '?'));
     try {
-        $stmt = $pdo->prepare("SELECT album_id, image_path, caption FROM gallery_photos WHERE album_id IN ($placeholders) ORDER BY album_id ASC, sort_order ASC, id ASC");
+        $stmt = $pdo->prepare("SELECT album_id, image_path, caption FROM gallery_photos WHERE album_id IN ($placeholders) AND image_path <> '' ORDER BY album_id ASC, sort_order ASC, id ASC");
         foreach ($albumIds as $index => $albumId) {
             $stmt->bindValue($index + 1, $albumId, PDO::PARAM_INT);
         }
@@ -264,7 +287,7 @@ function ssvdp_public_gallery_albums(): array
 
     foreach ($photoRows as $row) {
         $albumId = (int) $row['album_id'];
-        if (!isset($albums[$albumId]) || count($albums[$albumId]['photos']) >= 6) {
+        if (!isset($albums[$albumId]) || count($albums[$albumId]['photos']) >= 6 || !ssvdp_public_asset_exists($row['image_path'] ?? '')) {
             continue;
         }
         $albums[$albumId]['photos'][] = array(
@@ -423,7 +446,10 @@ function ssvdp_public_programme_update_detail(?string $slug, int $id = 0): ?arra
 function ssvdp_public_impact_updates(int $limit = 3): array
 {
     $pdo = ssvdp_db();
-    if (!$pdo || !ssvdp_table_exists($pdo, 'impact_updates')) { return array(); }
+    if (!$pdo || !ssvdp_table_exists($pdo, 'impact_updates')) {
+        return array();
+    }
+
     try {
         $stmt = $pdo->prepare("SELECT title, value, unit, programme, description, impact_date FROM impact_updates WHERE status = 'published' ORDER BY impact_date DESC, id DESC LIMIT ?");
         $stmt->bindValue(1, $limit, PDO::PARAM_INT);
@@ -436,9 +462,10 @@ function ssvdp_public_impact_updates(int $limit = 3): array
             $row['description'] = ssvdp_public_teaser($row['description'], 220);
             return $row;
         }, $stmt->fetchAll());
-    } catch (Throwable $exception) { return array(); }
+    } catch (Throwable $exception) {
+        return array();
+    }
 }
-
 function ssvdp_public_partners(array $fallback): array
 {
     $pdo = ssvdp_db();

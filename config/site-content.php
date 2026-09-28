@@ -169,27 +169,8 @@ $latestNews = array(
         'placeholder' => 'Activity photograph will be added after approval.',
         'image' => 'assets/images/work/women training.jpg',
         'link' => 'news.php'
-    ),
-    array(
-        'title' => 'Community Programme Update',
-        'excerpt' => 'Updates on SSVP community programmes, activities and achievements supporting vulnerable communities across South Sudan.',
-        'date' => 'Community Development',
-        'category' => 'Programme Update',
-        'placeholder' => 'Approved photograph will be added later.',
-        'image' => 'assets/images/work/Picture77.jpg',
-        'link' => 'news.php'
-    ),
-    array(
-        'title' => 'Youth Skills Development Update',
-        'excerpt' => 'Highlights from SSVP youth skills development, vocational training and empowerment activities.',
-        'date' => 'Skills & Livelihoods',
-        'category' => 'Youth Empowerment',
-        'placeholder' => 'Approved photograph will be added later.',
-        'image' => 'assets/images/work/Picture25.jpg',
-        'link' => 'news.php'
     )
 );
-
 $ourWorkPage = array(
     'hero' => array(
         'label' => 'OUR WORK',

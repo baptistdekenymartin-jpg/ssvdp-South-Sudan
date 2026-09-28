@@ -18,78 +18,15 @@ $primaryStory = array(
 );
 
 $newsStories = array(
-    $primaryStory,
-    array(
-        'category' => 'Livelihoods and Practical Skills',
-        'filter' => 'programmes',
-        'title' => 'Strengthening Livelihoods Through Practical Skills',
-        'description' => 'SSVP South Sudan continues to support vulnerable families and young people through practical livelihood and income-generating skills designed to strengthen self-reliance and economic resilience.',
-        'date' => 'To be updated',
-        'image' => 'assets/images/news/jam-production-01.jpg',
-        'image_alt' => 'SSVP income-generating activity and practical livelihood work',
-        'link' => 'news-livelihood-skills.php'
-    ),
-    array(
-        'category' => 'Community Empowerment',
-        'filter' => 'community-activities',
-        'title' => 'Empowering Communities Through Skills and Participation',
-        'description' => 'Through community-based programmes, SSVP South Sudan is helping women, youth and vulnerable groups gain skills, confidence and opportunities to participate more actively in their communities.',
-        'date' => 'To be updated',
-        'image' => 'assets/images/news/vocational-training-01.jpg',
-        'image_alt' => 'SSVP vocational training and community skills development activity',
-        'link' => 'news-community-empowerment.php'
-    ),
-    array(
-        'category' => 'Livelihoods and Income Generation',
-        'filter' => 'programmes',
-        'title' => 'Poultry and Income Generating Projects',
-        'description' => 'Income generating groups continue to use practical livelihood activities to support household resilience and community participation.',
-        'date' => 'To be updated',
-        'image' => 'assets/images/news/poultry-project-01.jpg',
-        'image_alt' => 'SSVP poultry livelihood project activity',
-        'link' => 'gallery.php'
-    ),
-    array(
-        'category' => 'Emergency Support',
-        'filter' => 'emergency-support',
-        'title' => 'Emergency Assistance for Vulnerable Households',
-        'description' => 'Emergency and humanitarian support activities continue to respond to the needs of vulnerable households and displaced communities.',
-        'date' => 'To be updated',
-        'image' => 'assets/images/news/idp-support-01.jpg',
-        'image_alt' => 'SSVP emergency and humanitarian support activity',
-        'link' => 'programmes.php'
-    ),
-    array(
-        'category' => 'Partnerships',
-        'filter' => 'partnerships',
-        'title' => 'Partnerships Supporting Community Programmes',
-        'description' => 'SSVP continues working with partners and local communities to strengthen programmes rooted in service, dignity and practical support.',
-        'date' => 'To be updated',
-        'image' => 'assets/images/news/community-partnership-01.jpg',
-        'image_alt' => 'SSVP community and partnership activity',
-        'link' => 'programmes.php'
-    )
+    $primaryStory
 );
-
 $publicStories = ssvdp_public_news($newsStories);
 $featuredMatches = array_values(array_filter($publicStories, static function ($story) { return !empty($story['is_featured']); }));
 $primaryStory = $featuredMatches[0] ?? $publicStories[0];
 $remainingStories = array_values(array_filter($publicStories, static function ($story) use ($primaryStory) { return $story['title'] !== $primaryStory['title']; }));
 $sideStories = array_slice($remainingStories, 0, 2);
 $latestGridStories = array_slice($remainingStories, 2, 3);
-if (count($latestGridStories) < 3) {
-    $latestGridStories = array_slice($publicStories, 0, 3);
-}
-$communityStories = array(
-    array('title' => 'Jam Production and Practical Livelihood Training', 'date' => 'To be updated', 'image' => 'assets/images/news/jam-production-02.jpg', 'link' => 'news-livelihood-skills.php'),
-    array('title' => 'Vocational Training Activities Continuing', 'date' => 'To be updated', 'image' => 'assets/images/gallery/vocational-training/vt-01.jpg', 'image_alt' => 'SSVP vocational training activities', 'link' => 'news-community-empowerment.php'),
-    array('title' => 'Community Farming Project Supports Livelihoods', 'date' => 'To be updated', 'image' => 'assets/images/news/farm-livelihood-01.jpg', 'link' => 'gallery.php')
-);
-$programmeFallbackUpdates = array(
-    'Vocational skills training activities continuing',
-    'Income generating groups supporting community livelihoods',
-    'Emergency assistance reaching vulnerable households'
-);
+$communityStories = array();
 $publicEvents = ssvdp_public_events(3);
 $publicProgrammeUpdates = ssvdp_public_programme_updates(3);
 $filters = array(
@@ -157,6 +94,7 @@ $filters = array(
         </div>
     </section>
 
+    <?php if ($latestGridStories) : ?>
     <section class="newsroom-filters section-reveal" aria-label="News categories">
         <div class="container">
             <div class="newsroom-filter-bar" data-news-filters>
@@ -195,8 +133,12 @@ $filters = array(
         </div>
     </section>
 
+    <?php endif; ?>
+
+    <?php if ($communityStories || $publicEvents || $publicProgrammeUpdates) : ?>
     <section class="newsroom-digest section-reveal" aria-label="Community stories, announcements and programme updates">
         <div class="container newsroom-digest-grid">
+            <?php if ($communityStories) : ?>
             <article class="digest-panel">
                 <h2>From Our Communities</h2>
                 <span class="digest-rule" aria-hidden="true"></span>
@@ -213,74 +155,58 @@ $filters = array(
                 </div>
                 <a class="digest-link" href="<?php echo site_url('gallery.php'); ?>">View All Community Stories <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </article>
+            <?php endif; ?>
 
+            <?php if ($publicEvents) : ?>
             <article class="digest-panel">
                 <h2>Announcements &amp; Events</h2>
                 <span class="digest-rule" aria-hidden="true"></span>
                 <div class="event-list">
-                    <?php if ($publicEvents) : ?>
-                        <?php foreach ($publicEvents as $event) : ?>
-                            <div class="event-item">
-                                <span class="event-icon"><i class="bi bi-calendar-event" aria-hidden="true"></i></span>
-                                <div>
-                                    <strong><a href="<?php echo site_url($event['link']); ?>"><?php echo e($event['title']); ?></a></strong>
-                                    <small><?php echo e(ssvdp_format_date($event['start_date'], '')); ?><?php echo $event['location'] ? ' | ' . e($event['location']) : ''; ?></small>
-                                    <?php if ($event['short_description'] !== '') : ?><p><?php echo e($event['short_description']); ?></p><?php endif; ?>
-                                    <a class="event-read-more" href="<?php echo site_url($event['link']); ?>">Read More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-                                </div>
+                    <?php foreach ($publicEvents as $event) : ?>
+                        <div class="event-item">
+                            <span class="event-icon"><i class="bi bi-calendar-event" aria-hidden="true"></i></span>
+                            <div>
+                                <strong><a href="<?php echo site_url($event['link']); ?>"><?php echo e($event['title']); ?></a></strong>
+                                <small><?php echo e(ssvdp_format_date($event['start_date'], '')); ?><?php echo $event['location'] ? ' | ' . e($event['location']) : ''; ?></small>
+                                <?php if ($event['short_description'] !== '') : ?><p><?php echo e($event['short_description']); ?></p><?php endif; ?>
+                                <a class="event-read-more" href="<?php echo site_url($event['link']); ?>">Read More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
                             </div>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <?php for ($i = 0; $i < 3; $i++) : ?>
-                            <div class="event-item">
-                                <span class="event-icon"><i class="bi bi-calendar-event" aria-hidden="true"></i></span>
-                                <div>
-                                    <strong>Confirmed event details pending approval</strong>
-                                    <small>Date and location to be updated</small>
-                                </div>
-                            </div>
-                        <?php endfor; ?>
-                    <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
                 <a class="digest-link" href="<?php echo site_url('events.php'); ?>">View All Events <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </article>
+            <?php endif; ?>
 
+            <?php if ($publicProgrammeUpdates) : ?>
             <article class="digest-panel digest-panel--impact">
                 <h2><span>Programme Updates</span></h2>
                 <span class="digest-rule" aria-hidden="true"></span>
                 <div class="impact-update-list programme-update-list">
-                    <?php if ($publicProgrammeUpdates) : ?>
-                        <?php foreach ($publicProgrammeUpdates as $update) : ?>
-                            <article class="impact-update programme-update-item">
-                                <?php if ($update['featured_image'] !== '') : ?>
-                                    <a class="programme-update-thumb" href="<?php echo site_url($update['link']); ?>">
-                                        <img src="<?php echo site_url($update['featured_image']); ?>" alt="<?php echo e($update['title']); ?>" loading="lazy" width="96" height="72">
-                                    </a>
-                                <?php else : ?>
-                                    <span><i class="bi bi-check2" aria-hidden="true"></i></span>
-                                <?php endif; ?>
-                                <div class="programme-update-summary">
-                                    <h3><a href="<?php echo site_url($update['link']); ?>"><?php echo e($update['title']); ?></a></h3>
-                                    <small><?php echo e($update['programme']); ?><?php echo $update['date'] !== '' ? ' | ' . e($update['date']) : ''; ?><?php echo $update['location'] !== '' ? ' | ' . e($update['location']) : ''; ?></small>
-                                    <?php if ($update['short_description'] !== '') : ?><p><?php echo e($update['short_description']); ?></p><?php endif; ?>
-                                    <a class="event-read-more" href="<?php echo site_url($update['link']); ?>">Read More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                            </article>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <?php foreach ($programmeFallbackUpdates as $update) : ?>
-                            <div class="impact-update">
+                    <?php foreach ($publicProgrammeUpdates as $update) : ?>
+                        <article class="impact-update programme-update-item">
+                            <?php if ($update['featured_image'] !== '') : ?>
+                                <a class="programme-update-thumb" href="<?php echo site_url($update['link']); ?>">
+                                    <img src="<?php echo site_url($update['featured_image']); ?>" alt="<?php echo e($update['title']); ?>" loading="lazy" width="96" height="72">
+                                </a>
+                            <?php else : ?>
                                 <span><i class="bi bi-check2" aria-hidden="true"></i></span>
-                                <p><?php echo e($update); ?></p>
+                            <?php endif; ?>
+                            <div class="programme-update-summary">
+                                <h3><a href="<?php echo site_url($update['link']); ?>"><?php echo e($update['title']); ?></a></h3>
+                                <small><?php echo e($update['programme']); ?><?php echo $update['date'] !== '' ? ' | ' . e($update['date']) : ''; ?><?php echo $update['location'] !== '' ? ' | ' . e($update['location']) : ''; ?></small>
+                                <?php if ($update['short_description'] !== '') : ?><p><?php echo e($update['short_description']); ?></p><?php endif; ?>
+                                <a class="event-read-more" href="<?php echo site_url($update['link']); ?>">Read More <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
                             </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                        </article>
+                    <?php endforeach; ?>
                 </div>
                 <a class="digest-link" href="<?php echo site_url('programme-updates.php'); ?>">View All Programme Updates <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </article>
+            <?php endif; ?>
         </div>
     </section>
-
+    <?php endif; ?>
     <section class="newsroom-newsletter section-reveal" aria-labelledby="newsletter-heading">
         <div class="container">
             <div class="newsletter-band">
